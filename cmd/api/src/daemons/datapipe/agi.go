@@ -160,11 +160,13 @@ func TagActiveDirectoryTierZero(ctx context.Context, featureFlagProvider appcfg.
 
 	if autoTagT0ParentObjectsFlag, err := featureFlagProvider.GetFlagByKey(ctx, appcfg.FeatureAutoTagT0ParentObjects); err != nil {
 		return err
+	} else if autoTagMembersFlag, err := featureFlagProvider.GetFlagByKey(ctx, appcfg.FeatureAutoTagT0ADMembers); err != nil {
+		return err
 	} else if domains, err := adAnalysis.FetchAllDomains(ctx, graphDB); err != nil {
 		return err
 	} else {
 		for _, domain := range domains {
-			if roots, err := adAnalysis.FetchActiveDirectoryTierZeroRoots(ctx, graphDB, domain, autoTagT0ParentObjectsFlag.Enabled); err != nil {
+			if roots, err := adAnalysis.FetchActiveDirectoryTierZeroRoots(ctx, graphDB, domain, autoTagT0ParentObjectsFlag.Enabled, autoTagMembersFlag.Enabled); err != nil {
 				return err
 			} else {
 				properties := graph.NewProperties()

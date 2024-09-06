@@ -37,6 +37,7 @@ const (
 	FeatureFedRAMPEULA                = "fedramp_eula"
 	FeatureDarkMode                   = "dark_mode"
 	FeatureAutoTagT0ParentObjects     = "auto_tag_t0_parent_objects"
+	FeatureAutoTagT0ADMembers         = "auto_tag_t0_ad_members"
 )
 
 // FeatureFlag defines the most basic details of what a feature flag must contain to be actionable. Feature flags should be
