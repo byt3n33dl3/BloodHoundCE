@@ -12,8 +12,10 @@
 *.pprof
 
 # go binaries
+
 bin
 packages/go/stbernard/stbernard
+packages/go/stbernard/stbenchmark
 packages/go/schemagen/schemagen
 cmd/api/src/cmd/bhapi/bhapi
 
