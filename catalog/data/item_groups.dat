@@ -1,0 +1,427 @@
+### Testing groups ###
+name: items_test
+  items: w:500 flashlight / w:30 crowbar / w:150 glock 19 / w:150 9mm / w:30 leather jacket / w:50 lighter / w:50 bandages / w:500 water
+done
+
+### Special groups ###
+
+# Starting clothes - the clothes the player wears at the start of the game
+name: items_starting_clothes
+  items: jeans / sneakers / t shirt / backpack
+done
+
+# Shipwreck - the first items made available to the player
+name: items_shipwreck
+  items: w:20 wood plank / w:4 rope / w:3 MRE (meat) / w:3 MRE (vegetable) / w:6 water
+done
+
+# Static shipwreck - Items guaranteed to the player!
+name: items_static_shipwreck
+  items: c:5 wood plank / c:1 rope / c:4 rag / c:1 MRE (meat) / c:1 MRE (vegetable) / c:2 beef jerky / c:2 water / c:1 rum / c:2 dry rice / c:1 lighter / c:1 bandages
+done
+
+### Wilderness groups ###
+name: items_beach
+  items: w:14 rock / w:1 tree branch
+done
+
+name: items_field
+  items: w:10 rock / w:1 tree branch
+done
+
+name: items_forest
+  items: w:10 tree branch / w:3 rock
+done
+
+name: items_mangrove
+  items: tree branch
+done
+
+name: items_rocky
+  items: rock
+done
+
+name: items_salt_marsh
+  items: tree branch
+done
+
+name: items_swamp
+  items: tree branch
+done
+
+# House and shop groups
+name: items_tools
+  items: w:2 machete / w:20 hammer / w:20 screwdriver / w:20 wrench / w:3 sledgehammer / w:6 crowbar / w:8 hatchet / w:8 large axe / w:5 nail gun / w:8 shovel / w:2 pitchfork / w:2 pickaxe
+done
+
+name: items_small_tools
+  items: w:20 hammer / w:40 screwdriver / w:28 wrench / w:10 crowbar / w:5 hatchet / w:8 flashlight / w:5 nail gun
+done
+
+name: items_big_tools
+  items: w:10 shovel / w:3 machete / w:5 sledgehammer / w:8 large axe / w:2 pitchfork / w:1 pruner / w:2 pickaxe
+done
+
+name: items_garden_tools
+  items: w:10 shovel / w:5 hoe / w:7 rake / w:3 pruning shears / w:15 spade / w:2 rope / w:1 pitchfork / w:2 pruner / w:1 pickaxe
+done
+
+name: items_garden_clothing
+  items: w:5 rubber gloves / w:10 work gloves / w:3 cap
+done
+
+name: items_garden_supplies
+  items: w:10 flower pot / w:3 wood plank / w:2 rope / w:4 birdseed / w:1 Plant Identification
+done
+
+name: items_home_hardware
+  items: w:15 showerhead / w:10 steel pipe / w:8 flashlight / w:18 wood plank / w:3 broom
+done
+
+name: items_misc_construction
+  items: w:8 work gloves / w:4 hard hat / w:3 boots / w:4 steel-toed boots / w:5 dust mask / w:1 broom / w:10 Simple Structures / w:10 Home Improvement / w:2 Urban Construction
+done
+
+name: items_hardware
+  items: w:30 nails / w:15 steel pipe / w:10 wood plank / w:4 rope / w:1 showerhead
+done
+
+name: items_cleaning
+  items: w:10 dust mask / w:15 rubber gloves / w:15 rag / w:3 broom / w:1 showerhead / w:2 plastic bottle
+done
+
+name: items_factory_tools
+  items: w:1 rope / w:20 hammer / w:30 wrench / w:1 sledgehammer / w:5 steel pipe / w:25 screwdriver / w:5 rag / w:5 dust mask / w:5 work gloves / w:3 nails / w:3 batteries / w:8 crowbar / w:3 bandages / w:2 first aid kit / w:10 flashlight
+done
+
+name: items_hiking_tools
+  items: w:5 rope / w:10 pocket knife / w:10 hunting knife / w:10 hatchet / w:1 large axe / w:1 machete / w:15 rag / w:10 beef jerky / w:2 chocolate bar / w:5 water / w:15 birdseed / w:2 aspirin / w:5 bandages / w:30 flashlight / w:5 Basic First Aid / w:5 Wild Edibles / w:10 23 Camping Tips / w:8 Orienteering and You
+done
+
+name: items_hiking_clothes
+  items: w:10 cap / w:15 bandana / w:5 t shirt / w:5 leather gloves / w:3 cargo pants / w:10 sneakers / w:10 boots / w:18 backpack
+done
+
+# From the weird consumer items aisle at pharmacies!
+name: items_misc_goods
+  items: w:20 broom / w:4 showerhead / w:4 wrench / w:3 screwdriver / w:16 batteries / w:14 lighter / w:3 cotton gloves / w:6 cotton hat / w:3 dumbbell / w:5 Get What You Need / w:5 Think of England / w:5 Dirty Little Secret / w:8 50 Weeks to Live
+done
+
+name: items_behind_counter
+  items: w:5 aspirin / w:20 cigarettes / w:10 batteries / w:15 lighter
+done
+
+name: items_hard_drugs
+  items: w:10 codeine / w:8 tramadol / w:3 oxycodone / w:5 amphetamine
+done
+
+name: items_soft_drugs
+  items: w:20 aspirin / w:8 sleeping pills / w:5 bandages / w:2 first aid kit
+done
+
+# General garage junk
+name: items_garage
+  items: w:40 work gloves / w:50 nails / w:10 baseball bat / w:10 golf club / w:1 machete / w:50 hammer / w:45 wrench / w:5 sledgehammer / w:8 steel pipe / w:60 screwdriver / w:30 crowbar / w:30 shovel / w:15 hatchet / w:12 large axe / w:12 nail gun / w:18 rake / w:2 pitchfork / w:5 pruner
+done
+
+# Items for a car mechanic's garage
+name: items_car_mechanic
+  items: w:30 work gloves / w:5 hammer / w:45 wrench / w:30 steel pipe / w:40 screwdriver / w:7 crowbar / w:15 Universal Car Repair
+done
+
+name: items_computer_room
+  items: w:5 processor / w:8 RAM / w:15 data cable / w:3 screwdriver / w:2 batteries / w:2 Electronics Basics / w:1 Digital Logic / w:3 Data Coding Theory
+done
+
+name: items_fridge
+  items: w:10 water / w:5 beer / w:5 cola / w:1 V8 / w:2 energy drink
+done
+
+name: items_food_shelves
+  items: w:20 beans / w:12 tomatoes / w:10 potato chips / w:24 dry pasta / w:3 dry tea / w:5 dry coffee / w:12 dry rice / w:10 flour
+done
+
+name: items_snacks
+  items: w:10 potato chips / w:6 pretzels / w:4 beef jerky / w:5 chocolate bar
+done
+
+name: items_fridge_snacks
+  items: w:10 water / w:10 cola / w:5 V8 / w:8 energy drink
+done
+
+# Not food, just miscellaneous kitchen items, like knives
+name: items_kitchen_counter
+  items: w:15 chef knife / w:10 frying pan / w:12 rag / w:3 Cooking Basics / w:2 French Cuisine
+done
+
+name: items_fast_food
+  items: w:8 beef patty / w:6 pressed potato / w:3 chocolate shake
+done
+
+# Misc junk
+name: items_trash
+  items: w:1 rock / w:3 tree branch / w:1 wood plank / w:3 steel pipe / w:20 rag / w:20 plastic bottle / w:12 glass bottle / w:8 can / w:25 soda can / w:30 plastic bag / w:8 paper box
+done
+
+name: items_valuables
+  items: w:5 bundle of money / w:1 brick of money / w:5 gold ring / w:5 diamond / w:5 diamond necklace
+done
+
+name: items_cash
+  items: w:5 brick of money / w:1 bundle of money
+done
+
+name: items_office
+  items: w:10 pocket knife / w:1 rag / w:3 bundle of money / w:2 fedora / w:20 glasses / w:2 scarf / w:2 bandana / w:2 leather gloves / w:1 oxfords / w:5 purse / w:1 gold ring / w:15 batteries / w:3 potato chips / w:2 pretzels / w:2 beef jerky / w:3 chocolate bar / w:3 water / w:3 whisky / w:3 wine / w:7 energy drink / w:3 cigarettes / w:8 aspirin / w:1 amphetamine / w:5 lighter / w:1 bandages / w:2 flashlight / w:3 Business Battles
+done
+
+name: items_misc_housewares
+  items: w:10 pocket knife / w:1 hunting knife / w:1 baseball bat / w:30 golf club / w:5 rag / w:8 broom / w:5 showerhead / w:10 dumbbell / w:8 backpack / w:5 purse / w:1 gold ring / w:1 diamond necklace / w:15 batteries / w:5 bandages / w:2 first aid kit / w:15 flashlight / w:15 glass bottle / w:20 flower pot / w:15 frying pan
+done
+
+name: items_sport_equipment
+  items: w:30 baseball bat / w:20 golf club / w:5 dumbbell / w:12 bowling ball / w:8 hockey stick
+done
+
+name: items_sport_clothes
+  items: w:5 cotton hat / w:30 cap / w:10 football helmet / w:18 safety glasses / w:3 hockey mask / w:12 t shirt / w:5 leather gloves / w:20 sneakers
+done
+
+name: items_hunting_equipment
+  items: w:8 pocket knife / w:35 hunting knife / w:5 hatchet / w:6 machete / w:2 frying pan / w:5 rag / w:5 cotton hat / w:8 cap / w:10 safety glasses / w:1 leather jacket / w:2 leather gloves / w:3 boots / w:10 backpack / w:1 MRE (meat) / w:3 beef jerky / w:8 bandages / w:3 first aid kit / w:10 flashlight
+done
+
+name: items_jewelry
+  items: w:5 diamond / w:8 purse / w:10 gold ring / w:10 diamond necklace
+done
+
+# Gun store items
+# "Civilian" ammo - omit armor-piercing variants.  This is a crazy gun-toting
+# future so other rounds that might be illegal can appear here.
+name: items_ammo_civilian
+  items: w:50 .22 LR / w:50 9mm / w:40 .45 ACP / w:20 .45 JHP / w:15 5.7x28mm / w:40 00 shot / w:20 shotgun slug / w:30 5.56 NATO / w:30 7.62 NATO / w:10 .50 BMG
+done
+
+name: items_handguns
+  items: w:7 SIG Mosquito / w:10 Glock 19 / w:8 USP 9mm / w:9 M1911 / w:7 USP .45 / w:4 FN Five-Seven / w:5 Desert Eagle .50
+done
+
+name: items_shotguns
+  items: w:7 2-barreled shotgun / w:10 Remington 870 / w:3 Saiga-12
+done
+
+name: items_smgs
+  items: w:8 Uzi 9mm / w:10 H&K MP5 / w:7 MAC-10 / w:9 H&K UMP45 / w:3 KRISS Vector / w:5 FN P90
+done
+
+name: items_hunting_rifles
+  items: w:10 Ruger 10/22 / w:8 Ruger Mini-14 / w:6 Savage 111F
+done
+
+name: items_sniper_rifles
+  items: w:10 Barrett M95 / w:8 Steyr HS .50
+done
+
+name: items_assault_rifles
+  items: w:10 M4A1 / w:8 Steyr AUG / w:7 FN SCAR-H / w:8 FN FAL
+done
+
+name: items_barn_guns
+  items: w:10 Ruger 10/22 / w:8 Ruger Mini-14 / w:6 Savage 111F / w:15 2-barreled shotgun / w:7 Remington 870 / w:20 00 shot / w:15 .22 LR / w:15 5.56 NATO / w:12 7.62 NATO
+done
+
+name: items_hunting_guns
+  items: w:5 2-barreled shotgun / w:10 Remington 870 / w:10 Ruger 10/22 / w:3 Ruger Mini-14 / w:1 Savage 111F / w:6 crossbow / w:15 00 shot / w:15 .22 LR / w:10 5.56 NATO / w:8 7.62 NATO / w:15 steel bolt
+done
+
+name: items_gun_accessories
+  items: w:10 holster / w:6 cap / w:15 safety glasses / w:2 work gloves
+done
+
+name: items_hats
+  items: w:10 cap / w:10 cotton hat / w:5 fedora
+done
+
+name: items_shirts
+  items: w:20 t shirt / w:18 dress shirt / w:15 tank top
+done
+
+name: items_jackets
+  items: w:20 wool sweater / w:5 leather jacket / w:7 jean jacket / w:12 puffy coat
+done
+
+name: items_gloves
+  items: w:12 cotton gloves / w:10 leather gloves / w:1 work gloves
+done
+
+name: items_pants
+  items: w:20 jeans / w:10 cargo pants / w:3 leather pants / w:15 skirt
+done
+
+# Just shoes you'd find in a common clothing store - e.g. no steeltoed boots
+name: items_shoes
+  items: w:40 sneakers / w:30 oxfords / w:15 boots
+done
+
+name: items_misc_clothing
+  items: w:20 backpack / w:30 purse / w:10 scarf / w:20 bandana
+done
+
+name: items_all_clothes
+  items: w:3 cap / w:3 cotton hat / w:1 fedora / w:20 t shirt / w:18 dress shirt / w:15 tank top / w:3 cotton gloves / w:2 leather gloves / w:20 wool sweater / w:5 leather jacket / w:7 jean jacket / w:12 puffy coat / w:20 jeans / w:10 cargo pants / w:3 leather pants / w:15 skirt / w:20 sneakers / w:15 oxfords / w:8 boots / w:4 backpack / w:6 purse / w:5 scarf / w:3 bandana
+done
+
+name: items_hard_liquor
+  items: w:12 vodka / w:10 whisky / w:10 rum / w:7 tequila
+done
+
+# items_wine and items_beer are single-item lists!  So why do they exist?
+# So that if, in the future, we add, say, white wine, we don't have to manually
+# edit every single map that has wine - just edit these lists.
+name: items_wine
+  items: w:10 wine
+done
+
+name: items_beer
+  items: w:10 beer
+done
+
+name: items_canned_food
+  items: w:10 beans / w:2 SPAM / w:3 tomatoes / w:8 chicken soup
+done
+
+name: items_dry_food
+  items: w:12 dry pasta / w:10 dry rice
+done
+
+name: items_dry_drinks
+  items: w:4 dry coffee / w:3 dry tea
+done
+
+name: items_magazines
+  items: w:9 Bon Appetit / w:9 Popular Mechanics / w:4 Electronics Monthly / w:4 ASCE Magazine / w:7 Health and Medicine / w:9 Gardener's World / w:8 Outside Magazine / w:11 People Magazine / w:12 Reader's Digest / w:9 The New Yorker / w:5 Sharkhead Issue 32 / w:5 Sharkhead Issue 33 / w:5 Sharkhead Issue 34
+done
+
+name: items_diner_food
+  items: w:3 beans / w:10 SPAM / w:3 tomatoes / w:15 beef patty / w:10 pressed potato / w:5 water / w:10 beer / w:1 wine / w:15 cola / w:5 V8 / w:5 dry pasta / w:5 dry tea / w:20 dry coffee
+done
+
+name: items_pawn_shop
+  items: w:5 hunting knife / w:3 combat knife / w:1 antique sword / w:7 baseball bat / w:1 large axe / w:1 antique halberd / w:3 diamond / w:3 fedora / w:3 leather jacket / w:3 steel-toed boots / w:1 holster / w:2 purse / w:4 gold ring / w:3 diamond necklace / w:1 USP 9mm / w:1 M1911 / w:1 2-barreled shotgun / w:3 crowbar / w:3 shovel / w:3 lighter / w:3 flashlight / w:2 can 
+done
+
+
+name: items_museum
+#Maybe TODO: divide group to some theme groups, for thematic rooms in museum. And add some "antique" guns.
+  items: w:1 antique sword / w:1 large axe / w:1 antique halberd / w:4 diamond / w:4 gold ring / w:4 diamond necklace / w:7 rock / w:7 wood dowel / w:7 hoe / w:7 rake / w:8 rag / w:3 bundle of money / w:3 dead plant / w:1 leather gloves / w:1 leather pants
+done
+
+name: items_survival_food
+  items: w:10 MRE (meat) / w:10 MRE (vegetable) / w:14 beans / w:10 SPAM / w:12 beef jerky / w:4 chocolate bar / w:40 water / w:8 dry pasta / w:8 dry rice / w:8 flour
+done
+
+name: items_security_equipment
+  items: w:1 rope / w:4 pocket knife / w:2 dumbbell / w:3 cap / w:3 safety glasses / w:1 dust mask / w:3 leather gloves / w:2 boots / w:8 holster / w:2 codeine / w:2 amphetamine / w:4 crowbar / w:8 bandages / w:5 first aid kit / w:20 flashlight / w:5 Basic First Aid
+done
+
+name: items_security_weapons
+  items: w:5 combat knife / w:15 baton / w:20 9mm / w:16 .45 ACP / w:12 USP 9mm / w:8 USP .45 / w:3 H&K MP5 / w:1 H&K UMP45
+done
+
+# Any stuff a factory might be producing or studying.
+
+name: items_manufactured_tech
+  items: w:3 pocket knife / w:2 hunting knife / w:4 combat knife / w:3 baton / w:1 antique sword / w:1 antique halberd / w:10 golf club / w:6 chef knife / w:3 frying pan / w:2 showerhead / w:1 diamond / w:15 processor / w:15 RAM / w:12 data cable / w:8 glasses / w:3 safety glasses / w:3 puffy coat / w:6 sneakers / w:2 boots / w:2 steel-toed boots / w:20 batteries / w:1 FN Five-Seven / w:1 KRISS Vector / w:1 FN P90 / w:1 Steyr HS .50 / w:5 MRE (meat) / w:5 MRE (vegetable) / w:3 SPAM / w:3 chicken soup / w:3 chocolate bar / w:3 cola / w:4 energy drink / w:5 cigarettes / w:6 aspirin / w:5 codeine / w:4 tramadol / w:4 oxycodone / w:4 amphetamine / w:5 sleeping pills / w:5 lighter / w:10 bandages / w:15 first aid kit / w:20 flashlight
+done
+
+name: items_factory_worker
+  items: w:3 pocket knife / w:15 hammer / w:20 wrench / w:4 sledgehammer / w:3 steel pipe / w:20 screwdriver / w:4 rag / w:5 data cable / w:5 cap / w:14 hard hat / w:5 glasses / w:12 safety glasses / w:12 dust mask / w:5 bandana / w:3 t shirt / w:14 work gloves / w:7 rubber gloves / w:5 boots / w:7 steel-toed boots / w:7 nails / w:8 batteries / w:7 nail gun / w:3 beef jerky / w:4 water / w:1 beer / w:2 cola / w:3 energy drink / w:7 cigarettes / w:2 aspirin / w:1 codeine / w:7 crowbar / w:15 lighter / w:4 bandages / w:2 first aid kit / w:8 flashlight
+done
+
+name: items_fire_pit
+  items: w:10 tree branch / w:5 log / w:1 rock
+done
+
+name: items_camping
+  items: w:2 rope / w:20 pocket knife / w:8 hunting knife / w:12 hatchet / w:5 large axe / w:2 machete / w:10 frying pan / w:10 rag / w:5 cotton hat / w:2 cap / w:5 bandana / w:3 work gloves / w:2 leather gloves / w:3 boots / w:12 backpack / w:3 batteries / w:1 crossbow / w:4 MRE (meat) / w:4 MRE (vegetable) / w:6 beans / w:6 SPAM / w:7 beef jerky / w:5 chocolate bar / w:14 water / w:2 beer / w:2 dry pasta / w:2 dry rice / w:3 dry coffee / w:3 birdseed / w:4 shovel / w:5 bandages / w:2 first aid kit / w:12 flashlight / w:10 Basic First Aid / w:10 Wild Edibles / w:12 23 Camping Tips / w:9 Orienteering and You
+done
+
+name: items_all_books
+  items: w:10 Cooking Basics / w:9 French Cuisine / w:5 Chemistry 101 / w:3 Advanced Chemistry / w:1 Molecular Engineering / w:10 The DIY Handbook / w:7 Universal Car Repair / w:9 How to Fix Anything / w:5 Mechanical Engineering / w:3 Materials Science / w:1 Quantum Engineering / w:10 Electronics Basics / w:9 Digital Logic / w:5 Data Coding Theory / w:3 Applied Microcircuitry / w:1 Quantum Circuitry / w:10 Simple Structures / w:9 Home Improvement / w:5 Urban Construction / w:3 Army Engineer Manual / w:10 Basic First Aid / w:9 Paramedic Handbook / w:5 Physical Health Assessment / w:3 Advanced Physiology / w:1 Modern Surgery / w:10 Wild Edibles / w:9 Plant Identification / w:5 Plant Biology 101 / w:3 Scientific Farming / w:1 Modern GMO / w:10 23 Camping Tips / w:9 Orienteering and You / w:5 Apocatips for the Apocalypse / w:3 U.S. Survival Handbook / w:14 Prey, Kill, Eat / w:10 Infinite Julias / w:10 Food is Disgusting / w:10 Living with Leopards / w:10 A Childhood Lost / w:10 Bad News / w:10 Dragon's Domain / w:10 Dragon's Dissent / w:10 Dragon's Dirge / w:10 The Wizard's Daughter / w:10 Wolfrider / w:10 Murder in Moscow / w:10 The Red Card / w:10 Hunting the Hunter / w:10 Get What You Need / w:10 Think of England / w:10 Dirty Little Secret / w:15 50 Weeks to Live / w:10 God Save the Queen / w:10 Back on the Back Fourty / w:10 The Mind's Eye / w:10 not My Father's Son / w:10 Wait, What? / w:10 My Mom Thinks I'm Cool / w:10 Psi Squadron / w:10 Pod Seven / w:10 The Other Side of Light / w:10 Empire of Addiction / w:10 Criminal Art / w:10 A History of Secrets
+done
+
+name: items_home_books
+  items: w:12 Cooking Basics / w:9 French Cuisine / w:3 Chemistry 101 / w:1 Advanced Chemistry / w:9 The DIY Handbook / w:5 Universal Car Repair / w:8 How to Fix Anything / w:2 Mechanical Engineering / w:1 Materials Science / w:5 Electronics Basics / w:2 Digital Logic / w:5 Simple Structures / w:5 Home Improvement / w:2 Urban Construction / w:1 Army Engineer Manual / w:9 Basic First Aid / w:4 Paramedic Handbook / w:2 Physical Health Assessment / w:1 Advanced Physiology / w:6 Wild Edibles / w:5 Plant Identification / w:3 Plant Biology 101 / w:1 Scientific Farming / w:7 23 Camping Tips / w:4 Orienteering and You / w:2 Apocatips for the Apocalypse / w:1 U.S. Survival Handbook / w:13 Prey, Kill, Eat / w:9 Infinite Julias / w:10 Food is Disgusting / w:9 Living with Leopards / w:10 A Childhood Lost / w:10 Bad News / w:9 Dragon's Domain / w:9 Dragon's Dissent / w:9 Dragon's Dirge / w:9 The Wizard's Daughter / w:9 Wolfrider / w:10 Murder in Moscow / w:10 The Red Card / w:10 Hunting the Hunter / w:9 Get What You Need / w:9 Think of England / w:9 Dirty Little Secret / w:15 50 Weeks to Live / w:10 God Save the Queen / w:10 Back on the Back Fourty / w:9 The Mind's Eye / w:10 not My Father's Son / w:10 Wait, What? / w:10 My Mom Thinks I'm Cool / w:9 Psi Squadron / w:9 Pod Seven / w:9 The Other Side of Light / w:10 Empire of Addiction / w:10 Criminal Art / w:10 A History of Secrets / w:5 Bon Appetit / w:5 Popular Mechanics / w:3 Electronics Monthly / w:3 ASCE Magazine / w:4 Health and Medicine / w:5 Gardener's World / w:5 Outside Magazine / w:6 People Magazine / w:7 Reader's Digest / w:6 The New Yorker / w:2 Sharkhead Issue 32 / w:2 Sharkhead Issue 33 / w:2 Sharkhead Issue 34
+done
+
+name: items_skill_books
+  items: w:10 Cooking Basics / w:9 French Cuisine / w:5 Chemistry 101 / w:3 Advanced Chemistry / w:1 Molecular Engineering / w:10 The DIY Handbook / w:7 Universal Car Repair / w:9 How to Fix Anything / w:5 Mechanical Engineering / w:3 Materials Science / w:1 Quantum Engineering / w:10 Electronics Basics / w:9 Digital Logic / w:5 Data Coding Theory / w:3 Applied Microcircuitry / w:1 Quantum Circuitry / w:10 Simple Structures / w:9 Home Improvement / w:5 Urban Construction / w:3 Army Engineer Manual / w:10 Basic First Aid / w:9 Paramedic Handbook / w:5 Physical Health Assessment / w:3 Advanced Physiology / w:1 Modern Surgery / w:10 Wild Edibles / w:9 Plant Identification / w:5 Plant Biology 101 / w:3 Scientific Farming / w:1 Modern GMO / w:10 23 Camping Tips / w:9 Orienteering and You / w:5 Apocatips for the Apocalypse / w:3 U.S. Survival Handbook
+done
+
+name: items_common_skill_books
+  items: w:10 Cooking Basics / w:9 French Cuisine / w:10 The DIY Handbook / w:5 Universal Car Repair / w:9 How to Fix Anything / w:6 Electronics Basics / w:8 Simple Structures / w:8 Home Improvement / w:9 Basic First Aid / w:9 Wild Edibles / w:8 Plant Identification / w:10 23 Camping Tips / w:7 Orienteering and You
+done
+
+name: items_food_books
+  items: w:15 Cooking Basics / w:12 French Cuisine / w:12 Prey, Kill, Eat / w:7 Infinite Julias / w:10 Food is Disgusting
+done
+
+name: items_diy_books
+  items: w:20 The DIY Handbook / w:10 Universal Car Repair / w:12 How to Fix Anything / w:8 Electronics Basics / w:10 Simple Structures / w:12 Home Improvement / w:8 Basic First Aid / w:5 Wild Edibles / w:8 23 Camping Tips
+done
+
+name: items_nonfiction_books
+  items: w:15 Cooking Basics / w:12 French Cuisine / w:14 The DIY Handbook / w:10 Universal Car Repair / w:11 How to Fix Anything / w:8 Electronics Basics / w:9 Simple Structures / w:8 Home Improvement / w:10 Basic First Aid / w:2 Paramedic Handbook / w:9 Wild Edibles / w:4 Plant Identification / w:9 23 Camping Tips / w:6 Orienteering and You / w:7 Apocatips for the Apocalypse / w:15 Prey, Kill, Eat / w:10 Food is Disgusting / w:10 Living with Leopards / w:10 A Childhood Lost / w:10 Bad News / w:10 The Mind's Eye / w:10 Empire of Addiction / w:10 Criminal Art / w:10 A History of Secrets
+done
+
+name: items_autobiography_books
+  items: w:14 Prey, Kill, Eat / w:10 Living with Leopards / w:10 A Childhood Lost / w:10 Bad News
+done
+
+# Includes investigative journalism (modern history!)
+name: items_history_books
+  items: w:10 Food is Disgusting / w:10 The Mind's Eye / w:10 Empire of Addiction / w:10 Criminal Art / w:10 A History of Secrets / w:10 Business Battles
+done
+
+name: items_fiction_books
+  items: w:10 Infinite Julias / w:10 Dragon's Domain / w:10 Dragon's Dissent / w:10 Dragon's Dirge / w:10 The Wizard's Daughter / w:10 Wolfrider / w:10 Murder in Moscow / w:10 The Red Card / w:10 Hunting the Hunter / w:8 Get What You Need / w:8 Think of England / w:8 Dirty Little Secret / w:15 50 Weeks to Live / w:10 God Save the Queen / w:10 Back on the Back Fourty / w:10 Not My Father's Son / w:10 Wait, What? / w:10 My Mom Thinks I'm Cool / w:10 Psi Squadron / w:10 Pod Seven / w:10 The Other Side of Light
+done
+
+# General novels that don't fit into the other categories
+name: items_novels
+  items: w:15 50 Weeks to live / w:10 God Save the Queen / w:10 Back on the Back Fourty / w:10 Not My Father's Son / w:10 Wait, What? / w:10 My Mom Thinks I'm Cool
+done
+
+name: items_scifi_books
+  items: w:10 Infinite Julias / w:10 Psi Squadron / w:10 Pod Seven / w:10 The Other Side of Light / w:10 Road to Centauri
+done
+
+name: items_fantasy_books
+  items: w:10 Dragon's Domain / w:10 Dragon's Dissent / w:10 Dragon's Dirge / w:10 The Wizard's Daughter / w:10 Wolfrider
+done
+
+name: items_mystery_books
+  items: w:10 Murder in Moscow / w:10 The Red Card / w:10 Hunting the Hunter / w:10 Bagmen of Boston / w:10 The Criphus Affair
+done
+
+name: items_romance_books
+  items: w:10 Get What You Need / w:10 Think of England / w:10 Dirty Little Secret / w:10 Moon Kissed / w:10 Going Down
+done
+
+
+name: items_textbooks
+  items: w:10 Chemistry 101 / w:7 Advanced Chemistry / w:5 Molecular Engineering / w:10 Mechanical Engineering / w:7 Materials Science / w:4 Quantum Engineering / w:12 Electronics Basics / w:10 Digital Logic / w:7 Data Coding Theory / w:5 Applied Microcircuitry / w:2 Quantum Circuitry / w:10 Urban Construction / w:9 Paramedic Handbook / w:10 Physical Health Assessment / w:7 Advanced Physiology / w:5 Modern Surgery / w:7 Plant Identification / w:10 Plant Biology 101 / w:7 Scientific Farming / w:5 Modern GMO
+done
+
+name: items_military_books
+  items: w:10 Army Engineer Manual / w:10 Basic First Aid / w:8 Paramedic Handbook / w:10 U.S. Survival Handbook
+done
+
+# Not survival *skill*, just any books a survivalist might have
+name: items_survivalist_books
+  items: w:10 The DIY Handbook / w:8 How to Fix Anything / w:10 Simple Structures / w:16 Basic First Aid / w:8 Paramedic Handbook / w:15 Wild Edibles / w:5 Plant Identification / w:8 23 Camping Tips / w:10 Orienteering and You / w:20 Apocatips for the Apocalypse / w:16 U.S. Survival Handbook
+done
+
+name: items_farmer_books
+  items: w:5 Cooking Basics / w:6 How to Fix Anything / w:10 Simple Structures / w:10 Home Improvement / w:3 Wild Edibles / w:5 Plant Identification / w:6 Plant Biology 101 / w:16 Scientific Farming / w:14 Modern GMO / w:1 Back on the Back Fourty
+done

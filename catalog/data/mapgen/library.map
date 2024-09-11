@@ -1,0 +1,792 @@
+### FILENAME GOES HERE
+#
+# The following tags are used: (# marks a line or part of a line as a comment)
+#
+# "name:" - Required.  A description of this spec.  It should appear first for
+#           debugging reasons.
+# "type:" - Required.  The World_terrain name this spec applies to.  See
+#           world_terrain.dat for a list of World_terrains.
+# "adjacent" - If this tag is present, then this map is an "adjacency" map.
+#              This should appear before "base_terrain:" or "tile:" lines.
+# "base_terrain:" - Recommended.  A terrain specification to be used for tiles
+#                   which are not defined in the map section.
+# "weight:" - A weight used when randomly choosing specs.  If omitted, the
+#             weight defaults to 100.  A spec with weight 200 is twice as likely#             to be used as one with weight 100.
+# "tile:" - Defines a terrain used in the map section.
+# "items:" - Defines an item drop used in the map section.
+# "map:" - Defines the start of the map section.
+# "endmap" - Defines the end of the map section.
+# "done" - Required.  Marks the end of this spec.
+#
+# See the bottom of this file for details on base_terrain and tile terrain
+# specifications, item drop specifications, and adjacency maps.
+
+
+#shelf numbers - are level of books
+
+name: std_library_weend
+subname: std_library_weend
+type: library
+tile: # = stone wall
+tile: . = floor
+tile: o = dirt / grass
+tile: , = stone path
+tile: + = closed door
+tile: " = window
+tile: { = shelves
+tile: % = counter
+tile: T = toilet
+tile: K = sink
+tile: < = stairs up
+
+tile: cCtdD = floor
+furniture: cC = wood chair
+furniture: t  = table
+furniture: dD = desk
+
+#TODO some PCs on desks in sw corner
+
+# The returns shelf
+tile: A = shelves
+item_group: 35 A = items_home_books
+
+# Shuffle the item groups, so that certain types aren't always in the same place
+shuffle: 1234567890
+tile: 1234567890xyz = shelves
+item_group: 20 1 = items_common_skill_books
+item_group: 24 2 = items_autobiography_books
+item_group: 24 3 = items_history_books
+item_group: 22 4 = items_scifi_books
+item_group: 20 5 = items_mystery_books
+item_group: 20 6 = items_romance_books
+item_group: 24 7 = items_novels
+item_group: 17 8 = items_textbooks
+item_group: 22 9 = items_fantasy_books
+subst: 0 = w:3 x / w:3 y / z
+item_group: 24 x = items_food_books
+item_group: 24 y = items_diy_books
+item_group: 24 z = items_military_books
+
+map:
+oooooo,oooooooooooooooooo
+oooooo,oooooooooooooooooo
+ooo###+##""##"##"####oooo
+ooo#A......1..1..1.c#oooo
+ooo#A......1..1..1.t"oooo
+ooo#%%%%...........c#oooo
+ooo"c.....#2..34...C#oooo
+ooo#####..#2..34...t"oooo
+ooo#cC....#2..34...C#oooo
+ooo"TT....#2..34...c#oooo
+ooo#Cc....#2..34...t"oooo
+ooo"...............c#oooo
+ooo#5555...6666..####oooo
+ooo".............#KT#oooo
+ooo#dc..78...90..+..#oooo
+ooo"DC..78...90..####oooo
+ooo#dc..78...90..#KT#oooo
+ooo"DC..78...90..+..#oooo
+ooo#dc...........####oooo
+ooo############+##ooooooo
+,,,,,,,,,+.......#ooooooo
+ooooooooo#cd...<.#ooooooo
+ooooooooo##"######ooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+endmap
+done
+
+name: std_library_weend_roof
+subname: std_library_weend
+floor: 1
+type: library
+tile: . = concrete floor
+tile: o = empty
+tile: > = stairs down
+tile: % = short stone wall
+
+map:
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooo%%%%%%%%%%%%%%%%%%oooo
+ooo%................%oooo
+ooo%................%oooo
+ooo%................%oooo
+ooo%................%oooo
+ooo%................%oooo
+ooo%................%oooo
+ooo%................%oooo
+ooo%................%oooo
+ooo%................%oooo
+ooo%................%oooo
+ooo%................%oooo
+ooo%................%oooo
+ooo%................%oooo
+ooo%................%oooo
+ooo%................%oooo
+ooo%.............%%%%oooo
+ooo%%%%%%%.......%ooooooo
+ooooooooo%.......%ooooooo
+ooooooooo%.....>.%ooooooo
+ooooooooo%%%%%%%%%ooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+endmap
+done
+
+name: garden_library_whales
+subname: garden_lib_whales
+type: library
+
+tile: o = grass / dirt
+tile: O = w:60 grass / w:60 dirt / w:5 small tree / w:1 tree
+tile: t = w:1 tree / w:5 small tree / w:3 grass / w:3 dirt
+tile: # = stone wall
+tile: . = floor
+tile: , = stone path
+tile: " = w:9 window / w:1 stone wall
+tile: % = counter
+item_group: 10 % = items_home_books
+
+shuffle: xyz
+tile: x = w:5 closed door / w:4 locked door / w:1 open door
+tile: y = w:7 stone wall / w:2 closed door / w:1 locked door
+tile: z = w:17 stone wall / w:2 closed door / w:1 locked door
+
+tile: cCT = floor
+furniture: cC = wood chair
+furniture: T = table
+
+tile: BhHL = grass / dirt
+furniture: B = bench
+furniture: hH = wood chair
+furniture: L = table
+
+# Returns shelf
+tile: A = shelves
+item_group: 35 A = items_home_books
+
+tile: M = display rack
+item_group: 50 M = items_magazines
+
+shuffle: 1234567890
+tile: 1234567890def = shelves
+item_group: 20 1 = items_common_skill_books
+item_group: 24 2 = items_autobiography_books
+item_group: 24 3 = items_history_books
+item_group: 22 4 = items_scifi_books
+item_group: 20 5 = items_mystery_books
+item_group: 20 6 = items_romance_books
+item_group: 24 7 = items_novels
+item_group: 17 8 = items_textbooks
+item_group: 22 9 = items_fantasy_books
+subst: 0 = w:3 d / w:3 e / f
+item_group: 24 d = items_food_books
+item_group: 24 e = items_diy_books
+item_group: 24 f = items_military_books
+
+subst: ^ = w:2 ^ / w:1 o
+subst: * = w:2 ^ / w:1 o
+subst: $ = w:4 ^ / w:1 o
+tile: ^ = hedge
+
+map:
+ooooooooooooooo,,oooooooo
+ooooooooooooooo,,oooooooo
+o*###"#x#"##$$$,,$$$$$$$o
+o*#A.......",,,,,toBBBt$o
+o*#A.......y,,,,,oooooo$o
+o*#A.......",,tooooooot$o
+o*#A.......z,,ooohLHooo$o
+o*#........",,tooHLhoot$o
+o*#%%%%%%..#""##""##""#$o
+o*".c......1..23..45..#*o
+o*#........1..23..45.."*o
+o*#....MM..1..23..45..#*o
+o*"Cc..MM..1..23..45.."*o
+o*"TT.................#*o
+o*"cC......0..98..76.."*o
+o*#........0..98..76..#*o
+o*"........0..98..76.."*o
+o*#AAAAAA..0..98..76..#*o
+o*#######""#""##""##""#*o
+oo^^^^^^^^^^^^^^^^^^^^^oo
+OOOOOOOOOOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOOOOOOOOOO
+endmap
+done
+
+name: garden_library_roof_whales
+subname: garden_lib_whales
+type: library
+level: 1
+
+tile: o = empty
+tile: . = roof
+
+map:
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+oo..........ooooooooooooo
+oo..........ooooooooooooo
+oo..........ooooooooooooo
+oo..........ooooooooooooo
+oo..........ooooooooooooo
+oo..........ooooooooooooo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+endmap
+done
+
+name: twofloor_library_whales
+subname: twofloor_lib_whales
+type: library
+
+tile: o = grass / dirt
+tile: , = stone path
+tile: . = floor
+tile: # = stone wall
+tile: " = window
+tile: + = closed glass door / closed door / locked door
+tile: < = stairs up
+
+tile: cCT = floor
+furniture: cC = wood chair
+furniture: T = table
+
+tile: % = counter
+item_group: 60 % = items_home_books
+
+shuffle: AB
+tile: A = shelves
+item_group: 50 A = items_home_books
+tile: B = floor
+
+# Downstairs = fiction
+
+shuffle: 12345
+tile: 12345 = shelves
+item_group: 22 1 = items_scifi_books
+item_group: 20 2 = items_mystery_books
+item_group: 20 3 = items_romance_books
+item_group: 24 4 = items_novels
+item_group: 22 5 = items_fantasy_books
+
+map:
+ooooooooooo,,,ooooooooooo
+ooooooooooo,,,ooooooooooo
+ooooooooooo,,,ooooooooooo
+ooooooooo#"#+#"#ooooooooo
+ooooooooo"....."ooooooooo
+ooooooo###.....###ooooooo
+oooo#"##.........##"#oooo
+ooo##......%%%......##ooo
+oo##......%%C%%......##oo
+oo#.......%B.A%.......#oo
+oo".1..2..%B.A%..3..4."oo
+oo#.1..2..%B.A%..3..4.#oo
+oo#.1..2.........3..4.#oo
+oo".1..2.........3..4."oo
+oo".1..2..55.55..3..4."oo
+oo#.1..2..55.55..3..4.#oo
+oo#.1..2..55.55..3..4.#oo
+oo".1..2..55.55..3..4."oo
+oo#...................#oo
+oo##.................##oo
+ooo##...#cTC.CTc#...##ooo
+oooo#"#<#CTc.cTC#<#"#oooo
+oooooo####"###"####oooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+endmap
+done
+
+name: twofloor_library_1_whales
+subname: twofloor_lib_whales
+type: library
+level: 1
+
+tile: o = empty
+tile: # = stone wall
+tile: " = window
+tile: . = floor
+tile: > = stairs down
+
+tile: cCtT = floor
+furniture: cC = wood chair
+furniture: tT = table
+item_group: 65 t = items_home_books
+
+# Upstairs is non-fiction
+
+shuffle: 12345
+tile: 12345def = shelves
+
+item_group: 20 1 = items_common_skill_books
+item_group: 24 2 = items_autobiography_books
+item_group: 24 3 = items_history_books
+item_group: 17 4 = items_textbooks
+subst: 5 = w:3 d / w:3 e / f
+item_group: 24 d = items_food_books
+item_group: 24 e = items_diy_books
+item_group: 24 f = items_military_books
+
+map:
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooo##"#"##ooooooooo
+ooooooooo"TTTTT"ooooooooo
+ooooooo###cCcCc###ooooooo
+oooo#"##.........##"#oooo
+ooo##cTc.........cTc##ooo
+oo##.......ttt.......##oo
+oo#...................#oo
+oo"..1..2..ttt..3..4.."oo
+oo#..1..2.......3..4..#oo
+oo#..1..2..5.5..3..4..#oo
+oo"..1..2..5.5..3..4.."oo
+oo"..1..2..5.5..3..4.."oo
+oo#..1..2..5.5..3..4..#oo
+oo#..1..2.......3..4..#oo
+oo"..1..2..ttt..3..4.."oo
+oo#...................#oo
+oo##.................##oo
+ooo##....cCc.CcC....##ooo
+oooo#"#>#TTT.TTT#>#"#oooo
+oooooo####"###"####oooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+endmap
+done
+
+# Same as above, but with a balcony!
+name: twofloor_library_balcony_whales
+subname: twofloor_lib_whales
+type: library
+level: 1
+
+tile: o = empty
+tile: # = stone wall
+tile: " = window
+tile: . = floor
+tile: > = stairs down
+tile: I = column
+tile: ^ = wood railing
+tile_group: ' = w:4 closed glass door / w:1 closed door
+
+tile: cCtT = floor
+furniture: cC = wood chair
+furniture: tT = table
+item_group: 65 t = items_home_books
+
+# Upstairs is non-fiction
+
+shuffle: 12345
+tile: 12345def = shelves
+
+item_group: 20 1 = items_common_skill_books
+item_group: 24 2 = items_autobiography_books
+item_group: 24 3 = items_history_books
+item_group: 17 4 = items_textbooks
+subst: 5 = w:3 d / w:3 e / f
+item_group: 24 d = items_food_books
+item_group: 24 e = items_diy_books
+item_group: 24 f = items_military_books
+
+map:
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+oooooooooI^^^^^Iooooooooo
+ooooooooo^c.c.c^ooooooooo
+ooooooo##^.....^##ooooooo
+oooo#"#####'#'#####"#oooo
+ooo##...............##ooo
+oo##.......ttt.......##oo
+oo#...................#oo
+oo"..1..2..ttt..3..4.."oo
+oo#..1..2.......3..4..#oo
+oo#..1..2..5.5..3..4..#oo
+oo"..1..2..5.5..3..4.."oo
+oo"..1..2..5.5..3..4.."oo
+oo#..1..2..5.5..3..4..#oo
+oo#..1..2.......3..4..#oo
+oo"..1..2..ttt..3..4.."oo
+oo#...................#oo
+oo##.................##oo
+ooo##....cCc.CcC....##ooo
+oooo#"#>#TTT.TTT#>#"#oooo
+oooooo####"###"####oooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+endmap
+done
+
+name: twofloor_library_roof_whales
+subname: twofloor_lib_whales
+type: library
+level: 2
+
+tile: o = empty
+tile: . = roof
+
+map:
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooo.......ooooooooo
+ooooooooo.......ooooooooo
+ooooooo...........ooooooo
+oooo.................oooo
+ooo...................ooo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+oo.....................oo
+ooo...................ooo
+oooo.................oooo
+oooooo.............oooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+endmap
+done
+
+# Fun fact: Loosely based on the library in the tiny town that I grew up in!
+
+name: small_library_whales
+subname: small_lib_whales
+type: library
+
+tile: o = grass / dirt
+tile: * = stone path
+tile: # = stone wall
+tile: " = w:9 window / w:1 stone wall
+tile: . = floor
+tile: , = floor_lock
+tile: + = w:7 locked door / w:2 closed door / w:1 closed glass door
+tile: ? = w:3 floor / w:1 closed door / w:1 closed glass door
+tile: < = stairs up
+
+subst: ^ = w:3 ^ / w:1 o
+tile: ^ = short stone wall
+
+subst: &$ = w:2 o / w:1 &
+tile: & = hedge
+
+shuffle: 678
+tile: 6 = w:7 locked door / w:2 closed door / w:1 closed glass door
+tile: 78 = stone wall
+
+subst: rst = w:2 . / w:1 T
+tile: cDT = floor
+furniture: c = wood chair
+furniture: D = desk
+furniture: T = table
+item_group: 70 T = items_home_books
+
+tile: % = counter
+item_group: 50 % = items_home_books
+
+# Downstairs is non-fiction
+
+tile: A = shelves
+item_group: 35 A = items_home_books
+
+shuffle: 12345
+tile: 12345def = shelves
+
+item_group: 20 1 = items_common_skill_books
+item_group: 24 2 = items_autobiography_books
+item_group: 24 3 = items_history_books
+item_group: 17 4 = items_textbooks
+subst: 5 = w:3 d / w:3 e / f
+item_group: 24 d = items_food_books
+item_group: 24 e = items_diy_books
+item_group: 24 f = items_military_books
+
+map:
+ooooooooo***ooooooooooooo
+ooooooooo***ooooooooooooo
+ooooooooo***ooooooooooooo
+ooooooooo**************oo
+ooooooooo**************oo
+oooooooo#"+"#ooooooooo*oo
+oooooooo#...#ooooooooo*oo
+oooo&&&&#s.t#&&&&&&&&&*oo
+oooo######?####"###"##*oo
+ooo$#<#A.%..#1.TT.TT.#*oo
+ooo$#.#A.%..#1......."*oo
+ooo$".#A.%..#1.11111.#*oo
+ooo$#..........22222."*oo
+ooo$"................#*oo
+ooo$#.4.4.3.3..22222."*oo
+ooo$".4.4.3.3........#*oo
+ooo$#.4.4.3.3..#####+#*oo
+ooo$".4.4.3.3..#rrr,,"*oo
+ooo$#..........#.....#*oo
+ooo$#5..TT.....#6#7#8#*oo
+ooo$#5.....c.c.#*******oo
+ooo$#5555.DD.DD#*******oo
+oooo######"##"##^^*^^^^oo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+endmap
+done
+
+name: small_library_upstairs_whales
+subname: small_lib_whales
+type: library
+floor: 1
+
+tile: o = empty
+tile: # = stone wall
+tile: " = w:9 window / w:1 stone wall
+tile: . = floor
+tile: > = stairs down
+
+tile: cCDT = floor
+furniture: cC = wood chair
+furniture: T = table
+furniture: D = desk
+item_group: 65 D = items_home_books
+
+shuffle: ab
+shuffle: de
+shuffle: fg
+tile: abdefg = floor
+furniture: adf = wood chair
+
+# Upstairs is fiction.
+
+shuffle: 12345
+tile: 12345 = shelves
+item_group: 22 1 = items_scifi_books
+item_group: 20 2 = items_mystery_books
+item_group: 20 3 = items_romance_books
+item_group: 24 4 = items_novels
+item_group: 22 5 = items_fantasy_books
+
+subst: < = w:9 1 / w:1 <
+tile: < = stairs up
+
+map:
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+oooooooo#####oooooooooooo
+oooooooo#1<1#oooooooooooo
+oooooooo#1.1#oooooooooooo
+oooo#####1.1##########ooo
+oooo">#......22222222#ooo
+oooo#....111........."ooo
+oooo#................"ooo
+oooo"Dc......33333333#ooo
+oooo######...#########ooo
+oooo#4.......DD.DD.DD#ooo
+oooo#4.......ab.de.fg"ooo
+oooo#4..cTTC.........#ooo
+oooo#4..CTTc........."ooo
+oooo#4..cTTC..5555555#ooo
+oooo#4..CTTc..5#######ooo
+oooo#4..cTTC..5#ooooooooo
+oooo#4........5#ooooooooo
+oooo###"#""#"###ooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+endmap
+done
+
+# Sight variant with a balcony
+
+name: small_library_balcony_whales
+subname: small_lib_whales
+type: library
+floor: 1
+
+tile: o = empty
+tile: # = stone wall
+tile: " = w:9 window / w:1 stone wall
+tile: . = floor
+tile: > = stairs down
+tile: ^ = short stone wall
+
+subst: EFGHIJ = w:2 C / w:1 .
+# Don't want K to combine with I on the balcony, so use c not C.
+subst: K = w:2 c / w:1 .
+
+tile: cCdDT = floor
+furniture: cC = wood chair
+furniture: T = table
+furniture: Dd = desk
+item_group: 50 D = items_home_books
+item_group: 50 d = items_home_books
+
+shuffle: ab
+shuffle: he
+shuffle: fg
+tile: abhefg = floor
+furniture: ahf = wood chair
+
+# Upstairs is fiction.
+
+shuffle: 12345
+tile: 12345 = shelves
+item_group: 22 1 = items_scifi_books
+item_group: 20 2 = items_mystery_books
+item_group: 20 3 = items_romance_books
+item_group: 24 4 = items_novels
+item_group: 22 5 = items_fantasy_books
+
+shuffle: 67
+tile: 6 = w:5 closed glass door / w:3 closed door / w:1 locked door
+tile: 7 = stone wall
+
+subst: < = w:14 c / w:7 . / w:3 <
+tile: < = spiral staircase up
+
+map:
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+oooooooo^^^^^oooooooooooo
+oooooooo^I.J^oooooooooooo
+oooooooo^<..^oooooooooooo
+oooo######67##########ooo
+oooo">#111...22222222#ooo
+oooo#................"ooo
+oooo#................"ooo
+oooo"111111..33333333#ooo
+oooo#######..#########ooo
+oooo#4.......DD.DD.DD#ooo
+oooo#4.......ab.he.fg"ooo
+oooo#4..cDdH.........#ooo
+oooo#4..EDdc........."ooo
+oooo#4........5555555#ooo
+oooo#4..cDdG..5#######ooo
+oooo#4..FDdc..5#ooooooooo
+oooo#4........5#ooooooooo
+oooo###"#""#"###ooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+endmap
+done
+
+name: small_library_roof_whales
+subname: small_lib_whales
+type: library
+floor: 2
+
+flags: autostairs
+
+tile: o = empty
+tile: # = short stone wall
+tile: . = roof
+
+map:
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+oooooooo#####oooooooooooo
+oooooooo#...#oooooooooooo
+oooooooo#...#oooooooooooo
+oooo#####...##########ooo
+oooo#................#ooo
+oooo#................#ooo
+oooo#................#ooo
+oooo#................#ooo
+oooo#................#ooo
+oooo#................#ooo
+oooo#................#ooo
+oooo#................#ooo
+oooo#................#ooo
+oooo#................#ooo
+oooo#..........#######ooo
+oooo#..........#ooooooooo
+oooo#..........#ooooooooo
+oooo############ooooooooo
+ooooooooooooooooooooooooo
+ooooooooooooooooooooooooo
+endmap
+done
+
+# A recommended format for spec names is <DESC>_<TYPE>_<NAME>
+#  <DESC> is a short description of the unusual feature of this spec.  If it is
+#         not unusual, use "std".
+#  <TYPE> is the World_terrain used here.
+#  <NAME> is your name, initials, or handle.
+# This format makes it easy to identify the spec when debugging.
+#
+# The "tile:" line uses the following format:
+#       tile: abc = w:20 dirt / w:15 grass / tree
+# "abc" is a list of characters which, when found in the map section, will use
+# this terrain.  You can include spaces and they will be ignored.
+# " = " delineates between the list of characters and the terrain spec.  It must
+# be surrounded by spaces.
+# The rest of the line is a list of terrain names (from terrain.dat).  A terrain
+# is randomly picked from this list.  You must place " / " between terrain
+# names.  You can also include "w:20" with the terrain name to define its
+# weight for random selection.  If omitted, the weight defaults to 10.  A
+# terrain with weight 20 is twice as likely to be chosen as a terrain with
+# weight 10.
+#
+# The "base_terrain:" line uses the same terrain spec format, but of course the
+# list of characters and the " = " are not used.
+#
+# The "items:" line uses the following format:
+#       50 abc = rock / w:20 stick
+# The number at the front MUST be present.  It's the percentage chance of
+# placing a single item.  If one item is used, the same chance is used to decide
+# whether to place a second item, and so on until the chance fails.  It must be
+# between 1 and 99.  If it's not, you will be warned and the chance will be
+# corrected.
+# The rest of the line is very similar to the terrain specifications, but with
+# item names (from items.dat) instead of terrain names.
+#
+# The "map:" tag should appear on its own line.  It is followed by 25 lines of
+# 25 characters each - you will be warned if there are missing characters or
+# extra characters.  It is a list of characters which refer back to the "tile:"
+# or "items:" lines.  If no matching "tile:" is found, the base_terrain is used;
+# if the base_terrain is not present, the first terrain in terrain.dat is used.
+#
+# "Adjacency" specs are identified by placing the "adjacent" tag in the spec.
+# These specs are used when generating a map ADJACENT to the specified type.
+# Adjacency specs should be designed as if the adjacent terrain were to the
+# north; the spec will be rotated as needed.
+# The base terrain is generated, and then the adjacency map is generated on top.
+# Adjacency specs are the same as normal maps, but with the difference that
+# it is allowed to use "nothing" as a terrain name.  If "nothing" is selected,
+# then the terrain in the map will be unchanged.  Also, ONLY floor terrain will
+# be changed; non-floor terrain will be unchanged.

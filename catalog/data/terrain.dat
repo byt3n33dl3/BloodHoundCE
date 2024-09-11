@@ -1,0 +1,1074 @@
+name: dirt
+  glyph: . brown black
+  movecost: 100
+  signal: dig
+    result: hole
+  done
+  flags: plural floor mutable
+done
+
+name: dirt mound
+  glyph: % brown black
+  movecost: 150
+  signal: dig
+    result: hole
+  done
+  flags: floor mutable
+done
+
+name: grass
+  glyph: . green black
+  movecost: 100
+  signal: dig
+    result: hole
+  done
+  flags: plural floor mutable
+done
+
+name: tall grass
+  glyph: " ltgreen black
+  movecost: 150
+  flags: floor opaque
+  height: 85
+  signal: dig
+    result: hole
+  done
+  hp: 15
+  smash:
+    failure_sound: "swish."
+    success_sound: "swish."
+    armor: bash   100
+    armor: pierce 100
+    ignore_chance: 10
+  done
+  destroy: grass
+done
+
+# TODO: redo hole as a trapish thing.
+name: hole
+  glyph: 0 brown black
+  movecost: 300
+  flags: mutable
+done
+
+name: empty
+  glyph: x blue ltgray
+  movecost: 100
+  flags: open_space
+done
+
+name: tree
+  glyph: 7 green black
+  movecost:   0
+  hp: 500
+  destroy: underbrush
+  flags: opaque flammable
+done
+
+name: underbrush
+  glyph: % ltgreen black
+  movecost: 200
+  hp: 10
+  destroy: grass
+  smash:
+    failure_sound: "crunch."
+    success_sound: "crunch."
+    armor: bash 1d20 + 20
+    ignore_chance: 25
+  done
+  flags: flammable plural mutable
+done
+
+name: small tree
+  glyph: 1 green black
+  movecost:   0
+  hp: 40
+  destroy: underbrush
+  smash:
+    failure_sound: "thump."
+    success_sound: "crunch!"
+    armor: bash 1d10 + 5
+  done
+  flags: flammable mutable
+done
+
+name: hedge
+  glyph: % green black
+  movecost: 0
+  hp: 20
+  height: 40
+  destroy: underbrush
+  smash:
+    failure_sound: "crunch."
+    success_sound: "crunch."
+    armor: bash 1d20 + 10
+    ignore_chance: 10
+  done
+  flags: opaque flammable
+done
+
+name: sand
+  glyph: . yellow black
+  movecost: 100
+  signal: dig
+    result: hole
+  done
+  flags: plural floor mutable
+done
+
+# Identical to sand, but when dug in, produces shallow salt water!
+name: beach sand
+  display_name: sand
+  glyph: . yellow black
+  movecost: 100
+  signal: dig
+    result: shallow salt water
+  done
+  flags: plural floor mutable
+done
+
+name: mud
+  glyph: ~ brown black
+  movecost: 300
+  flags: water
+  signal: dig
+    result: shallow water
+  done
+  flags: plural mutable
+done
+
+name: shallow water
+  glyph: ~ ltblue black
+  movecost: 200
+  flags: water plural
+done
+
+name: deep water
+  glyph: ~ blue black
+  movecost: 0
+  flags: water plural
+done
+
+name: shallow salt water
+  glyph: ~ ltcyan black
+  movecost: 200
+  flags: water plural
+done
+
+name: deep salt water
+  glyph: ~ cyan black
+  movecost: 0
+  flags: water plural
+done
+
+name: fungal tree
+  glyph: 7 dkgray black
+  movecost: 0
+  hp: 300
+  destroy: dirt
+  flags: opaque
+done
+
+name: fungal undergrowth
+  glyph: % dkgray black
+  movecost: 150
+  destroy: dirt
+  hp: 50
+  flags: plural mutable
+done
+
+name: rubble
+  glyph: % ltgray black
+  movecost: 120
+  flags: plural
+done
+
+name: boulder
+  glyph: # ltgray black
+  movecost: 0
+  hp: 600
+  destroy: rubble
+  flags: opaque
+done
+
+name: short stone wall
+  glyph: % ltgray black
+  movecost: 180
+  hp: 400
+  destroy: rubble
+  flags: opaque
+  height: 25
+done
+
+name: stone wall
+  glyph: # ltgray black
+  movecost: 0
+  hp: 800
+  destroy: rubble
+  flags: opaque
+done
+
+name: short wood wall
+  glyph: % brown black
+  movecost: 180
+  hp: 400
+  destroy: rubble
+  flags: opaque flammable
+  height: 25
+done
+
+name: wood wall
+  glyph: # brown black
+  movecost: 0
+  hp: 400
+  destroy: rubble
+  flags: opaque flammable
+done
+
+name: column
+  glyph: # white black
+  movecost: 0
+  hp: 400
+  destroy: rubble
+  flags: opaque
+done
+
+name: wood column
+  glyph: # ltred black
+  movecost: 0
+  hp: 400
+  destroy: rubble
+  flags: opaque flammable
+done
+
+name: cubicle wall
+  glyph: { ltgray black
+  movecost: 0
+  height: 90
+  hp: 10
+  destroy: rubble
+  smash:
+    failure_sound: "whack."
+    success_sound: "crash!"
+    armor: bash 1d8
+    armor: cut  1d4
+    armor: pierce 2d6
+  done
+  flags: opaque flammable
+done
+
+name: picket fence
+  glyph: { white black
+  movecost: 0
+  height: 60
+  hp: 12
+  destroy: dirt
+  smash:
+    failure_sound: "thump!"
+    success_sound: "crunch!"
+    armor: bash 1d7
+  done
+  flags: opaque flammable
+done
+
+name: stockade fence
+  glyph: { yellow black
+  movecost: 0
+  height: 80
+  hp: 12
+  destroy: dirt
+  smash:
+    failure_sound: "Thump!"
+    success_sound: "Crunch!"
+    armor: bash 1d8
+  done
+  flags: opaque flammable
+done
+
+name: chain-link fence
+  glyph: { ltgray black
+  movecost: 0
+  height: 80
+  hp: 35
+  destroy: pavement
+  smash:
+    success_sound: "Crash!"
+    failure_sound: a chain fence rattling.
+    ignore_chance: 25
+    armor: bash 1d10
+    armor: cut 3d8
+  done
+done
+
+name: iron fence
+  glyph: { dkgray black
+  movecost: 0
+  height: 80
+  hp: 80
+  destroy: pavement
+done
+
+name: field fence
+  glyph: { brown black
+  movecost: 300
+  height: 65
+  hp: 40
+  destroy: dirt
+  smash:
+    failure_sound: "Thump!"
+    success_sound: "Crunch!"
+    armor: bash 1d8
+    armor: cut 1d6
+  done
+  flags: flammable no_items
+done
+
+name: floor
+  glyph: . cyan black
+  movecost: 100
+  height: 1
+  flags: opaque indoors floor
+done
+
+# By placing this next to a locked door instead of normal floor, you make the
+# player unable to open the locked door from this tile
+name: floor_lock
+  display_name: floor
+  glyph: . cyan black
+  movecost: 100
+  height: 1
+  flags: opaque floor
+done
+
+name: roof
+  glyph: . brown black
+  movecost: 120
+  height: 1
+  flags: opaque floor
+done
+
+name: glass roof
+  glyph: . ltcyan black
+  movecost: 100
+  height: 1
+  hp: 10
+  flags: floor
+  smash:
+    failure_sound: "whunk."
+    success_sound: glass shattering.
+    armor: cut 1d8
+    armor: pierce 2
+  done
+  destroy: empty
+done
+
+name: glass wall
+  glyph: # ltcyan black
+  movecost: 0
+  hp: 1
+  destroy: floor
+  smash:
+    failure_sound: "whunk."
+    success_sound: glass shattering.
+    armor: cut 1d8
+    armor: pierce 2
+  done
+done
+
+name: bulletproof glass
+  glyph: # ltcyan black
+  movecost: 0
+  hp: 100
+  destroy: floor
+  smash:
+    failure_sound: "whunk."
+    success_sound: glass shattering.
+    armor: bash 4d8
+    armor: cut 6d8
+    armor: pierce 5d8
+  done
+  flags: plural
+done
+
+name: concrete floor
+  glyph: . ltgray black
+  movecost: 100
+  flags: floor
+done
+
+name: wood floor
+  glyph: . ltred black
+  movecost: 100
+  flags: floor indoors
+done
+
+name: stone path
+  glyph: . ltgray black
+  movecost: 100
+  flags: floor
+done
+
+name: pavement
+  glyph: . dkgray black
+  movecost: 100
+  flags: floor
+done
+
+name: yellow pavement
+  glyph: . yellow black
+  movecost: 100
+  flags: floor
+done
+
+name: white pavement
+  glyph: . white black
+  movecost: 100
+  flags: floor
+done
+
+name: door frame
+  glyph: . brown black
+  movecost: 100
+  hp: 150
+  destroy: floor
+  flags: flammable floor
+done
+
+name: broken door
+  glyph: { brown black
+  movecost: 0
+  hp: 15
+  destroy: door frame
+
+  signal: open
+    result: open broken door
+    success_message: You open the broken door.
+  done
+
+  signal: pry
+    result: open broken door
+    success_rate: 70
+    stat_bonus: strength * 2
+    success_message: You pry the broken door open.
+    failure_message: The broken door resists.
+  done
+
+  smash:
+    failure_sound: "whack."
+    success_sound: wood splintering.
+    armor: bash 1d5
+    armor: pierce 1d10 + 4
+  done
+  flags: flammable
+done
+
+name: open broken door
+  display_name: broken door
+  glyph: ' brown black
+  movecost: 100
+  hp: 15
+  destroy: door frame
+
+  signal: close
+    result: broken door
+    success_message: You close the broken door.
+  done
+
+  flags: flammable
+done
+
+name: closed door
+  display_name: door
+  glyph: + brown black
+  movecost: 0
+  hp: 20
+  destroy: broken door
+
+  signal: open
+    result: open door
+    success_message: You open the door.
+  done
+
+  signal: pry
+    result: open door
+    success_rate: 60
+    stat_bonus: strength * 2
+    success_message: You pry the door open.
+    failure_message: The door resists.
+  done
+
+  smash:
+    failure_sound: "whack."
+    success_sound: wood splintering.
+    armor: bash 1d5
+    armor: pierce 1d10 + 6
+  done
+  flags: flammable opaque
+done
+
+name: open door
+  display_name: door
+  glyph: ' brown black
+  movecost: 100
+  hp: 20
+  destroy: open broken door
+
+  signal: close
+    result: closed door
+    success_message: You close the door.
+  done
+
+  flags: flammable
+done
+
+name: locked door
+  display_name: door
+  glyph: + brown black
+  movecost: 0
+  hp: 20
+# No, not an error - once we bash a hole in it, presumably we can reach through
+# the hole and unlock the door, so functionally the door is not locked.
+  destroy: broken door
+
+  signal: open
+    result: open door
+    success_rate: 0
+    terrain_flag_bonus: indoors 100
+    success_message: You unlock and open the door.
+    failure_message: The door is locked.
+  done
+
+  signal: pry
+    result: open door
+    success_rate: 55
+    stat_bonus: strength * 2
+    success_message: You pry the door open.
+    failure_message: The door resists.
+  done
+
+  smash:
+    failure_sound: "whack."
+    success_sound: wood splintering.
+    armor: bash 1d5
+    armor: pierce 1d10 + 6
+  done
+  flags: flammable opaque
+done
+
+name: closed glass door
+  display_name: glass door
+  glyph: + ltcyan black
+  movecost: 0
+  hp: 2
+
+  signal: open
+    result: open glass door
+    success_message: You open the glass door.
+  done
+
+  signal: pry
+    result: open glass door
+    success_rate: 65
+    stat_bonus: strength * 2
+    success_message: You pry the glass door open.
+    failure_message: The glass door resists.
+  done
+
+  destroy: door frame
+  smash:
+    failure_sound: "whunk."
+    success_sound: glass shattering.
+    armor: cut 1d4
+    armor: pierce 2
+  done
+done
+
+name: open glass door
+  display_name: glass door
+  glyph: ' ltcyan black
+  movecost: 100
+  hp: 2
+  destroy: door frame
+
+  signal: close
+    result: closed glass door
+    success_message: You close the glass dor.
+  done
+
+done
+
+name: window frame
+  glyph: 0 ltcyan black
+  movecost: 250
+  hp: 150
+  destroy: rubble
+  flags: flammable no_items
+done
+
+name: window
+  glyph: " ltcyan black
+  movecost: 0
+  hp: 2
+  destroy: window frame
+
+  smash:
+    failure_sound: "whunk."
+    success_sound: glass shattering.
+    armor: cut 1d4
+    armor: pierce 2
+  done
+
+  flags: flammable
+done
+
+name: display rack
+  glyph: { ltgray black
+  movecost: 0
+  hp: 15
+  destroy: rubble
+
+  smash:
+    failure_sound: "whack."
+    success_sound: "crash!"
+    armor: cut 40
+    armor: bash 2d6
+    ignore_chance: 50
+  done
+
+  flags: flammable container
+done
+
+name: display fridge
+  glyph: { ltcyan black
+  movecost: 0
+  hp: 5
+  destroy: broken display fridge
+
+  smash:
+    failure_sound: "whunk."
+    success_sound: "glass shattering."
+    armor: cut 1d4
+    armor: pierce 2
+  done
+
+  flags: container
+done
+
+name: broken display fridge
+  glyph: { white black
+  movecost: 0
+  hp: 100
+  destroy: rubble
+  flags: container
+done
+
+name: counter
+  glyph: % blue black
+  movecost: 180
+  height: 25
+  hp: 250
+  destroy: rubble
+  flags: flammable opaque
+done
+
+name: conveyor belt
+  glyph: % magenta black
+  movecost: 180
+  height: 25
+  hp: 50
+  destroy: rubble
+  flags: flammable
+done
+
+name: stairs up
+  display_name: staircase
+  glyph: < yellow black
+  inverse: stairs down
+  movecost: 100
+  hp: 200
+  destroy: rubble
+  flags: stairs_up flammable
+done
+
+name: stairs down
+  display_name: staircase
+  glyph: > yellow black
+  inverse: stairs up
+  movecost: 100
+  hp: 200
+  destroy: rubble
+  flags: stairs_down flammable
+done
+
+name: spiral staircase up
+  display_name: spiral staircase
+  glyph: < yellow black
+  inverse: spiral staircase down
+  movecost: 100
+  hp: 200
+  destroy: rubble
+  flags: stairs_up flammable
+done
+
+name: spiral staircase down
+  display_name: spiral staircase
+  glyph: > yellow black
+  inverse: spiral staircuse up
+  movecost: 100
+  hp: 200
+  destroy: rubble
+  flags: stairs_down flammable
+done
+
+name: wood ladder up
+  display_name: wood ladder
+  glyph: < ltred black
+  inverse: wood ladder down
+  movecost: 100
+  hp: 200
+  destroy: rubble
+  flags: stairs_up flammable
+done
+
+name: wood ladder down
+  display_name: wood ladder
+  glyph: > ltred black
+  inverse: wood ladder up
+  movecost: 100
+  hp: 200
+  destroy: rubble
+  flags: stairs_down flammable
+done
+
+name: metal ladder up
+  display_name: metal ladder
+  glyph: < ltcyan black
+  inverse: metal ladder down
+  movecost: 100
+  hp: 200
+  destroy: rubble
+  flags: stairs_up
+done
+
+name: metal ladder down
+  display_name: metal ladder
+  glyph: > ltcyan black
+  inverse: metal ladder up
+  movecost: 100
+  hp: 200
+  destroy: rubble
+  flags: stairs_down
+done
+
+name: escalator up
+  display_name: escalator
+  glyph: < ltgreen black
+  inverse: escalator down
+  movecost: 100
+  hp: 1000
+  destroy: rubble
+  flags: stairs_up
+done
+
+name: escalator down
+  display_name: escalator
+  glyph: > ltgreen black
+  inverse: escalator up
+  movecost: 100
+  hp: 1000
+  destroy: rubble
+  flags: stairs_down
+done
+
+name: stove
+  glyph: { dkgray black
+  movecost: 0
+  height: 30
+  flags: opaque container
+done
+  
+name: bed
+  glyph: % red black
+  movecost: 180
+  hp: 100
+  height: 20
+  destroy: floor
+  flags: flammable opaque
+done
+
+name: shelves
+  glyph: { yellow black
+  movecost: 0
+  hp: 15
+  height: 90
+  destroy: floor
+
+  smash:
+    failure_sound: "whack."
+    success_sound: wood splintering.
+  done
+
+  flags: flammable opaque plural container
+done
+
+name: dresser
+  glyph: { ltred black
+  movecost: 0
+  hp: 25
+  destroy: floor
+
+  smash:
+    failure_sound: "whack."
+    success_sound: wood splintering.
+  done
+
+  flags: flammable container
+done
+
+name: sink
+  glyph: { ltcyan black
+  movecost: 0
+  hp: 30
+  destroy: rubble
+done
+
+name: toilet
+  glyph: % white black
+  movecost: 150
+  hp: 50
+  destroy: rubble
+done
+
+name: fridge
+  glyph: { white black
+  movecost: 0
+  height: 80
+  hp: 100
+  destroy: rubble
+  flags: opaque container
+done
+
+name: safe
+  glyph: { dkgray black
+  movecost: 150
+  height: 40
+  hp: 250
+  destroy: rubble
+
+  signal: pry
+    result: open safe
+    success_rate: 0
+    stat_bonus: strength >= 16 5
+    success_message: You pry the safe open.
+    failure_message: The safe resists.
+  done
+
+  flags: sealed container opaque
+done
+
+name: open safe
+  glyph: { ltgray black
+  movecost: 150
+  height: 50
+  hp: 250
+  destroy: rubble
+done
+
+name: dumpster
+  glyph: { green black
+  movecost: 0
+  height: 75
+  hp: 200
+  destroy: rubble
+  flags: container
+done
+
+name: gas pump
+  glyph: { red black
+  movecost: 0
+  height: 75
+  hp: 80
+  destroy: rubble
+  flags: explosive
+done
+
+# Purely cosmetic (for now...)
+name: air pump
+  glyph: { white black
+  movecost: 0
+  height: 75
+  hp: 80
+  destroy: rubble
+done
+
+name: affixed bench
+  glyph: % ltblue black
+  movecost: 175
+  height: 30
+  hp:     50
+  destroy: rubble
+done
+
+name: affixed table
+  glyph: % ltred black
+  movecost: 175
+  height: 50
+  hp:     60
+  destroy: rubble
+done
+
+name: server rack
+  glyph: { pink black
+  movecost: 0
+  hp: 50
+  smash:
+    failure_sound: "thunk."
+    success_sound: electronics smashing.
+  done
+  destroy: rubble
+  flags: flammable container
+done
+
+name: grave
+  glyph: { ltgray black
+  movecost: 0
+  hp: 25
+  height: 40
+  smash:
+    failure_sound: "thud."
+    success_sound: rock crumbling.
+    armor: bash 5
+    armor: pierce 20
+    armor: cut 40
+    ignore_chance: 10
+  done
+  destroy: rubble
+  flags: opaque
+done
+
+name: wood railing
+  glyph: % ltred black
+  movecost: 200
+  hp: 25
+  height: 40
+  smash:
+    failure_sound: "whack."
+    success_sound: wood splintering.
+    armor: bash 5
+    armor: pierce 15
+  done
+  destroy: wood floor
+  flags: no_items
+done
+
+name: machinery
+  glyph: { magenta black
+  movecost: 0
+  hp: 50
+  height: 80
+  smash:
+    failure_sound: "whunk."
+    success_sound: "crash!"
+    armor: bash 2d8
+    armor: cut 3d10
+  done
+  destroy: rubble
+  flags: opaque plural
+done
+
+name: snack machine
+  glyph: { pink black
+  movecost: 0
+  hp: 3
+  height: 80
+  smash:
+    failure_sound: "whunk."
+    success_sound: glass shattering.
+    armor: cut 1d6
+  done
+  destroy: broken snack machine
+  flags: container sealed
+done
+
+name: broken snack machine
+  glyph: { ltgray black
+  movecost: 0
+  hp: 60
+  height: 80
+  smash:
+    failure_sound: "whunk."
+    success_sound: "crash!"
+    armor: bash 2d10
+    armor: cut 30
+  done
+  destroy: rubble
+  flags: container
+done
+
+name: ticket dispenser
+  glyph: { magenta black
+  movecost: 0
+  hp: 40
+  height: 80
+  smash:
+    failure_sound: "whunk."
+    success_sound: "crash!"
+    armor: bash 2d8
+    armor: cut 3d10
+  done
+  destroy: rubble
+done
+
+name: projector
+  glyph: { ltgreen black
+  movecost: 0
+  hp: 20
+  height: 50
+  smash:
+    failure_sound: "whack!"
+    success_sound: "smash!"
+    armor: bash 1d3
+    armor: cut 3d8
+    armor: pierce 5d8
+  done
+  destroy: rubble
+done
+
+name: mall map
+  glyph: { pink black
+  movecost: 0
+  hp: 15
+  height: 70
+  smash:
+    failure_sound: "smack!"
+    success_sound: "clatter!"
+    armor: bash 1d3
+    armor: cut 3d6
+    armor: pierce 4d10
+  done
+  destroy: rubble
+  flags: opaque
+done
+
+name: fountain
+  glyph: { ltblue black
+  movecost: 0
+  hp: 60
+  height: 80
+  smash:
+    failure_sound: "whack!"
+    success_sound: stone crumbling
+    armor: bash 1d6
+    armor: cut 4d10
+  done
+  destroy: rubble
+  flags: opaque
+done
+
+name: fire pit
+  glyph: % dkgray black
+  movecost: 150
+  signal: dig
+    result: hole
+  done
+done
