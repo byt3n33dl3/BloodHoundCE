@@ -9,9 +9,9 @@
 
 **BloodHoundCE** is a monolithic web application composed of an embedded React frontend with [Sigma.js](https://www.sigmajs.org/) and a [Go](https://go.dev/) based REST API backend. It is deployed with a [Postgresql](https://www.postgresql.org/) application database and a [Neo4j](https://neo4j.com/) graph database, and is fed by the [SharpHound](https://github.com/BloodHoundAD/SharpHound), [BreedHoundAD](https://github.com/pxcs/BreedHoundAD), and [AzureHound](https://github.com/BloodHoundAD/AzureHound) data collectors.
 
-**BloodHoundCE** uses graph theory to reveal the hidden and often unintended relationships within an Active Directory or Azure environment. Attackers can use **BloodHoundCE** to quickly identify highly complex attack paths that would otherwise be impossible to find. Defenders can use **BloodHoundCE** to identify and eliminate those same attack paths. Both red and blue teams can use BloodHound to better understand privileged relationships in an Active Directory or Azure environment.
+**BloodHoundCE** uses graph theory to reveal the hidden and often unintended relationships within an Active Directory or Azure environment. Attackers can use **BloodHoundCE** to quickly identify highly complex attack paths that would otherwise be impossible to find. Defenders can use **BloodHoundCE** to identify and eliminate those same attack paths. Both red and blue teams can use **BloodHoundCE** to better understand privileged relationships in an Active Directory or Azure environment.
 
-**BloodHoundCE** is created and maintained by the [BloodHound Enterprise Team](https://bloodhoundenterprise.io). The original BloodHound was created by [@wald0](https://www.twitter.com/_wald0), [@CptJesus](https://twitter.com/CptJesus), and [@harmj0y](https://twitter.com/harmj0y).
+**BloodHoundCE** is created and maintained by the BloodHound [Enterprise](https://bloodhoundenterprise.io) Team. The original BloodHound was created by [@wald0](https://www.twitter.com/_wald0), [@CptJesus](https://twitter.com/CptJesus), and [@harmj0y](https://twitter.com/harmj0y).
 
 ## Running BloodHound Community Edition
 Docker Compose is the easiest way to get up and running with BloodHound CE. Instructions below describe how to install and upgrade your deployment.
@@ -73,7 +73,7 @@ of **BloodHoundCE** can be seen on SpecterOps BloodHoundCE [repo](https://github
 
 ## Contact
 
-Please check out the [Contact page](https://github.com/SpecterOps/BloodHound/wiki/Contact) in our wiki for details on how to reach out with questions and suggestions.
+Please check out the Contact [page](https://github.com/SpecterOps/BloodHound/wiki/Contact) in our wiki for details on how to reach out with questions and suggestions.
 
 ## Licensing from SpecterOps
 
