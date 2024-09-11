@@ -1,0 +1,4470 @@
+# items.dat - This is a list of items.
+# Please see http://cata2dev.wikia.com/wiki/Item_Types for instructions.
+# Also, please keep items ordered by type!
+
+# Pure weapons / vanilla items
+
+weapon
+  name: rock
+  description:
+    A chunk of solid rock.  Makes a decent thrown or wielded weapon in a pinch.
+  done
+  glyph: * ltgray black
+  weight:  5
+  volume:  8
+  bash:   10
+  cut:     0
+  pierce:  0
+  to_hit: -2
+  thrown_variance: 3d20
+  thrown_dmg_percent: 100
+done
+
+weapon
+  name: tree branch
+  plural: tree branches
+  description:
+    A heavy branch from a tree. Solid enough to hit things with, but not
+    particularly damaging.
+  done
+  glyph: / brown black
+  weight: 25
+  volume: 20
+  bash:    8
+  to_hit:  2
+  flags: flammable
+done
+
+weapon
+  name: log
+  description:
+    A thick, heavy wood log.  Hard enough to be used as a weapon, but very
+    awkward to wield.
+  done
+  glyph: / ltred black
+  weight:  80
+  volume: 900
+  bash:    15
+  to_hit:  -3
+  flags: flammable
+done
+
+weapon
+  name: chunk of wood
+  plural: chunks of wood
+  description:
+    A misshapen piece of wood, not particularly good for anything.
+  done
+  glyph: * ltred black
+  weight: 10
+  volume: 30
+  bash:    6
+  to_hit: -1
+  flags: flammable
+done
+
+weapon
+  name: wood plank
+  description:
+    A heavy wooden plank, square corners, about 6 inches wide.  Clumsy but
+    reasonably effective.
+  done
+  glyph: / ltred black
+  weight:  20
+  volume: 144
+  bash:    10
+# -1 to_hit because it's awkward to grip...
+  to_hit:  -1
+  flags: flammable
+done
+
+weapon
+  name: table leg
+  description:
+    A table leg, made of very heavy wood.
+  done
+  glyph: / ltred black
+  weight: 75
+  volume: 60
+  bash:   16
+  to_hit:  1
+  flags: flammable
+done
+
+weapon
+  name: wood dowel
+  description:
+    A solid cylindrical rod made of rood.  Not very hard or heavy.
+  done
+  glyph: / ltred black
+  weight: 15
+  volume: 36
+  bash:    8
+  to_hit:  2
+  flags: flammable
+done
+
+weapon
+  name: metal pole
+  description:
+    A solid cylindrical rod made of aluminum.  Not very hard or heavy.
+  done
+  glyph: / ltcyan black
+  weight: 10
+  volume: 36
+  bash:    6
+  to_hit:  2
+done
+
+weapon
+  name: tarp
+  description:
+    A big sheet of thin plastic.  Could be used to make shelter.
+  done
+  glyph: | ltgreen black
+  weight:   8
+  volume: 225
+  bash:     0
+  to_hit:   0
+done
+
+weapon
+  name: rope
+  description:
+    10 feet of inch-thick rope.  Mainly useful for crafting or construction.
+  done
+  glyph: / ltgray black
+# See http://www.engineeringtoolbox.com/nylon-rope-strength-d_1513.html
+  weight:  25
+  volume: 120
+  bash:     4
+  to_hit:  -2
+  flags: flammable
+done
+
+weapon
+  name: tire iron
+  description:
+    A metal tool used to replace flat tires quickly by removing the tire from
+    the wheel.  Heavy and blunt and good at crushing, but awkward to hold.  It's
+    got four prongs, what're you supposed to do with that?
+  done
+  glyph: / dkgray black
+  weight: 45
+  volume: 32
+  bash:   14
+  to_hit:  -2
+done
+
+weapon
+  name: pocket knife
+  plural: pocket knives
+  description:
+    A very small but easily transportable knife. Capable of various
+    knife-related tasks and tricks, but is the runt of the litter compared to
+    it's bigger, knifier cousins.
+  done
+  glyph: / dkgray black
+  weight:  3
+  volume:  3
+  cut:     9
+  to_hit: -2
+done
+
+weapon
+  name: hunting knife
+  plural: hunting knives
+  description:
+    A large, sharp blade used for hunting.  Very useful in every respect, but
+    too small to block with.
+  done
+  glyph: / dkgray black
+  weight: 14
+  volume:  7
+  cut:    20
+  to_hit: -1
+done
+
+weapon
+  name: combat knife
+  plural: combat knives
+  description:
+    A large, modern combat knife with one serrated edge and another razor-sharp
+    blade opposite that.  Ingenious engineering renders the blade almost
+    impossible to dull, even in the face of years of use.
+  done
+  glyph: / dkgray black
+  weight: 10
+  volume:  9
+  cut:    24
+  to_hit:  0
+done
+
+weapon
+  name: baton
+  description:
+    A sturdy plastic and metal baton, intended for non-lethal suppression of
+    criminals.
+  done
+  glyph: / ltgray black
+  weight: 35
+  volume: 20
+  bash: 20
+  to_hit: 1
+done
+
+weapon
+  name: antique sword
+  description:
+    An ancient, probably centuries-old sword.  You can see flakes of rust on the
+    metal and the edge is a bit dull, but it's incredibly capable despite its
+    age.
+  done
+  glyph: / dkgray black
+  weight: 30
+  volume: 42
+  cut:    22
+  pierce: 22
+  to_hit:  3
+done
+
+weapon
+  name: ice pick
+  description:
+    A pick used to climb up glaciers and mountains.  In context, however, it's a
+    very useful warhammer-like weapon, swung in an arc to do higher damage.
+  done
+  glyph: / dkgray black
+  weight: 20
+  volume: 42
+  bash:    4
+  pierce: 20
+  to_hit:  1
+done
+
+weapon
+  name: baseball bat
+  description:
+    A wooden baseball bat.  It's basically a large club; rather unwieldly but
+    can deliver smashing blows.
+  done
+  glyph: / brown black
+  weight:  20
+  volume: 100
+  bash:    26
+  to_hit:   2
+done
+
+weapon
+  name: hatchet
+  description:
+    A short, one-handed ax.  Makes a good melee weapon, and servers as both a
+    hammer and a cutting tool.
+  done
+  glyph: / dkgray black
+  weight: 35
+  volume: 22
+  bash:   14
+  cut:    14
+  to_hit:  1
+done
+
+weapon
+  name: large axe
+  description:
+    A heavy, long-handled axe.  Ideal for chopping all kinds of stuff!
+  done
+  glyph: / dkgray black
+  weight: 80
+  volume: 90
+  bash:   20
+  cut:    20
+  to_hit:  2
+done
+
+weapon
+  name: antique halberd
+  description:
+    A large axe blade placed on the end of a sheer metal pole, probably
+    survived from medieval times.  It's big enough to be swung clear through
+    targets, doing incredible chopping damage.
+  done
+  glyph: / dkgray black
+  weight:  90
+  volume: 115
+  pierce:  14
+  cut:     30
+  to_hit:   2
+done
+
+weapon
+  name: golf club
+  description:
+    A golfing "iron" - a heavy, round head at the end of a long, flimsy shaft.
+  done
+  glyph: / cyan black
+  weight: 26
+  volume: 65
+  bash:   14
+  to_hit:  3
+done
+
+weapon
+  name: bowling ball
+  description:
+    A heavy stone ball.
+  done
+  glyph: * dkgray black
+  weight: 120
+  volume: 225
+  bash:    30
+  to_hit:  -2
+done
+
+weapon
+  name: hockey stick
+  description:
+    A large wooden stick, curved at the end for hitting a puck.
+  done
+  glyph: / brown black
+  weight:  12
+  volume: 150
+  bash:    18
+  to_hit:   2
+done
+
+weapon
+  name: machete
+  description:
+    A heavy, long, single-bladed knife.  Ideal for hacking through undergrowth,
+    or your enemies.
+  done
+  glyph: / ltblue black
+  weight: 32
+  volume: 80
+  bash:    8
+  cut:    24
+  to_hit:  2
+done
+
+weapon
+  name: hammer
+  description:
+    A useful tool, both for constructing and fortifying defenses, and for
+    smashing in heads.
+  done
+  glyph: / brown black
+  weight: 10
+  volume: 14
+  bash:   16
+  to_hit:  1
+done
+
+weapon
+  name: wrench
+  plural: wrenches
+  description:
+    Vital for mechanical work, this heavy wrench also makes a good melee weapon.
+  done
+  glyph: / cyan black
+  weight: 14
+  volume: 12
+  bash:   14
+  to_hit:  1
+done
+
+weapon
+  name: sledgehammer
+  description:
+    A demolition tool, the sledgehammer excels at knocking through doors, or
+    through foes.  Its extreme weight makes it difficult for weaker individuals
+    to use effectively.
+  done
+  glyph: / brown black
+  weight: 200
+  volume:  95
+  bash:    32
+  to_hit:   1
+done
+
+weapon
+  name: hoe
+  description:
+    A garden tool, consisting of a long wood handle with a dull, broad blade at
+    the end.  Used for turning and moving small amounts of soil.
+  done
+  glyph: / ltgreen black
+  weight: 55
+  volume: 60
+  bash:  6
+  cut:   8
+  to_hit: -1
+done
+
+weapon
+  name: rake
+  description:
+    A heavy-duty bow rake.  Several sharp metal teeth at the end of a long wood
+    handle.  A garden tool, used for turning up soil and rocks.
+  done
+  glyph: / green black
+  weight: 65
+  volume: 75
+  bash:    6
+  pierce: 14
+  to_hit: -1
+done
+
+weapon
+  name: pitchfork
+  description:
+    Basically a large fork used to move hay, a pitchfork is a long wooden handle
+    with four sharp tines at the end. In tandem with torches it can feasibly be
+    used for even threat deterrance
+  done
+  glyph: / ltgreen black
+  weight: 68
+  volume: 82
+  bash:    6
+  pierce: 20
+  to_hit:  1
+done
+
+weapon
+  name: pruner
+  description:
+    A large, curved, toothed blade at the end of a very long pole.  Used for
+    sawing dead branches off of trees.
+  done
+  glyph: / green black
+  weight:  65
+  volume: 170
+  bash:     6
+  cut:     14
+  pierce:  14
+  to_hit:  -2
+done
+
+weapon
+  name: pickaxe
+  description:
+    A wooden handle with a curved, spiked head on the end.  Used for breaking
+    through rock or other hard material.
+  done
+  glyph: / red black
+  weight: 72
+  volume: 50
+  bash:   15
+  pierce: 18
+  to_hit: -2
+done
+
+weapon
+  name: spade
+  description:
+    A small hand shovel, used in gardens to dig small holes to plant seedlings.
+    Digging a hole with this would take far too long to even consider.
+  done
+  glyph: / ltgreen black
+  weight: 9
+  volume: 8
+  pierce: 8
+done
+
+weapon
+  name: steel pipe
+  description:
+    A thin, but strong, metal pipe.  Useful in many crafting recipes.
+  done
+  glyph: / ltcyan black
+  weight: 10
+  volume: 10
+  bash:   10
+  to_hit:  1
+done
+
+weapon
+  name: screwdriver
+  description:
+    A tool for putting screws into items.  Invaluable for many crafting
+    projects.  In a pinch, it can serve as a clumsy stabbing weapon.
+  done
+  glyph: / ltcyan black
+  weight:  2
+  volume:  4
+  pierce:  8
+  to_hit: -1
+done
+
+weapon
+  name: chef knife
+  plural: chef knives
+  description:
+    A foot-long knife.  Designed for chopping up meat and vegetables.
+  done
+  glyph: / blue black
+  weight: 8
+  volume: 14
+  pierce: 8
+  cut:    12
+  to_hit: -1
+done
+
+weapon
+  name: frying pan
+  description:
+    A cast-iron frying pan.  Heavy and very hard.
+  done
+  glyph: / dkgray black
+  weight: 70
+  volume: 60
+  bash:   22
+done
+
+weapon
+  name: rag
+  description:
+    A more-or-less square piece of fabric.
+  done
+  glyph: * ltred black
+  weight:  1
+  volume: 14
+done
+
+weapon
+  name: broom
+  description:
+    A wooden-handled broom.
+  done
+  glyph: / ltred black
+  weight: 4
+  volume: 56
+  bash:  8
+  to_hit: 2
+done
+
+weapon
+  name: showerhead
+  description:
+    A chrome-plated showerhead with five different settings!
+  done
+  glyph: / ltcyan black
+  weight: 3
+  volume: 16
+  bash: 8
+  to_hit: 1
+done
+
+weapon
+  name: dumbbell
+  description:
+    An eight-pound weight.  Meant for working out.
+  done
+  glyph: / dkgray black
+  weight: 80
+  volume: 24
+  bash:   24
+  to_hit: -2
+done
+
+weapon
+  name: bundle of money
+  plural: bundles of money
+  description:
+    A neat stack of paper banknotes that were once quite valuable.  Though,
+    presumably, not so much anymore...
+  done
+  glyph: * ltgreen black
+  weight:  1
+  volume: 4
+  flags: flammable
+done
+
+weapon
+  name: brick of money
+  plural: bricks of money
+  description:
+    A very large amount of money, all neatly kept in a large bundle.  A shame
+    it's probably worthless now...
+  done
+  glyph: * ltgreen black
+  weight: 10
+  volume: 40
+  flags: flammable
+done
+
+weapon
+  name: diamond
+  description:
+    A fairly large, pure white diamond.  Worth a huge sum of money at one time,
+    this may still be valuable to some.
+  done
+  glyph: * white black
+  weight: 0
+  volume: 0
+done
+
+weapon
+  name: dead plant
+  description:
+    A potted plant of some kind, long dead.
+  done
+  glyph: ( brown black
+  weight: 34
+  volume: 60
+  bash:   10
+  to_hit: -3
+  container: flower pot
+done
+
+weapon
+  name: processor
+  description:
+    A high-end processor, applicable for computers or embedded electronics.
+  done
+  glyph: * green black
+  weight: 1
+  volume: 10
+done
+
+weapon
+  name: RAM
+  display_name: stick of RAM
+  plural: sticks of RAM
+  description:
+    A stick of computer memory.  This one's low-end; only 1 terabyte.
+  done
+  glyph: * dkgray black
+  weight: 1
+  volume: 3
+  flags: plural
+done
+
+weapon
+  name: data cable
+  description:
+    A universal data cable, useful for many different electronics or computers.
+  done
+  glyph: ( ltgreen black
+  weight: 1
+  volume: 6
+done
+
+weapon
+  name: mannequin
+  description:
+    A human body made out of wood, used for displaying clothing.
+  done
+  glyph: ( ltred black
+  weight: 300
+  volume: 1600
+done
+
+# END Weapons / vanilla
+
+# Clothing
+# Order should be top-to-bottom: hats, eyewear, mouth, torso, hands, legs, feet.
+# Glyph guidelines:
+#   Symbol should ALWAYS be [
+#   Color depends on what we cover:
+#
+#   Body part covered:    Color:
+#   Head                  magenta
+#   Eyes                  pink
+#   Mouth                 yellow
+#   Torso (and arms)      red for shirts, ltred for jackets/coats
+#   Hands (and arms)      ltblue
+#   Legs                  brown
+#   Feet                  blue
+#   None/other            green
+#     Examples include backpack, holster, etc.
+#   Combo of several      cyan
+
+clothing
+  name: cotton hat
+  description:
+    A light, snug-fitting cotton hat.  Provides a bit of warmth.
+  done
+  glyph: [ magenta black
+  weight: 1
+  volume: 5
+  armor_bash:  1
+  encumbrance: 1
+  covers: head
+done
+
+clothing
+  name: fedora
+  description:
+    A broad-brimmed hat with a creased crown.  Either the epitome of style, or
+    the epitome of nerdiness, depending on who you ask.
+  done
+  glyph: [ magenta black
+  weight: 2
+  volume: 10
+  armor_bash: 1
+  armor_cut:  1
+  covers: head
+done
+
+clothing
+  name: cap
+  description:
+    A cap with a visor.
+  done
+  glyph: [ magenta black
+  weight:  1
+  volume: 10
+  armor_cut: 1
+  covers: head
+done
+
+clothing
+  name: hard hat
+  description:
+    A hard plastic hat. Provides excellent protection against damage of all
+    kinds.
+  done
+  glyph: [ magenta black
+  covers: head
+  weight: 4
+  volume: 100
+  armor_bash: 8
+  armor_cut: 12
+  armor_pierce: 18
+done
+
+clothing
+  name: football helmet
+  description:
+    A hard plastic helmet which covers the head fully.  Before these were
+    introduced, concussions were extremely common in football.  Oh wait, they
+    still are.
+  done
+  glyph: [ magenta black
+  covers: head
+  weight: 15
+  volume: 200
+  armor_bash:   10
+  armor_cut:    16
+  armor_pierce: 18
+  bash:    8
+  to_hit: -1
+done
+
+clothing
+  name: glasses
+  description:
+    A pair of prescription eyeglasses.  Wearing these will allow short-sighted
+    individuals to see normally.
+  done
+  glyph: [ pink black
+  weight: 1
+  volume: 3
+  armor_cut: 2
+  covers: eyes
+  flags: glasses plural
+done
+
+clothing
+  name: safety glasses
+  description:
+    Durable plastic glasses, designed to protect against light damage to the
+    eyes.
+  done
+  glyph: [ pink black
+  weight: 1
+  volume: 4
+  armor_bash: 1
+  armor_cut:  6
+  armor_pierce: 2
+  covers: eyes
+  flags: plural
+done
+
+clothing
+  name: hockey mask
+  description:
+    A tough plastic mask covered with small holes for ventilation.  Famous for
+    protecting hockey goalies from 80 mph, hard disks.  Also famous as serial
+    killer Jason's favored accessory.
+  done
+  glyph: [ cyan black
+  weight: 5
+  volume: 45
+  covers: eyes mouth
+  armor_bash:  10
+  armor_cut:    8
+  armor_pierce: 3
+done
+
+clothing
+  name: dust mask
+  description:
+    A thick paper mask, worn over the mouth.  Provides minor protection from
+    air-borne particles.
+  done
+  glyph: [ yellow black
+  weight: 0
+  volume: 3
+  protection: 3
+  encumbrance: 1
+  covers: mouth
+done
+
+clothing
+  name: scarf
+  plural: scarves
+  description:
+    A long wool scraf, designed to be wrapped around the neck and mouth.
+  done
+  glyph: [ yellow black
+  weight:  4
+  volume: 70
+  armor_bash:   2
+  armor_cut:    1
+  protection:   2
+  encumbrance:  1
+  covers: mouth
+done
+
+clothing
+  name: bandana
+  description:
+    A cotton bandana.  Worn over the mouth, it provides modest protection from
+    air-borne irritants.
+  done
+  glyph: [ yellow black
+  weight: 0
+  volume: 3
+  protection: 1
+  covers: mouth
+done
+
+clothing
+  name: t shirt
+  description:
+    A short-sleeved, thin cotton shirt, emblazoned with a logo or slogan.
+  done
+  glyph: [ red black
+  weight:  2
+  volume: 10
+  armor_bash: 1
+  covers: torso
+done
+
+clothing
+  name: dress shirt
+  description:
+    A long-sleeved shirt with buttons down the front.
+  done
+  glyph: [ red black
+  weight: 3
+  volume: 14
+  armor_bash: 1
+  covers: torso arms
+done
+
+clothing
+  name: tank top
+  description:
+    A sleeveless cotton shirt.
+  done
+  glyph: [ red black
+  weight: 1
+  volume: 6
+  covers: torso
+done
+
+clothing
+  name: wool sweater
+  description:
+    A thick wool sweater.  Very comfortable and warm.
+  done
+  glyph: [ ltred black
+  weight: 14
+  volume: 48
+  armor_bash:    2
+  armor_cut:     2
+  encumbrance:   1
+  covers: torso arms
+done
+ 
+clothing
+  name: leather jacket
+  description:
+    A tough leather jacket.  Provides decent protection for your arms and torso.
+  done
+  glyph: [ ltred black
+  weight:   30
+  volume:   50
+  carries:  18
+  armor_bash:    1
+  armor_cut:     8
+  armor_pierce:  4
+  encumbrance:   2
+  covers: torso arms
+done
+
+clothing
+  name: jean jacket
+  description:
+    A jacket made of durable denim, providing protection from cuts and scrapes
+    for your arms and torso.
+  done
+  glyph: [ ltred black
+  weight:  22
+  volume:  40
+  carries: 16
+  armor_bash:    1
+  armor_cut:     4
+  armor_pierce:  2
+  encumbrance:   1
+  covers: torso arms
+done
+
+clothing
+  name: puffy coat
+  description:
+    A big puffy coat.  Very warm, and provides some padding against impacts.
+  done
+  glyph: [ ltred black
+  weight:  18
+  volume:  65
+  carries: 16
+  armor_bash:    5
+  encumbrance:   2
+  covers: torso arms
+done
+
+clothing
+  name: work gloves
+  description:
+    A pair of heavy leather gloves.  Provides some protection, at the cost of a
+    loss in manual dexterity.
+  done
+  glyph: [ ltblue black
+  weight:   2
+  volume:   4
+  armor_bash:   1
+  armor_cut:    8
+  armor_pierce: 2
+  encumbrance:  2
+  covers: hands
+  flags: plural
+done
+
+clothing
+  name: cotton gloves
+  description:
+    A pair of light cotton gloves.  Provides a bit of warmth.
+  done
+  glyph: [ ltblue black
+  weight:   1
+  volume:   2
+  armor_bash:   1
+  encumbrance:  1
+  covers: hands
+  flags: plural
+done
+
+clothing
+  name: leather gloves
+  description:
+    A pair of fine leather gloves, lined with lamb's wool inside.  Quite warm.
+  done
+  glyph: [ ltblue black
+  weight: 1
+  volume: 8
+  armor_bash:   3
+  armor_cut:    3
+  armor_pierce: 2
+  encumbrance:  2
+  covers: hands
+  flags: plural
+done
+
+clothing
+  name: rubber gloves
+  description:
+    A pair of thick rubber gloves, meant to be worn while cleaning.
+  done
+  glyph: [ ltblue black
+  weight: 1
+  volume: 10
+  armor_cut: 2
+  encumbrance: 2
+  covers: hands
+  flags: plural
+done
+
+clothing
+  name: jeans
+  description:
+    A pair of blue denim pants.  Always in style.
+  done
+  glyph: [ brown black
+  weight:   3
+  volume:  40
+  carries: 10
+  armor_cut:    2
+  armor_pierce: 1
+  covers: legs
+  flags: plural
+done
+
+clothing
+  name: cargo pants
+  description:
+    A pair of heavy cotton pants, with several high-capacity pockets.
+  done
+  glyph: [ brown black
+  weight:   6
+  volume:  52
+  carries: 40
+  armor_bash:   1
+  armor_cut:    1
+  encumbrance:  1
+  covers: legs
+  flags: plural
+done
+
+clothing
+  name: leather pants
+  description:
+    A pair of black leather pants.  Not very comfortable or easy to move in, but
+    they're sexy...?  They also provide decent protection against cuts.
+  done
+  glyph: [ brown black
+  weight:   7
+  volume:  45
+  carries:  6
+  armor_cut:    5
+  armor_pierce: 2
+  encumbrance:  3
+  covers: legs
+  flags: plural
+done
+
+clothing
+  name: skirt
+  description:
+    A short, loose skirt.  Very easy to move in.
+  done
+  glyph: [ brown black
+  weight: 3
+  volume: 6
+  covers: legs
+done
+
+clothing
+  name: sneakers
+  description:
+    Comfortable rubber shoes.  Designed to help you run faster!
+  done
+  glyph: [ blue black
+  weight: 2
+  volume: 50
+  armor_bash: 1
+  armor_cut:  1
+  encumbrance: -1
+  covers: feet
+  flags: plural
+done
+
+clothing
+  name: oxfords
+  description:
+    Men's dress shoes, made out of fine, tough leather.
+  done
+  glyph: [ blue black
+  weight: 3
+  volume: 55
+  armor_bash:   1
+  armor_cut:    6
+  armor_pierce: 4
+  encumbrance: 1
+  covers: feet
+  flags: plural
+done
+
+clothing
+  name: boots
+  description:
+    A pair of tough leather boots.  Not great for running in, but they do
+    provide good protection against damage.
+  done
+  glyph: [ blue black
+  weight: 8
+  volume: 70
+  armor_bash: 4
+  armor_cut:  8
+  armor_pierce: 6
+  encumbrance: 2
+  covers: feet
+  flags: plural
+done
+
+clothing
+  name: steel-toed boots
+  description:
+    A pair of touch leather boots, with a layer of steel covering the front.
+    Not great for running in, but they do provide great protection against
+    damage.
+  done
+  glyph: [ blue black
+  weight: 26
+  volume: 70
+  armor_bash: 7
+  armor_cut: 10
+  armor_pierce: 10
+  encumbrance: 3
+  covers: feet
+  flags: plural
+done
+
+clothing
+  name: holster
+  description:
+    A belt-worn handgun holster.  It can be used to carry other stuff, too!
+  done
+  glyph: [ green black
+  weight:   4
+  volume:  14
+  carries: 14
+done
+
+clothing
+  name: backpack
+  description:
+    A large backpack, capable of carrying a lot of volume.
+  done
+  glyph: [ green black
+  weight: 18
+  volume: 40
+  carries: 1400
+done
+
+clothing
+  name: purse
+  description:
+    A large purse.  The strap is adjustable so it can be worn tight to your
+    side.
+  done
+  glyph: [ green black
+  weight: 14
+  volume: 30
+  carries: 300
+done
+
+clothing
+  name: gold ring
+  description:
+    A simple gold ring.  Perhaps someone's wedding band at some point in the
+    distant past?
+  done
+  glyph: [ green black
+  weight: 0
+  volume: 0
+done
+
+clothing
+  name: diamond necklace
+  description:
+    A beautiful diamond necklace.  Its value was once immense, but even today it
+    may carry some worth.
+  done
+  glyph: [ green black
+  weight: 0
+  volume: 1
+done
+
+# END Clothing
+
+# Ammo
+
+ammo
+  name: nails
+  description:
+    A box of iron nails.  Very useful in contruction.
+  done
+  glyph: = ltcyan black
+  weight: 25
+  volume: 16
+  type: nails
+  damage: 1
+  pierce: 2
+  range:  3
+# Accuracy is highly variable!
+  accuracy: 3d30 - 3
+  count: 100
+done
+
+ammo
+  name: batteries
+  description:
+    A universal battery.  Attaching it to an electric device will charge the
+    device.
+  done
+  glyph: = yellow black
+  weight: 8
+  volume: 8
+  type: batteries
+  count: 100
+done
+ 
+ammo
+  name: .22 LR
+  description:
+    One of the smallest cartridges in active use, the .22 Long Rifle has
+    maintained popularity for nearly two centuries.  Its minimal recoil, low
+    cost and low noise are offset by its paltry damage.
+  done
+  glyph: = ltgray black
+  weight:  6
+  volume: 12
+  type: .22
+  damage: 10
+  pierce:  5
+  range:  18
+  accuracy: 2d6 - 2
+  count: 100
+done
+
+ammo
+  name: 9mm
+  description:
+    9mm parabellum is generally regarded as the most popular handgun cartridge,
+    used by the majority of US police forces.  It is also a very popular round
+    in submachine guns.
+  done
+  glyph: = ltblue black
+  weight: 16
+  volume: 16
+  type: 9mm
+  damage:   18
+  pierce:    8
+  range:    20
+  accuracy: 2d7 - 2
+  count:   100
+done
+
+ammo
+  name: .45 ACP
+  description:
+    .45 ACP was one of the most popular and powerful handgun rounds of the 20th
+    century.  It features very good accuracy and stopping power, but suffers
+    from moderate recoil and poor armor penetration.
+  done
+  glyph: = blue black
+  weight: 26
+  volume: 20
+  type: .45
+  damage: 32
+  pierce:  6
+  range:  24
+  accuracy: 2d5 - 2
+  count: 50
+done
+
+ammo
+  name: .45 FMJ
+  description:
+    The full metal jacket variation of the popular .45 round are designed to
+    help overcome the poor armor penetration of the standard ACP round.
+    However, they are less likely to expand upon impact, resulting in less
+    damage overall.
+  done
+  glyph: = blue black
+  weight: 33
+  volume: 20
+  type: .45
+  damage: 24
+  pierce: 12
+  range:  24
+  accuracy: 2d6 - 2
+  count: 50
+done
+
+ammo
+  name: .45 JHP
+  description:
+    The jacketed hollow-point variation of the popular .45 round are designed
+    to expand into a mushroom shape upon impact, resulting in even greater
+    damage.  However, they suffer from even worse armor penetration than the
+    standard .45 ACP round.
+  done
+  glyph: = blue black
+  weight: 26
+  volume: 20
+  type: .45
+  damage: 40
+  pierce:  2
+  range:  24
+  accuracy: 2d5 - 2
+  count: 50
+done
+
+ammo
+  name: 5.7x28mm
+  description:
+    Developed by FN Herstal as a possible replacement for the 9mm parabellum
+    round, the 5.7x28mm round is designed for low recoil and high armor
+    penetration, at the cost of total damage.
+  done
+  glyph: = pink black
+  weight:  4
+  volume: 14
+  type: 5.7
+  damage:   14
+  pierce:   16
+  range:    22
+  accuracy: 2d5 - 2
+  count:   100
+done
+
+ammo
+  name: 00 shot
+  description:
+    A shotgun shell filled with iron pellets.  Extremely damaging, plus the
+    spread of the pellets makes hitting targets much easier than with bullets.
+    Shot shells suffer from short range and very poor armor penetration.
+  done
+  glyph: = red black
+  weight: 70
+  volume: 30
+  type: shotgun
+  damage: 4
+  pellets: 20
+  pierce:   5
+  range:   6
+  accuracy: 5d30 - 5
+  count: 25
+done
+
+ammo
+  name: shotgun slug
+  description:
+    A shotgun shell with a single large slug, rather than the pellets used in
+    00 rounds.  This increases the shotgun's range to something closer to a
+    rifle's, but is very innaccurate.
+  done
+  type: shotgun
+  glyph: = red black
+  weight: 94
+  volume: 30
+  damage: 42
+  pierce:  8
+  range:  30
+  accuracy: 3d10 - 3
+  count: 25
+done
+
+ammo
+  name: 5.56 NATO
+  description:
+    The standard NATO rifle round.  5.56x45mm is very light and is designed to
+    shatter inside a target, dealing devastating damage.  Its armor-piercing
+    capabilities are fairly good.
+  done
+  type: 5.56
+  glyph: = cyan black
+  weight:  9
+  volume: 36
+  damage: 40
+  pierce: 15
+  range: 32
+  accuracy: 1d5 - 1
+  count: 50
+done
+
+ammo
+  name: 5.56 AP
+  description:
+    An armor-piercing variant of the 5.56x45mm NATO round.  It suffers from a
+    minor reduction in damage in exchange for considerable armor-piercing
+    capabilities.
+  done
+  type: 5.56
+  glyph: = cyan black
+  weight:  8
+  volume: 36
+  damage: 34
+  pierce: 30
+  range:  32
+  accuracy: 1d5 - 1
+  count: 50
+done
+
+ammo
+  name: 7.62 NATO
+  description:
+    A rifle round widely used by NATO militaries.  More commonly used in sniper
+    rifles and machine guns, it is heavier and less accurate than the competing
+    5.56 round, but penetrates armor better and does more damage.
+  done
+  type: 7.62
+  glyph: = ltcyan black
+  weight: 21
+  volume: 40
+  damage: 44
+  pierce: 18
+  range:  32
+  accuracy: 1d8 - 1
+  count: 50
+done
+
+ammo
+  name: 7.62 AP
+  description:
+    An armor-piercing variant of the 7.62 NATO round.  It does slightly less
+    damage, and is less accurate, but pierces armor extremely well.
+  done
+  type: 7.62
+  glyph: = ltcyan black
+  weight: 24
+  volume: 40
+  damage: 38
+  pierce: 40
+  range:  32
+  accuracy: 1d10 - 1
+  count: 50
+done
+
+ammo
+  name: .50 BMG
+  description:
+    Originally developed for the Browning machine gun in the early 20th
+    century, the .50 BMG round is now also used extensively in sniper rifles.
+    Extremely powerful, the .50 BMG slices through armor and is powerful
+    enough to disable engines with a single shot.
+  done
+  type: .50
+  glyph: = brown black
+  weight: 92
+  volume: 200
+  damage: 75
+  pierce: 80
+  range:  60
+  accuracy: 1d2 - 1
+  count: 10
+done
+
+ammo
+  name: steel bolt
+  description:
+    A sharp crossbow bolt made from steel.  Deadly in skilled hands.  Stands an
+    excellent chance of remaining intact after firing.
+  done
+  type: bolt
+  glyph: = ltgreen black
+  weight: 10
+  volume: 80
+  damage: 20
+  pierce: 14
+  range:  20
+  accuracy: 1d6 - 1
+  count: 18
+done
+
+ammo
+  name: wood bolt
+  description:
+    A somewhat-sharp crossbow bolt, carved from wood.  It's much less effective
+    than a steel bolt; it does less damage, is less accurate, has a shorter
+    range, and is very poor at penetrating armor.
+  done
+  type: bolt
+  glyph: = ltgreen black
+  weight:  7
+  volume: 80
+  damage: 12
+  pierce:  6
+  range:  16
+  accuracy: 1d12 - 1
+  count: 10
+done
+
+# END Ammo
+
+# Launchers
+
+# Handguns
+launcher
+  name: nail gun
+  description:
+    A tool used to drive nails into wood or metal.  It can also be used as a
+    rather weak firearm.
+  done
+  glyph: ) pink black
+  weight: 40
+  volume: 80
+  bash: 8
+  to_hit: -1
+
+  type: nails
+  skill: handguns
+  damage: 0
+  accuracy: 6d14 - 6
+  durability: 95
+  capacity: 100
+  reload_ap: 500
+  fire_ap:   100
+done
+
+launcher
+  name: SIG Mosquito
+  description:
+    A popular, very small .22 pistol.  "Ergonomically designed to give the best
+    shooting experience." -SIG Sauer official website.
+  done
+
+  glyph: ) ltgray black
+  weight: 15
+  volume: 15
+  bash:    6
+  to_hit: -2
+
+  type: .22
+  skill: handguns
+  damage:  0
+  recoil:  2
+  accuracy: 6d22 - 6
+  durability: 90
+  capacity: 10
+  reload_ap: 250
+  fire_ap:   125
+done
+
+launcher
+  name: Glock 19
+  description:
+    Possibly the most popular handgun in existence.  The Glock 19 is often
+    derided for its plastic construction, but it is easy to shoot.
+  done
+
+  glyph: ) ltgray black
+  weight: 14
+  volume: 18
+  bash:    7
+  to_hit: -2
+
+  type: 9mm
+  skill: handguns
+  damage:  2
+  accuracy:  6d18 - 6
+  recoil:      5
+  durability: 80
+  capacity:   15
+  reload_ap: 250
+  fire_ap:   100
+done
+
+launcher
+  name: USP 9mm
+  description:
+    A 9mm pistol, widely used by law enforcement.  Renowned for its durability
+    and accuracy.
+  done
+
+  glyph: ) ltgray black
+  weight: 17
+  volume: 20
+  bash:    7
+  to_hit: -2
+
+  type: 9mm
+  skill: handguns
+  accuracy: 6d14 - 6
+  recoil:      8
+  durability: 95
+  capacity:   15
+  reload_ap: 300
+  fire_ap:   125
+done
+
+launcher
+  name: M1911
+  description:
+    The M1911 was the standard-issue sidearm in the US military for most of the
+    20th century.  It remains one of the most popular .45 handguns today.
+  done
+  glyph: ) ltgray black
+  weight: 25
+  volume: 25
+  bash:    9
+  to_hit: -2
+
+  type: .45
+  skill: handguns
+  accuracy: 6d14 - 6
+  damage:      6
+  recoil:      5
+  durability: 85
+  capacity:    7
+  reload_ap: 300
+  fire_ap:   150
+done
+
+launcher
+  name: USP .45
+  description:
+    A .45 pistol, widely used by law enforcement.  Renowned for its durability
+    and accuracy.
+  done
+  glyph: ) ltgray black
+  weight: 17
+  volume: 24
+  bash:    8
+  to_hit: -2
+
+  type: .45
+  skill: handguns
+  accuracy: 6d12 - 6
+  recoil:      6
+  durability: 95
+  capacity:   12
+  reload_ap: 350
+  fire_ap:   125
+done
+
+launcher
+  name: FN Five-Seven
+  description:
+    A handgun designed to be used with FN's proprietary 5.7x28mm round.  The
+    Five-Seven features a very high magazine capacity.
+  done
+  glyph: ) ltgray black
+  weight: 13
+  volume: 17
+  bash:    7
+  to_hit: -2
+
+  type: 5.7
+  skill: handguns
+  accuracy: 6d10 - 6
+  recoil:      4
+  durability: 90
+  capacity:   20
+  reload_ap: 300
+  fire_ap:   125
+done
+
+launcher
+  name: Desert Eagle .50
+  description:
+    One of the most recognizable handguns due to its popularity in moves, the
+    Desert Eagle, or "Deagle," is better known for its menacing appearance than
+    its performance, which suffers from poor accuracy.
+  done
+  glyph: ) ltgray black
+  weight: 44
+  volume: 28
+  bash:   13
+
+  type: .50
+  skill: handguns
+  damage:      6
+  accuracy: 6d22 - 6
+  recoil:     -3
+  durability: 80
+  capacity:    7
+  reload_ap: 350
+  fire_ap:   150
+done
+
+# Shotguns
+launcher
+  name: 2-barreled shotgun
+  description:
+    A simple shotgun, possibly an antique.  Little more than a pair of barrels,
+    a trigger, and a hammer.  Its simplicity makes it easy to fire and light.
+  done
+  glyph: ) red black
+  weight: 60
+  volume: 70
+  bash:   10
+  to_hit:  0
+
+  type: shotgun
+  skill: shotguns
+  accuracy: 5d7 - 5
+  recoil:      1
+  damage:     -2
+  durability: 80
+  capacity:    2
+  reload_ap:  80
+  fire_ap:   100
+  modes: 1 2
+  flags: reload_single
+done
+ 
+launcher
+  name: Remington 870
+  description:
+    One of the most popular shotguns ever made.  The Remington 870 is famed for
+    its high accuracy and muzzle velocity, and is very durable.
+  done
+
+  glyph: ) red black
+  weight: 75
+  volume: 90
+  bash:   12
+  to_hit:  0
+
+  type: shotgun
+  skill: shotguns
+  accuracy:  5d5 - 5
+  recoil:      0
+  damage:      8
+  durability: 90
+  capacity:    6
+  reload_ap: 100
+  fire_ap:   150
+  modes: 1 2
+  flags: reload_single
+done
+
+launcher
+  name: Saiga-12
+  description:
+    A shotgun designed on the same pattern as the famed Kalishnikov AK-47.  It
+    reloads with a magazine, rather than one shell at a time as most shotguns
+    do.
+  done
+  glyph: ) red black
+  weight: 79
+  volume: 140
+  bash:   12
+  to_hit: -1
+
+  type: shotgun
+  skill: shotguns
+  accuracy:  5d8 - 5
+  recoil:      -2
+  durability:  85
+  capacity:    10
+  reload_ap:  450
+  fire_ap:    150
+  modes: 1 2 4
+done
+
+# SMGs
+launcher
+  name: Uzi 9mm
+  description:
+    The Uzi 9mm has enjoyed immense popularity, selling more units than any
+    other submachine gun.  It is widely used as a self-defense weapon, or as a
+    primary weapon by elite frontline military forces.
+  done
+  glyph: ) cyan black
+  weight: 77
+  volume: 52
+  bash:    8
+  to_hit: -1
+
+  type: 9mm
+  skill: SMGs
+  accuracy: 5d18 - 5
+  recoil:      2
+  damage:      2
+  durability: 80
+  capacity:   32
+  reload_ap: 350
+  fire_ap:   125
+  modes: 1 8 16
+done
+
+launcher
+  name: H&K MP5
+  description:
+    One of the most wide-used submachine guns in the world, the H&K MP5 has
+    been adopted by special police forces and militaries alike.  Its high
+    degree of accuracy and low recoil are universally praised.
+  done
+  glyph: ) cyan black
+  weight: 56
+  volume: 84
+  bash:   10
+  to_hit: -2
+
+  type: 9mm
+  skill: SMGs
+  accuracy: 5d10 - 5
+  recoil:     -1
+  durability: 95
+  capacity:   30
+  reload_ap: 375
+  fire_ap:   150
+  modes: 1 3 12
+done
+
+launcher
+  name: MAC-10
+  description:
+    A popular machine pistol originally designed for military use.  For many
+    years it was the most inexpensive automatic weapon available in the
+    United States, leading to a long-lasting popularity among criminals.
+  done
+  glyph: ) cyan black
+  weight: 63
+  volume: 70
+  bash:   11
+  to_hit: -2
+
+  type: .45
+  skill: SMGs
+  accuracy: 5d18 - 5
+  damage:      6
+  recoil:      3
+  durability: 80
+  capacity:   30
+  reload_ap: 325
+  fire_ap:   125
+  modes: 1 6 15
+done
+
+launcher
+  name: H&K UMP45
+  description:
+    Developed as a successor to the H&K MP5, the UMP45 retains the earlier
+    model's supreme accuracy and relatively low recoil, but in the more powerful
+    .45 caliber.
+  done
+  glyph: ) cyan black
+  weight: 55
+  volume: 85
+  bash:   12
+  to_hit: -2
+
+  type: .45
+  skill: SMGs
+  accuracy: 5d12 - 5
+  damage:      2
+  recoil:     -1
+  durability: 90
+  capacity:   25
+  reload_ap: 350
+  fire_ap:   150
+  modes: 1 3 10
+done
+
+launcher
+  name: KRISS Vector
+  description:
+    The KRISS Vector (previously known as the TDI Vector) is a submachine gun
+    with a unique in-line design which makes recoil very manageable, even in the
+    powerful .45 caliber.
+  done
+  glyph: ) cyan black
+  weight: 60
+  volume: 90
+  bash:   11
+  to_hit: -1
+
+  type: .45
+  skill: SMGs
+  accuracy: 5d15 - 5
+  recoil:     -4
+  durability: 85
+  capacity:   25
+  reload_ap: 400
+  fire_ap:   175
+  modes: 1 3 5
+done
+
+launcher
+  name: FN P90
+  description:
+    The first in a new genre of guns, dubbed "personal defense weapons," the
+    FN P90 was designed by FN to use their proprietary 5.7x28mm ammunition.  It
+    is expressly designed for firing large bursts managably.
+  done
+  glyph: ) cyan black
+  weight: 57
+  volume: 64
+  bash:    8
+  to_hit: -2
+
+  type: 5.7
+  skill: SMGs
+  accuracy: 5d12 - 5
+  recoil:     -3
+  durability: 85
+  capacity:   50
+  reload_ap: 450
+  fire_ap:   125
+  modes: 1 5 25
+done
+
+# Hunting/Sniper Rifles
+launcher
+  name: Ruger 10/22
+  description:
+    A popular and highly accurate .22 rifle.  At the time of its introduction in
+    1964, it was the first modern .22 rifle designed for quality, and not as a
+    toy or training weapon.
+  done
+  glyph: ) ltblue black
+  weight: 50
+  volume: 100
+  bash:   10
+  to_hit: -1
+
+  type: .22
+  skill: rifles
+  damage:      2
+  accuracy: 5d7 - 5
+  recoil:     -2
+  durability: 85
+  capacity:   10
+  reload_ap: 350
+  fire_ap:   150
+done
+
+launcher
+  name: Ruger Mini-14
+  description:
+    A small, lightweight 5.56 carbine designed for military use.  Its superb
+    accuracy and low recoil make it more suitable than full assault rifles for
+    some situations.
+  done
+  glyph: ) ltblue black
+  weight: 68
+  volume: 110
+  bash:   10
+  to_hit: -1
+
+  type: 5.56
+  skill: rifles
+  damage:      6
+  accuracy: 5d7 - 5
+  recoil:     -3
+  durability: 85
+  capacity:   10
+  reload_ap: 350
+  fire_ap:   150
+done
+
+launcher
+  name: Savage 111F
+  description:
+    A very accurate rifle chambered for the powerful 7.62 NATO round.  Its very
+    low magazine capacity is offset by its supreme accuracy and near-complete
+    lack of recoil.
+  done
+  glyph: ) ltblue black
+  weight: 68
+  volume: 150
+  bash: 10
+  to_hit: -1
+
+  type: 7.62
+  skill: rifles
+  damage:      6
+  accuracy:  5d5 - 5
+  recoil:     -4
+  durability: 90
+  capacity:    3
+  reload_ap: 150
+  fire_ap:   150
+  flags: reload_single
+done
+
+launcher
+  name: Barrett M95
+  description:
+    An improved version of the earlier M90 rifle, the Barrett M95 is a bolt
+    action sniper rifle with a bullpup designed, chambered for the powerful .50
+    BMG round.
+  done
+  glyph: ) ltblue black
+  weight: 235
+  volume: 140
+  bash:  12
+  to_hit:  -1
+
+  type: .50
+  skill: rifles
+  damage:     10
+  accuracy: 5d6 - 5
+  recoil:      0
+  durability: 85
+  capacity:    5
+  reload_ap: 500
+  fire_ap:   200
+done
+
+launcher
+  name: Steyr HS .50
+  description:
+    A single-shot bolt-action sniper rifle, used internationally as an
+    anti-personel and anti-materiel weapon.
+  done
+  glyph: ) ltblue black
+  weight: 285
+  volume: 160
+  bash:    12
+  to_hit:  -2
+
+  type: .50
+  skill: rifles
+  damage:     10
+  accuracy:  5d3 - 5
+  recoil:      0
+  durability: 90
+  capacity:    1
+  reload_ap: 200
+  fire_ap:   175
+done
+
+# Assault and battle rifles
+launcher
+  name: M4A1
+  description:
+    A popular assault carbine, long used by the US military.  Though accurate,
+    small, and lightweight, it is infamous for its fragility, particularly in
+    harsh environments.
+  done
+  glyph: ) blue black
+  weight: 64
+  volume: 125
+  bash:   12
+  to_hit: -1
+
+  type: 5.56
+  skill: rifles
+  accuracy: 5d7 - 5
+  damage:      4
+  recoil:     -1
+  durability: 70
+  capacity:   30
+  reload_ap: 325
+  fire_ap:   150
+  modes: 1 3 9
+done
+
+launcher
+  name: Steyr AUG
+  description:
+    An Austrian assault rifle used in the armed forces and police forces of many
+    nations.  Its bullpup design contributes to its low recoil.
+  done
+  glyph: ) blue black
+  weight: 79
+  volume: 180
+  bash:   10
+  to_hit: -1
+
+  type: 5.56
+  skill: rifles
+  accuracy:  5d6 - 5
+  damage:      0
+  recoil:     -3
+  durability: 85
+  capacity:   30
+  reload_ap: 325
+  fire_ap:   175
+  modes: 1 3
+done
+
+launcher
+  name: FN SCAR-H
+  description:
+    A modular assault rifle designed for use by US Special Ops units.  The 'H'
+    in its name stands for Heavy, referencing the powerful 7.62 round it uses.
+    It is fairly accurate and low on recoil.
+  done
+  glyph: ) blue black
+  weight: 79
+  volume: 200
+  bash:   11
+  to_hit: -2
+
+  type: 7.62
+  skill: rifles
+  accuracy: 5d7 - 5
+  damage:      0
+  recoil:     -1
+  durability: 80
+  capacity:   20
+  reload_ap: 350
+  fire_ap:   125
+  modes: 1 3 5
+done
+
+launcher
+  name: FN FAL
+  description:
+    Though not particularly accurate, the Belgian-designed FN FAL's high fire
+    rate of powerful .308 ammunition, and light recoil, have made it one of the
+    most widely-used battle rifles in the world.
+  done
+  glyph: ) blue black
+  weight: 95
+  volume: 225
+  bash:   13
+  to_hit: -1
+
+  type: 7.62
+  skill: rifles
+  accuracy: 5d12 - 5
+  damage:     10
+  recoil:     -1
+  durability: 85
+  capacity:   20
+  reload_ap: 450
+  fire_ap:   100
+  modes: 1 5 10
+done
+
+launcher
+  name: M249
+  description:
+    The M249 is a mountable light machine gun, used in every major conflict
+    involving the United States since 1989.  It is heavy, innaccurate, difficult
+    to control, and prone to jamming.  However, it more than makes up for these
+    flaws with its ability to fire huge amounts of powerful 5.56 NATO rounds
+    very quickly.
+  done
+  glyph: ) green black
+  weight: 170
+  volume: 600
+  bash: 16
+  to_hit: -2
+
+  type: 5.56
+  skill: rifles
+  accuracy: 7d15 - 7
+  damage: 10
+  recoil: -3
+  durability: 78
+  capacity: 100
+  reload_ap: 1000
+  fire_ap: 175
+  modes: 10 20 30
+done
+
+launcher
+  name: crossbow
+  description:
+    A slow-loading hand weapon that fires steel or wooden bolts.  Stronger
+    people can reload it much faster.  Bolts fired from this weapon have a good
+    chance of remaining intact for re-use.
+  done
+  glyph: ) ltgreen black
+  weight: 90
+  volume: 45
+  bash:   12
+  to_hit: -2
+
+  type: bolt
+  skill: bows
+  accuracy: 5d12 - 5
+  recoil: -8
+  durability: 75
+  capacity: 1
+  reload_ap: 700
+  fire_ap: 125
+  flags: reload_strength
+done
+
+# END Launchers
+
+# Food
+
+# Note that "food" and "water" values are measured in 6 minutes (AKA 1/10 of an
+# hour); e.g. "60" is enough food to last 6 hours.
+
+food
+  name: MRE (meat)
+  plural: MREs (meat)
+  description:
+    "Meal, Ready to Eat."  A military ration.  Though not particularly tasty,
+    it is very filling and will not spoil.
+  done
+  glyph: $ red black
+  weight: 15
+  volume: 15
+  food: 60
+  water: 5
+done
+
+food
+  name: MRE (vegetable)
+  plural: MREs (vegetable)
+  description:
+    "Meal, Ready to Eat."  A military ration.  Though not particularly tasty,
+    it is very filling and will not spoil.
+  done
+  glyph: $ green black
+  weight: 15
+  volume: 15
+  food: 60
+  water: 5
+done
+
+food
+  name: beans
+  description:
+    Pinto beans, a delicious and nutritious source of protein.
+  done
+  glyph: $ brown black
+  weight:  8
+  volume: 20
+  food:   30
+  water:   5
+  container: can
+  flags: plural
+done
+
+food
+  name: SPAM
+  description:
+    Yuck, not very tasty. But it is quite filling.
+  done
+  glyph: $ brown black
+  weight:  8
+  volume: 20
+  food:   34
+  water:   -2
+  container: can
+  flags: plural
+done
+
+food
+  name: tomatoes
+  description:
+    Diced and stewed tomatoes.  Decent on their own, but great when cooked with
+    other ingredients.
+  done
+  glyph: $ red black
+  weight:  4
+  volume: 20
+  mission_xp: 5
+  food:   15
+  water:   8
+  container: can
+  flags: plural
+done
+
+food
+  name: chicken soup
+  description:
+    A robust chicken soup, with lots of noodles and vegetables.  Full of
+    preservatives.
+  done
+  glyph: $ yellow black
+  weight:  5
+  volume: 10
+  mission_xp: 8
+  food:   25
+  water:  15
+  charges: 2
+  container: can
+  flags: plural
+done
+
+food
+  name: potato chips
+  description:
+    Also known as "potato crisps."  Thinly sliced and fried potatoes.
+  done
+  glyph: $ yellow black
+  weight:  1
+  volume: 10
+  mission_xp: 10
+  food:    8
+  charges: 3
+  container: plastic bag
+  flags: plural
+done
+
+food
+  name: pretzels
+  description:
+    A number of short, crispy bread sticks, covered in salt.  These pretzels are
+    making you thirsty!
+  done
+  glyph: $ brown black
+  weight: 2
+  volume: 10
+  mission_xp: 10
+  food: 10
+  water: -2
+  charges: 3
+  container: plastic bag
+  flags: plural
+done
+
+food
+  name: beef jerky
+  description:
+    Dried and salted beef.  Full of preservatives.
+  done
+  glyph: $ brown black
+  weight: 1
+  volume: 4
+  mission_xp: 10
+  food: 10
+  water: -1
+  charges: 6
+  container: plastic bag
+  flags: plural
+done
+
+food
+  name: chocolate bar
+  description:
+    A bar of sweet milk chocolate.
+  done
+  glyph: $ brown black
+  weight: 1
+  volume: 3
+  mission_xp: 12
+  food: 8
+  charges: 1
+done
+
+food
+  name: beef patty
+  plural: beef patties
+  description:
+    A patty of a beef-like substance.  It contains so many preservatives that
+    its shelf life is essentially indefinite.  Neat!
+  done
+  glyph: $ brown black
+  weight: 1
+  volume: 3
+  food: 20
+  charges: 1
+done
+
+food
+  name: pressed potato
+  description:
+    Preserved potato sticks.  When deep-fried, these become delicious fries with
+    a mild meaty after-taste!
+  done
+  glyph: $ yellow black
+  weight:  1
+  volume:  5
+  food:    5
+  charges: 4
+  flags: plural
+done
+
+food
+  name: chocolate shake
+  description:
+    "Ingredients: Xanthan gum, Anti-coagulant, Proprietary Sweetening Agent #12,
+    Imitation Chocolate Flavor.  Do not consume if pregnant."
+  done
+  glyph: $ brown black
+  weight:  6
+  volume: 10
+  mission_xp: 12
+  water:  10
+  food:    8
+  charges: 2
+  verb: drink
+  container: plastic bottle
+  flags: liquid plural
+done
+  
+
+food
+  name: water
+  description:
+    Water, the stuff of life, the best thirst-quencher available.
+  done
+  glyph: $ ltblue black
+  weight:  4
+  volume: 10
+  water:  30
+  charges: 2
+  verb: drink
+  container: plastic bottle
+  flags: liquid plural
+done
+
+food
+  name: beer
+  description:
+    An alcoholic beverage made with malted grains and hops.  Very refreshing.
+  done
+  glyph: $ yellow black
+  weight:  4
+  volume: 20
+  mission_xp: 14
+  water:  24
+  food:    8
+  effect:
+    type: drunk
+    duration: 550
+  done
+  charges: 1
+  verb: drink
+  container: glass bottle
+  flags: liquid plural
+done
+
+food
+  name: vodka
+  description:
+    A liquor that's mainly just alcohol and water.  Popular in Eastern Europe,
+    and throughout the world.
+  done
+  glyph: $ ltcyan black
+  weight:  1
+  volume:  1
+  mission_xp: 14
+  food:    3
+  effect:
+    type: drunk
+    duration: 600
+  done
+  water:   2
+  charges: 20
+  verb: drink
+  container: glass bottle
+  flags: liquid plural
+done
+
+food
+  name: whisky
+  description:
+    A liquor made from fermented grains, aged in fine oak casks.  Different
+    varieties are made throughout the world, particular in Scotland, Ireland,
+    and the United States.
+  done
+  glyph: $ brown black
+  weight: 1
+  volume: 1
+  mission_xp: 14
+  food:   4
+  water:  1
+  effect:
+    type: drunk
+    duration: 600
+  done
+  charges: 20
+  verb: drink
+  container: glass bottle
+  flags: liquid plural
+done
+
+food
+  name: rum
+  description:
+    A liquor made from fermented cane sugar.  Comes in many varieties!
+  done
+  glyph: $ brown black
+  weight: 1
+  volume: 1
+  mission_xp: 14
+  food:   4
+  water:  0
+  effect:
+    type: drunk
+    duration: 600
+  done
+  charges: 20
+  verb: drink
+  container: glass bottle
+  flags: liquid plural
+done
+
+food
+  name: tequila
+  description:
+    A liquor made from fermented agave nectar.  Exclusively produces in Mexico.
+  done
+  glyph: $ brown black
+  weight: 1
+  volume: 1
+  mission_xp: 15
+  food:   3
+  water:  2
+  effect:
+    type: drunk
+    duration: 650
+  done
+  charges: 20
+  verb: drink
+  container: glass bottle
+  flags: liquid plural
+done
+
+food
+  name: wine
+  description:
+    An alcoholic beverage made from fremented wines.  Adored by poor college
+    students and rich snobs alike.
+  done
+  glyph: $ red black
+  weight: 2
+  volume: 3
+  mission_xp: 14
+  food:   5
+  water:  3
+  effect:
+    type: drunk
+    duration: 600
+  done
+  charges: 6
+  verb: drink
+  container: glass bottle
+  flags: liquid plural
+done
+
+food
+  name: cola
+  description:
+    A highly caffeinated sugary drink.
+  done
+  glyph: $ brown black
+  weight:  4
+  volume: 15
+  mission_xp: 8
+  water:  20
+  food:    2
+  effect:
+    type: caffeine
+    duration: 150
+  done
+  charges: 1
+  verb: drink
+  container: soda can
+  flags: liquid plural
+done
+
+food
+  name: energy drink
+  description:
+    A highly sugary drink designed to give you a boost of energy.
+  done
+  glyph: $ ltred black
+  weight:  4
+  volume: 15
+  mission_xp: 5
+  water:  18
+  food:    2
+  effect:
+    type: caffeine
+    duration: 250
+  done
+  charges: 1
+  verb: drink
+  container: soda can
+  flags: liquid plural
+done
+
+food
+  name: V8
+  description:
+    A blend of eight different vegetables, with added salt.  Delicious and
+    nutritious.
+  done
+  glyph: $ red black
+  weight:  4
+  volume: 10
+  mission_xp: 5
+  food:    6
+  water:   5
+  charges: 2
+  verb: drink
+  container: plastic bottle
+  flags: liquid plural
+done
+
+# Dry food - stuff that is MUCH more beneficial if prepped before eating.
+
+food
+  name: dry pasta
+  description:
+    A bunch of dry noodles.  You could eat it raw, but it's much, much better
+    after being cooked.
+  done
+  glyph: $ yellow black
+  weight: 2
+  volume: 5
+  food:   5
+  charges: 4
+  verb: choke down
+  container: paper box
+  flags: plural
+done
+
+food
+  name: dry rice
+  description:
+    Some dry white rice.  You could struggle to eat it raw, but it'd be much
+    tastier after being cooked.
+  done
+  glyph: $ white black
+  weight: 4
+  volume: 3
+  food:   3
+  charges: 8
+  verb: choke down
+  container: plastic bag
+  flags: plural
+done
+
+food
+  name: flour
+  description:
+    Dry, finely ground wheat.  You could eat this as it is if you're desperate,
+    but it'd be much better if used to bake some bread or something.
+  done
+  glyph: $ white black
+  weight:  5
+  volume:  3
+  food:    2
+  charges: 8
+  verb: choke down
+  container: plastic bag
+  flags: plural
+done
+
+food
+  name: dry tea
+  description:
+    A number of tea bags, containing some caffeinated black tea leaves.  You
+    could suck on them, I suppose, but it'd be much nicer to brew tea using hot
+    water.
+  done
+  glyph: $ dkgray black
+  weight: 1
+  volume: 1
+  water: -2
+  food:   0
+  effect:
+    type: caffeine
+    duration: 30
+  done
+  charges: 15
+  verb: choke down
+  container: paper box
+  flags: plural
+done
+
+food
+  name: dry coffee
+  description:
+    Some dry, ground coffee beans.  You could eat the grounds if you really
+    want, but it'd be more pleasant to brew coffee using hot water.
+  done
+  glyph: $ dkgray black
+  weight: 1
+  volume: 1
+  water: -4
+  food: 0
+  effect:
+    type: caffeine
+    duration: 30
+  done
+  charges: 20
+  verb: choke down
+  container: can
+  flags: plural
+done
+
+food
+  name: birdseed
+  description:
+    A mix of different seeds.  Designed for filling birdfeeders, but it's edible
+    for humans as well.
+  done
+  glyph: $ ltgray black
+  weight: 1
+  volume: 3
+  food:   5
+  water:  0
+  charges: 10
+  container: plastic bag
+  flags: plural
+done
+
+# Medications - only food on a technical level!
+
+food
+  name: cigarettes
+  description:
+    A pack of cigarettes.  They will boost your dexterity, intelligence, and
+    perception for a short while.  They are also quite addictive.
+  done
+  glyph: ! dkgray black
+  weight: 1
+  volume: 5
+  mission_xp: 8
+  charges: 20
+  verb: smoke
+  effect:
+    type: nicotine
+    duration: 100
+  done
+  flags: plural constant_volume_weight
+done
+
+food
+  name: aspirin
+  description:
+    A low-grade painkiller for treating light pain.  Best taken in pairs.
+  done
+  glyph: ! ltblue black
+  weight: 1
+  volume: 2
+  charges: 20
+  verb: take
+  effect:
+    type: painkill_mild
+    duration: 600
+  done
+  flags: plural constant_volume_weight
+done
+
+food
+  name: codeine
+  description:
+    A prescription painkiller for moderate to heavy pain.
+  done
+  glyph: ! blue black
+  weight: 1
+  volume: 2
+  mission_xp: 12
+  charges: 15
+  verb: take
+  effect:
+    type: painkill_med
+    duration: 1500
+  done
+  flags: plural constant_volume_weight
+done
+
+food
+  name: tramadol
+  description:
+    A long-duration painkiller for moderate pain.
+  done
+  glyph: ! blue black
+  weight: 1
+  volume: 2
+  mission_xp: 12
+  charges: 15
+  verb: take
+  effect:
+    type: painkill_long
+    duration: 3600
+  done
+  flags: plural constant_volume_weight
+done
+
+food
+  name: oxycodone
+  description:
+    A prescription painkiller for severe pain.  Careful; an oxycodone overdose
+    may be deadly.
+  done
+  glyph: ! blue black
+  weight: 1
+  volume: 2
+  mission_xp: 15
+  charges: 10
+  verb: take
+  effect:
+    type: painkill_heavy
+    duration: 2400
+  done
+  flags: plural constant_volume_weight
+done
+
+
+food
+  name: amphetamine
+  description:
+    A bottle of stimulants, frequently prescribed for attention deficit
+    disorders.  Also used recreationally, or as an illicit study aid.
+  done
+  glyph: ! yellow black
+  weight: 1
+  volume: 2
+  mission_xp: 15
+  charges: 10
+  verb: take
+  effect:
+    type: stimulant
+    duration: 300
+  done
+  flags: plural constant_volume_weight
+done
+
+food
+  name: sleeping pills
+  description:
+    A bottle of sleeping pills.  Taking these will increase your sleepiness
+    rapidly.
+  done
+  glyph: ! cyan black
+  weight: 1
+  volume: 2
+  charges: 15
+  verb: take
+  effect:
+    type: sleep_aid
+    duration: 400
+  done
+  flags: plural constant_volume_weight
+done
+
+# END Food
+
+# Tools
+
+tool
+  name: crowbar
+  description:
+    A solid metal bar, heavy and sort of sharp on both ends.
+    Makes a capable melee weapon, although it's pretty unwieldly.
+    Also can pry open doors and various other objects.
+  done
+  glyph: ; ltblue black
+  weight: 75
+  volume: 14
+  bash:   14
+  pierce:  4
+  to_hit:  -1
+
+  applied:
+    signal: pry
+    target: adjacent
+    ap_cost: 100
+  done
+done
+
+tool
+  name: shovel
+  description:
+    A sturdy shovel with an iron head and a wooden shaft.  Useful for digging
+    holes.
+  done
+  glyph: ; brown black
+  weight: 40
+  volume: 80
+  bash:   10
+  cut:     8
+  to_hit:  3
+
+  applied:
+    signal: dig
+    target: adjacent
+    ap_cost: 1000
+  done
+done
+
+tool
+  name: lighter
+  description:
+    A powerful pocket lighter.  Designed for everything from lighting a
+    cigarette to starting a camp fire.
+  done
+  glyph: ; ltblue black
+  weight: 1
+  volume: 2
+
+  applied:
+    target: adjacent
+    field:
+      type: fire
+      duration: 1d4 + 2
+      tiles: 1
+    done
+  done
+
+done
+
+tool
+  name: bandages
+  description:
+    A roll of bandages, soaked in a nanotech healing compound.  Able to heal
+    minor wounds very quickly.
+  done
+  glyph: : white black
+  weight: 2
+  volume: 4
+  def_charges: 3
+  max_charges: 3
+
+  applied:
+    destroy
+    ap_cost: 250
+    special: heal
+      min: 3
+      max: 15
+      skill: first_aid
+      skill_min:  0
+      skill_max: 10
+    done
+  done
+
+  flags: plural
+done
+
+tool
+  name: first aid kit
+  description:
+    A complete first aid kit.  Its central component is a fast-acting nanotech
+    healing compound, which will repair moderate to severe injuries in a matter
+    of seconds.  Its efficacy is highly skill-dependent.
+  done
+  glyph: : ltred black
+  weight: 2
+  volume: 4
+  def_charges: 2
+  max_charges: 2
+
+  applied:
+    destroy
+    ap_cost: 400
+    special: heal
+      min: 2
+      max: 40
+      skill: first_aid
+      skill_min:  0
+      skill_max: 12
+    done
+  done
+done
+
+tool
+  name: flashlight
+  description:
+    A plastic flashlight.  Runs on batteries and provides 8 tiles of light at
+    night.
+  done
+  glyph: ; yellow black
+  weight:  4
+  volume: 14
+
+  default_charges: 100
+  max_charges: 100
+  subcharges: 5
+  fuel: batteries
+
+  powered:
+    special: light
+      light: 8
+    done
+  done
+
+done
+
+tool
+  name: pruning shears
+  description:
+    A strong, curved pair of scissors at the end of a pair of long wood handles.
+    The leverage and strength of the blades allows you to cut through thick
+    branches or even wires.
+  done
+  glyph: ; green black
+  weight: 48
+  volume: 55
+  bash:    4
+  cut:     4
+  pierce:  8
+
+  applied:
+    signal: cut
+    target: adjacent
+    ap_cost: 200
+  done
+done
+
+# END Tools
+
+# Books
+
+book
+  name: Cooking Basics
+  description:
+    A simple cook book, covering a variety of easy recipes and techniques.
+  done
+  glyph: ? magenta black
+  weight: 12
+  volume: 90
+  bash:    4
+  to_hit: -1
+
+  skill: cooking
+  cap: 3
+  int_required: 6
+done
+
+book
+  name: French Cuisine
+  description:
+    An advanced cook book, with a variety of complicated French recipes.
+  done
+  glyph: ? magenta black
+  weight: 14
+  volume: 90
+  bash:    5
+  to_hit: -1
+
+  skill: cooking
+  cap: 4
+  int_required: 8
+  skill_required: 2
+done
+
+book
+  name: Chemistry 101
+  description:
+    A textbook on the basics of chemistry.
+  done
+  glyph: ? magenta black
+  weight:  16
+  volume: 100
+  bash:    6
+  to_hit: -1
+
+  skill: cooking
+  cap: 7
+  int_required: 10
+  skill_required: 3
+  high_int_bonus: 2
+  bonus_int_required: 14
+done
+
+book
+  name: Advanced Chemistry
+  description:
+    A textbook on chemistry.  Written for college students with a strong
+    chemistry background.
+  done
+  glyph: ? magenta black
+  weight:  17
+  volume: 100
+  bash:    6
+  to_hit: -1
+
+  skill: cooking
+  cap: 12
+  int_required: 12
+  skill_required: 5
+  high_int_bonus: 2
+  bonus_int_required: 15
+done
+
+book
+  name: Molecular Engineering
+  description:
+    A graduate-level textbook on chemistry, detailing the modern science of
+    manipulating molecules through chemistry.
+  done
+  glyph: ? magenta black
+  weight:  18
+  volume: 105
+  bash:    6
+  to_hit: -1
+
+  skill: cooking
+  cap: 18
+  int_required: 14
+  skill_required: 8
+done
+
+book
+  name: The DIY Handbook
+  description:
+    A handy paperback book explaining a wide variety of home projects you can
+    build yourself.
+  done
+  glyph: ? ltblue black
+  weight:  3
+  volume: 11
+
+  skill: mechanics
+  cap: 2
+  int_required: 5
+  high_int_bonus: 1
+  bonus_int_required: 10
+done
+
+book
+  name: Universal Car Repair
+  description:
+    A hefty tome that details various car repair jobs for nearly any make and
+    model.
+  done
+  glyph: ? ltblue black
+  weight:  38
+  volume: 150
+
+  skill: mechanics
+  cap: 5
+  int_required: 4
+  skill_required: 2
+  high_int_bonus: 3
+  bonus_int_required: 11
+done
+
+book
+  name: How to Fix Anything
+  description:
+    A guide to fixing a variety of mechanical items.  Includes a large chapter
+    devoted to cars.
+  done
+  glyph: ? ltblue black
+  weight:  8
+  volume: 14
+
+  skill: mechanics
+  cap: 5
+  int_required: 5
+  skill_required: 2
+  high_int_bonus: 1
+  bonus_int_required: 10
+done
+
+book
+  name: Mechanical Engineering
+  description:
+    A college-level textbook on various engineering concepts.
+  done
+  glyph: ? ltblue black
+  weight:  18
+  volume: 100
+
+  skill: mechanics
+  cap: 10
+  int_required: 8
+  skill_required: 5
+  high_int_bonus: 2
+  bonus_int_required: 14
+done
+
+book
+  name: Materials Science
+  description:
+    A graduate-level textbook on advanced mechanics and engineering, detailing
+    the various properties of materials and how to take advantage of them.
+  done
+  glyph: ? ltblue black
+  weight:  24
+  volume: 100
+
+  skill: mechanics
+  cap: 14
+  int_required: 10
+  skill_required: 8
+  high_int_bonus: 2
+  bonus_int_required: 15
+done
+
+book
+  name: Quantum Engineering
+  description:
+    An advanced textbook on the complex science - and art - of manipulating
+    matter via quantum methods.
+  done
+  glyph: ? ltblue black
+  weight:  30
+  volume: 120
+
+  skill: mechanics
+  cap: 20
+  int_required: 13
+  skill_required: 12
+done
+
+book
+  name: Electronics Basics
+  description:
+    A popular paperback book that describes various electronic components and
+    the basics of electricity flow.
+  done
+  glyph: ? cyan black
+  weight:  2
+  volume: 12
+
+  skill: electronics
+  cap: 3
+  int_required: 7
+done
+
+book
+  name: Digital Logic
+  description:
+    A book that describes how to implement simple logical circuits.
+  done
+  glyph: ? cyan black
+  weight:  3
+  volume: 15
+
+  skill: electronics
+  cap: 6
+  int_required: 9
+  skill_required: 1
+  high_int_bonus: 1
+  bonus_int_required: 12
+done
+
+book
+  name: Data Coding Theory
+  description:
+    A textbook that describes how to code and manipulate data using electronic
+    circuitry.
+  done
+  glyph: ? cyan black
+  weight: 14
+  volume: 95
+
+  skill: electronics
+  cap: 9
+  int_required: 10
+  skill_required: 5
+  high_int_bonus: 2
+  bonus_int_required: 13
+done
+
+book
+  name: Applied Microcircuitry
+  description:
+    A textbook on using miniturized circuitry to achieve faster processing, and
+    various ways to take advantage of this technology.
+  done
+  glyph: ? cyan black
+  weight:  18
+  volume: 100
+
+  skill: electronics
+  cap: 13
+  int_required: 12
+  skill_required: 8
+  high_int_bonus: 2
+  bonus_int_required: 15
+done
+
+book
+  name: Quantum Circuitry
+  description:
+    An advanced textbook that covers the circuitry behind quantum computing, and
+    how to create bespoke circuits that use quantum mechanics.
+  done
+  glyph: ? cyan black
+  weight:  28
+  volume: 120
+
+  skill: electronics
+  cap: 20
+  int_required: 14
+  skill_required: 11
+done
+
+book
+  name: Simple Structures
+  description:
+    This book describes the basics of building structures, like lean-tos,
+    fences, and chicken coops.
+  done
+  glyph: ? brown black
+  weight:  8
+  volume: 12
+
+  skill: construction
+  cap: 4
+  int_required: 3
+done
+
+book
+  name: Home Improvement
+  description:
+    This book is a guide to a variety of home improvement projects, such as
+    adding windows to a room or building an attic.
+  done
+  glyph: ? brown black
+  weight: 10
+  volume: 45
+
+  skill: construction
+  cap: 7
+  int_required: 5
+  skill_required: 3
+done
+
+book
+  name: Urban Construction
+  description:
+    This textbook covers the entire process of building a simple urban house.
+  done
+  glyph: ? brown black
+  weight: 18
+  volume: 90
+
+  skill: construction
+  cap: 10
+  int_required: 6
+  skill_required: 6
+  high_int_bonus: 2
+  bonus_int_required: 12
+done
+
+book
+  name: Army Engineer Manual
+  description:
+    This manual - more like a textbook - is an official U.S. Army guidebook for
+    field and combat engineering, covering both demolition and the construction
+    of advanced defenses.
+  done
+  glyph: ? brown black
+  weight:  18
+  volume: 100
+
+  skill: construction
+  cap: 14
+  int_required: 8
+  skill_required: 9
+  high_int_bonus: 2
+  bonus_int_required: 14
+done
+
+book
+  name: Basic First Aid
+  description:
+    This small handbook explains several first aid techniques.
+  done
+  glyph: ? ltred black
+  weight:  2
+  volume:  6
+
+  skill: first_aid
+  cap: 4
+  int_required: 4
+done
+
+book
+  name: Paramedic Handbook
+  description:
+    This book covers everything a paramedic needs to know to perform emergency
+    first aid and resuscitation.
+  done
+  glyph: ? ltred black
+  weight:  6
+  volume: 18
+
+  skill: first_aid
+  cap: 6
+  skill_required: 1
+  int_required: 4
+  high_int_bonus: 1
+  bonus_int_required: 9
+done
+
+book
+  name: Physical Health Assessment
+  description:
+    This medical textbook is part of many medical degree programs.  It covers
+    everything a primary care physician will need to know.
+  done
+  glyph: ? ltred black
+  weight: 13
+  volume: 90
+
+  skill: first_aid
+  cap: 10
+  skill_required: 5
+  int_required: 7
+  high_int_bonus: 2
+  bonus_int_required: 13
+done
+
+book
+  name: Advanced Physiology
+  description:
+    This advanced medical textbook goes beyond basic doctoring skills and into
+    some simple surgery.
+  done
+  glyph: ? ltred black
+  weight:  18
+  volume: 110
+
+  skill: first_aid
+  cap: 14
+  skill_required: 10
+  int_required: 10
+  high_int_bonus: 2
+  bonus_int_required: 15
+done
+
+book
+  name: Modern Surgery
+  description:
+    This textbook covers a variety of complex surgical techniques.
+  done
+  glyph: ? ltred black
+  weight:  22
+  volume: 120
+
+  skill: first_aid
+  cap: 20
+  skill_required: 14
+  int_required: 13
+done
+
+book
+  name: Wild Edibles
+  description:
+    This handbook describes a variety of edible wild plants.
+  done
+  glyph: ? green black
+  weight:  1
+  volume:  4
+
+  skill: botany
+  cap: 3
+  int_required: 2
+done
+
+book
+  name: Plant Identification
+  description:
+    This book goes into detail on the practice of identifying plants and their
+    uses.
+  done
+  glyph: ? green black
+  weight: 10
+  volume: 60
+
+  skill: botany
+  cap: 6
+  skill_required: 2
+  int_required: 6
+  high_int_bonus: 1
+  bonus_int_required: 10
+done
+
+book
+  name: Plant Biology 101
+  description:
+    This textbook covers the essentials of college-level plant biology.
+  done
+  glyph: ? green black
+  weight:  16
+  volume: 110
+
+  skill: botany
+  cap: 9
+  skill_required: 4
+  int_required: 8
+  high_int_bonus: 1
+  bonus_int_required: 10
+done
+
+book
+  name: Scientific Farming
+  description:
+    This textbook covers a variety of theories and techniques on a scientific
+    approach to farming.
+  done
+  glyph: ? green black
+  weight:  18
+  volume: 110
+
+  skill: botany
+  cap: 14
+  skill_required: 8
+  int_required: 11
+  high_int_bonus: 1
+  bonus_int_required: 13
+done
+
+book
+  name: Modern GMO
+  description:
+    This textbook covers techniques and safety concerns for growing genetically
+    modified crops.
+  done
+  glyph: ? green black
+  weight:  20
+  volume: 115
+
+  skill: botany
+  cap: 18
+  skill_required: 14
+  int_required: 12
+done
+
+book
+  name: 23 Camping Tips
+  description:
+    A small paperback book with nearly two dozen handy tips and tricks for your
+    next camping trip.
+  done
+  glyph: ? red black
+  weight:  1
+  volume:  4
+
+  skill: survival
+  cap: 3
+done
+
+book
+  name: Orienteering and You
+  description:
+    An introduction to the sport of orienteering, navigation in the wilderness
+    with a map and compass.  In addition to navigation, it goes into detail on
+    several survival skills.
+  done
+  glyph: ? red black
+  weight:  4
+  volume: 32
+
+  skill: survival
+  cap: 5
+  skill_required: 2
+  high_int_bonus: 1
+  bonus_int_required: 10
+done
+
+book
+  name: Apocatips for the Apocalypse
+  description:
+    An old book (early 21st century) about ways to survive after a theoretical
+    apocalypse.  It was clearly written by a (well-trained) nutjob - who
+    would've guessed they were right about the downfall of society?
+  done
+  glyph: ? red black
+  weight: 12
+  volume: 90
+
+  skill: survival
+  cap: 9
+  skill_required: 4
+  int_required: 5
+  high_int_bonus: 1
+  bonus_int_required: 12
+done
+
+book
+  name: U.S. Survival Handbook
+  description:
+    A military-issued guide on extended survival in the wilderness, even in
+    enemy territory.
+  done
+  glyph: ? red black
+  weight: 10
+  volume: 90
+
+  skill: survival
+  cap: 13
+  skill_required: 8
+  int_required: 6
+  high_int_bonus: 3
+  bonus_int_required: 14
+done
+
+# Novels / entertainment books
+
+book
+  name: Prey, Kill, Eat
+  description:
+    A best-selling memoir which chronicles a woman's journey of self-discovery
+    after her divorce, during which she discovers her love of spear hunting and
+    cooking her fresh catch.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: autobiography
+  fun: 4
+  chapters: 15
+  int_required: 5
+done
+
+book
+  name: Infinite Julias
+  description:
+    This cookbook-meets-scifi story asks what would happen if renowned chef
+    Julia Child were to be cloned once every five seconds.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: scifi
+  fun: 4
+  chapters: 18
+  int_required: 7
+done
+
+book
+  name: Food is Disgusting
+  description:
+    An investigative report on the food industry, written in an entertaining
+    narrative format.  The author visits high-density farms, GMO labs, and
+    sausage factories to support his thesis that food is gross.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: history
+  fun: 3
+  chapters: 18
+  int_required: 5
+done
+
+book
+  name: Living with Leopards
+  description:
+    The autobiography of a famous biologist who spent many years living with and
+    studying a family of leopards.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: autobiography
+  fun: 5
+  chapters: 12
+  int_required: 6
+done
+
+book
+  name: A Childhood Lost
+  description:
+    A depressing autobiography by a woman who had to work 10-hour days as a
+    child.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: autobiography
+  fun: 3
+  chapters: 18
+  int_required: 5
+done
+
+book
+  name: Bad News
+  description:
+    The autobiography of a prominent reporter who investigated corruption at the
+    news station that employed him.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: autobiography
+  fun: 4
+  chapters: 16
+  int_required: 5
+done
+
+book
+  name: Dragon's Domain
+  description:
+    The first book in the popular Dragon's Domain trilogy, a set of fantasy
+    novels about warriors who fight - and befriend - powerful dragons.
+  done
+  glyph: ? white black
+  weight: 14
+  volume: 72
+
+  genre: fantasy
+  fun: 3
+  Chapters: 20
+  int_required: 4
+done
+
+book
+  name: Dragon's Dissent
+  description:
+    The second book in the popular Dragon's Domain fantasy trilogy.  This book
+    sees Mahar's tame dragon rebelling against him.
+  done
+  glyph: ? white black
+  weight: 14
+  volume: 72
+
+  genre: fantasy
+  fun: 3
+  chapters: 20
+  int_required: 4
+done
+
+book
+  name: Dragon's Dirge
+  description:
+    The third and final book in the popular Dragon's Domain fantasy trilogy.  In
+    this book, the Dragon Wars draw to a close - or do they?
+  done
+  glyph: ? white black
+  weight: 16
+  volume: 78
+
+  genre: fantasy
+  fun: 3
+  chapters: 22
+  int_required: 4
+done
+
+book
+  name: The Wizard's Daughter
+  description:
+    A fantasy novel about the daughter of a powerful wizard, who struggles to
+    learn his powers despite the fact that female wizards are outlawed.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: fantasy
+  fun: 4
+  chapters: 14
+  int_required: 4
+done
+
+book
+  name: Wolfrider
+  description:
+    A fantasy novel about a crafty goblin and his trusty wolf steed.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: fantasy
+  fun: 4
+  chapters: 10
+  int_required: 4
+done
+
+book
+  name: Murder in Moscow
+  description:
+    A crime novel about a detective investigating a series of murders in Soviet
+    Moscow.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: mystery
+  fun: 4
+  chapters: 12
+  int_required: 5
+done
+
+book
+  name: The Red Card
+  description:
+    A mystery novel about a series of thefts and murders - and broken hearts -
+    set in a large casino.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: mystery
+  fun: 4
+  chapters: 14
+  int_required: 6
+done
+
+book
+  name: Hunting the Hunter
+  description:
+    A crime/mystery novel about a police officer pursuing a serial killer - or
+    is it the other way around?
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: mystery
+  fun: 4
+  chapters: 12
+  int_required: 5
+done
+
+book
+  name: Bagmen of Boston
+  description:
+    This crime novel follows the day-to-day lives of several low-level gangsters
+    working in Boston.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: mystery
+  fun: 4
+  chapters: 14
+  int_required: 5
+done
+
+book
+  name: The Criphus Affair
+  description:
+    The mystery novel follows a young reporter who recovers a drug ring while
+    searching for a missing friend.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: mystery
+  fun: 4
+  chapters: 16
+  int_required: 6
+done
+
+book
+  name: Get What You Need
+  description:
+    A romance novel about a woman in love with two men - one a jock, one a nerd.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: romance
+  fun: 4
+  chapters: 10
+  int_required: 3
+done
+
+book
+  name: Think of England
+  description:
+    A romance novel about an Englishwoman who arrives in a young United States
+    in 1824.  She stays at the estate of a distant cousin, and sson finds
+    herself falling for not only a rich gentleman - but also the estate's stable
+    boy.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: romance
+  fun: 4
+  chapters: 10
+  int_required: 3
+done
+
+book
+  name: Dirty Little Secret
+  description:
+    A romance novel about a woman whose marriage is on the rocks.  She starts a
+    secretive, BDSM-laden affair with her husband's best friend - just as it
+    starts to look like their marriage might be saved.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: romance
+  fun: 4
+  chapters: 12
+  int_required: 4
+done
+
+book
+  name: Moon Kissed
+  description:
+    A romance novel about a young woman whose boyfriend is hiding a secret.  A
+    secret about what he becomes during the full moon...
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: romance
+  fun: 4
+  chapters: 10
+  int_required: 4
+done
+
+book
+  name: Going Down
+  description:
+    A romance novel about the sexual and romantic adventures of a female
+    bellhop at an upscale hotel.
+  done
+  glyph: ? white black
+  weight:  8
+  volume: 50
+
+  genre: romance
+  fun: 4
+  chapters: 8
+  int_required: 3
+done
+
+book
+  name: 50 Weeks to Live
+  description:
+    A dramatic novel about a man told he has less than a year left in his life.
+    He starts living life to its fullest, but soon finds out that's harder than
+    it sounds.  A best-seller and winner of multiple awards.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: novel
+  fun: 5
+  chapters: 14
+  int_required: 8
+done
+
+book
+  name: God Save the Queen
+  description:
+    A dramatic novel about a man hired to write stories on the royal family for
+    a British tabloid.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: novel
+  fun: 4
+  chapters: 14
+  int_required: 6
+done
+
+book
+  name: Back on the Back Fourty
+  description:
+    A novel about a man who quits his office job to become a farmer after his
+    father dies and leaves him the family farm.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: novel
+  fun: 3
+  chapters: 13
+  int_required: 3
+done
+
+book
+  name: The Mind's Eye
+  description:
+    A scientific journalism book which delves into research on the eye and how
+    our brain processes visual information.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: history
+  fun: 5
+  chapters: 12
+  int_required: 11
+done
+
+book
+  name: Not My Father's Son
+  description:
+    A humorous novel about a boy who feels like he doesn't belong in his family.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: novel
+  fun: 4
+  chapters: 13
+  int_required: 5
+done
+
+book
+  name: Wait, What?
+  description:
+    A humorous novel about a woman whose life is turned upside-down when a
+    distance relative comes to visit.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: novel
+  fun: 4
+  chapters: 12
+  int_required: 4
+done
+
+book
+  name: My Mom Thinks I'm Cool
+  description:
+    A humorous novel about a misfit kid just trying to survive middle school.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: novel
+  fun: 5
+  chapters: 8
+  int_required: 4
+done
+
+book
+  name: Psi Squadron
+  description:
+    A sci-fi book about an elite team of space marines that uses their psionic
+    powers to combat a mysterious race of insectoid aliens.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: scifi
+  fun: 4
+  chapters: 14
+  int_required: 5
+done
+
+book
+  name: Pod Seven
+  description:
+    A sci-fi book about the colonization of a distant, hostile planet.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: scifi
+  fun: 4
+  chapters: 12
+  int_required: 4
+done
+
+book
+  name: The Other Side of Light
+  description:
+    A surreal science fiction novel about the bizarre ramifications of time
+    travel.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: scifi
+  fun: 5
+  chapters: 10
+  int_required: 11
+done
+
+book
+  name: Road to Centauri
+  description:
+    A science fiction novel about an enormous spaceship, housing 20,000
+    colonists, bound for Alpha Centauri in an attempt to start a second earth.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: scifi
+  fun: 4
+  chapters: 15
+  int_required: 6
+done
+
+book
+  name: Empire of Addiction
+  description:
+    A historical account of 19th century England-China relations.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: history
+  fun: 4
+  chapters: 18
+  int_required: 10
+done
+
+book
+  name: Criminal Art
+  description:
+    A history of the draconian copyright laws of yore, supporting a theory that
+    they led to the Culture Collapse of 2034.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: history
+  fun: 5
+  chapters: 12
+  int_required: 10
+done
+
+book
+  name: A History of Secrets
+  description:
+    A history of intelligence agencies, starting with the spying used in
+    medieval Europe and Asia, and progressing through to the digital panopticons
+    of the early 21st century.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 60
+
+  genre: history
+  fun: 4
+  chapters: 18
+  int_required: 12
+done
+
+book
+  name: Business Battles
+  description:
+    A nonfiction account of various dramatic business stories, such as hostile
+    takeovers, political backstabbing, risky policy changes and more.  Despite
+    its excessive use of sensationalistic language, this book is still pretty
+    boring.
+  done
+  glyph: ? white black
+  weight: 10
+  volume: 32
+
+  genre: history
+  fun: 2
+  chapters: 16
+  int_required: 8
+done
+
+# Magazines
+# Right now they're all colored pink, regardless of any skill attached.
+# Should this change?
+
+book
+  name: Bon Appetit
+  description:
+    A popular cooking magazine, with full-color illustrations of various
+    recipes.
+  done
+  glyph: ? pink black
+  weight: 1
+  volume: 5
+
+  skill: cooking
+  cap: 2
+  high_int_bonus: 1
+  bonus_int_required: 10
+  fun: 2
+  chapters: 2
+done
+
+book
+  name: Popular Mechanics
+  description:
+    A magazine about popular technology, in publiction for a century and a half
+    when the apocalypse hit.
+  done
+  glyph: ? pink black
+  weight: 1
+  volume: 5
+
+  skill: mechanics
+  cap: 2
+  high_int_bonus: 1
+  bonus_int_required: 12
+  fun: 2
+  chapters: 3
+done
+
+book
+  name: Electronics Monthly
+  description:
+    A magazine about electronics, with articles ranging from reviews of consumer
+    products to an actual cirtcuit diagram in every issue.
+  done
+  glyph: ? pink black
+  weight: 1
+  volume: 5
+
+  skill: electronics
+  cap: 2
+  high_int_bonus: 1
+  bonus_int_required: 12
+  fun: 2
+  chapters: 3
+done
+
+book
+  name: ASCE Magazine
+  description:
+    A monthly magazine published by the American Society of Civil Engineers.  It
+    has interviews and analysis of new techniques and projects.
+  done
+  glyph: ? pink black
+  weight: 1
+  volume: 5
+
+  skill: construction
+  cap: 2
+  high_int_bonus: 1
+  bonus_int_required: 11
+  fun: 2
+  chapters: 3
+done
+
+book
+  name: Health and Medicine
+  description:
+    A magazine about medical issues targeted at the general population and
+    professionals alike.  It has some interviews and news on new developments in
+    the field of medicine.
+  done
+  glyph: ? pink black
+  weight: 1
+  volume: 5
+
+  skill: first_aid
+  cap: 2
+  high_int_bonus: 1
+  bonus_int_required: 10
+  fun: 1
+  chapters: 3
+done
+
+book
+  name: Gardener's World
+  description:
+    A magazine about gardening and home farming, with articles about various
+    techniques and brands of seeds.
+  done
+  glyph: ? pink black
+  weight: 1
+  volume: 5
+
+  skill: botany
+  cap: 2
+  high_int_bonus: 1
+  bonus_int_required: 10
+  fun: 2
+  chapters: 2
+done
+
+book
+  name: Outside Magazine
+  description:
+    A magazine about outdoor adventure.  Contains interviews, stories, and tips
+    on a wide variety of activities.
+  done
+  glyph: ? pink black
+  weight: 1
+  volume: 5
+
+  skill: survival
+  cap: 2
+  fun: 3
+  chapters: 3
+done
+
+book
+  name: People Magazine
+  description:
+    A celebrity gossip magazine.  Everyone in it has been dead for decades, of
+    course, but it's still fun to read.
+  done
+  glyph: ? pink black
+  weight: 1
+  volume: 5
+
+  fun: 2
+  chapters: 3
+done
+
+book
+  name: Reader's Digest
+  description:
+    A magazine containing a variety of stories, fiction and non-fiction alike.
+  done
+  glyph: ? pink black
+  weight: 1
+  volume: 4
+
+  fun: 2
+  chapters: 4
+  int_required: 5
+done
+
+book
+  name: The New Yorker
+  description:
+    A popular magazine, with fiction and nonfiction sorties, cultural reviews,
+    poetry, and cartoons.
+  done
+  glyph: ? pink black
+  weight: 1
+  volume: 5
+
+  fun: 2
+  chapters: 5
+  int_required: 10
+done
+
+book
+  name: Sharkhead Issue 32
+  description:
+    A comic book about Sharkhead, a wacky superhero with a shark head and a
+    human body.  In this issue, he fights The Carbotron, a monster made out of
+    living soda.
+  done
+  glyph: ? pink black
+  weight: 1
+  volume: 4
+
+  fun: 2
+  chapters: 2
+done
+
+book
+  name: Sharkhead Issue 33
+  description:
+    A comic book about Sharkhead, a wacky superhero with a shark head and a
+    human body.  This issue sees our hero battling an army of giant grashoppers.
+  done
+  glyph: ? pink black
+  weight: 1
+  volume: 4
+
+  fun: 2
+  chapters: 2
+done
+
+book
+  name: Sharkhead Issue 34
+  description:
+    A comic book about Sharkhead, a wacky superhero with a shark head and a
+    human body.  In this universally-hated issue, we follow Sharkhead as he buys
+    groceries, calls his mother, and tries to find something to watch on TV.
+  done
+  glyph: ? pink black
+  weight: 1
+  volume: 4
+
+  fun: 1
+  chapters: 2
+done
+
+# END Books
+
+# Containers
+
+container
+  name: plastic bottle
+  description:
+    A plastic bottle with a resealable top.  Very light and ideal for carrying
+    liquids.
+  done
+  glyph: ( ltcyan black
+  weight:    0
+  volume:   22
+  capacity: 20
+done
+
+container
+  name: glass bottle
+  description:
+    A glass bottle with a resealable top.  Heavier than its plastic counterpart,
+    but still a good container for carrying liquids.
+  done
+  glyph: ( cyan black
+  weight:    2
+  volume:   22
+  capacity: 20
+done
+
+container
+  name: can
+  description:
+    A sturdy aluminum can with a pull-tab top.  Any food inside has a shelf life
+    of several years!
+  done
+  glyph: ( blue black
+  weight:    1
+  volume:   20
+  capacity: 20
+done
+
+container
+  name: soda can
+  description:
+    A very thin aluminum can.
+  done
+  glyph: ( ltblue black
+  weight:  0
+  volume: 15
+  capacity: 15
+done
+
+container
+  name: plastic bag
+  description:
+    Any one of several types of plastic bags, often used to store food.
+  done
+  glyph: ( yellow black
+  weight:  0
+  volume:  1
+  capacity: 30
+done
+
+container
+  name: paper box
+  plural: paper boxes
+  description:
+    A small box made out of thin cardboard.
+  done
+  glyph: ( brown black
+  weight: 0
+  volume: 20
+  capacity: 20
+  preposition: containing
+  use_article
+done
+
+container
+  name: flower pot
+  description:
+    A large clay pot, used for growing and displaying flowers and other plants.
+  done
+  glyph: ( ltred black
+  weight: 30
+  volume: 50
+  bash:   10
+  to_hit: -2
+  capacity: 45
+  preposition: containing
+  use_article
+  flags: open_end
+done
+
+# END Containers
+
+# Corpses
+# There should really only be ONE corpse item (I guess?).  Their specific stats,
+# like weight, volume, etc., are derived from the Monster_type that the Item
+# points to.
+
+corpse
+  name: corpse
+  description:
+    A dead body.  It can be butchered into smaller pieces.
+  done
+  glyph: & dkgray black
+done
