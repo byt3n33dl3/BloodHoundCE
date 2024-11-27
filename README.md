@@ -7,7 +7,7 @@
 
 <hr />
 
-**BloodHoundCE** is a monolithic web application composed of an embedded React frontend with [Sigma.js](https://www.sigmajs.org/) and a [Go](https://go.dev/) based REST API backend. It is deployed with a [Postgresql](https://www.postgresql.org/) application database and a [Neo4j](https://neo4j.com/) graph database, and is fed by the [SharpHound](https://github.com/BloodHoundAD/SharpHound), [BreedHoundAD](https://github.com/pxcs/BreedHoundAD), and [AzureHound](https://github.com/BloodHoundAD/AzureHound) data collectors.
+**BloodHoundCE** is a monolithic web application composed of an embedded React frontend with [Sigma.js](https://www.sigmajs.org/) and a [Go](https://go.dev/) based REST API backend. It is deployed with a [Postgresql](https://www.postgresql.org/) application database and a [Neo4j](https://neo4j.com/) graph database, and is fed by the [SharpHound](https://github.com/BloodHoundAD/SharpHound), [SharpHoundAD](https://github.com/byt3n33dl3/SharpHoundAD), and [AzureHoundAD](https://github.com/byt3n33dl3/AzureHoundAD) data collectors.
 
 **BloodHoundCE** uses graph theory to reveal the hidden and often unintended relationships within an Active Directory or Azure environment. Attackers can use **BloodHoundCE** to quickly identify highly complex attack paths that would otherwise be impossible to find. Defenders can use **BloodHoundCE** to identify and eliminate those same attack paths. Both red and blue teams can use **BloodHoundCE** to better understand privileged relationships in an Active Directory or Azure environment.
 
@@ -81,12 +81,13 @@ Please check out the Contact [page](https://github.com/SpecterOps/BloodHound/wik
 
 ## Licensing from GangstaCrew
 
->- BSD-2-Clause License
+>- BSD-2-Clause License & AGPL 3.0
 
 Unless otherwise annotated by a lower-level LICENSE file or license header, all files in this repository are released
 under the `Apache-2.0` license. A full copy of the license may be found in the top-level [LICENSE](LICENSE) file.
 
 # Thanks To
 - SpecterOps
-- GangstaCrew
 - BloodHoundAD
+    - GangstaCrew
+- SPCX
