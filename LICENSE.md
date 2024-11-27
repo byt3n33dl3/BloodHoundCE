@@ -6,7 +6,7 @@ Copyright 2007 Free Software Foundation, Inc. [fsf](http://fsf.org/)
 Everyone is permitted to copy and distribute verbatim copies
 of this license document, but changing it is not allowed.
 
-## AzureHoundAD / `main`
+# BloodHoundAD
 
 The GNU General Public License is a free, copyleft license for
 software and other kinds of works.
