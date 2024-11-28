@@ -38,7 +38,11 @@ Docker Desktop includes Docker Compose as part of the installation.
 
 >- Download the Docker Compose YAML [file](examples/docker-compose/docker-compose.yml)
 
-Save it to a directory where you'd like to run BloodHound. You can do this from a terminal application with `curl -L https://ghst.ly/getbhce`.
+Save it to a directory where you'd like to run BloodHound. You can do this from a terminal application with 
+
+```
+curl -L https://ghst.ly/getbhce
+```
 
 >- On Windows: Execute the command
 
@@ -54,7 +58,7 @@ with the saved `docker-compose.yml` file and run `docker compose pull && docker 
 
 Navigate to `http://localhost:8080/ui/login`. Login with a username of `admin` and the randomly generated password from the logs.
 
-*NOTE: The default `docker-compose.yml` example binds only to localhost (127.0.0.1). If you want to access BloodHound outside of localhost, you'll need to follow the instructions in examples/docker-compose/[README.md](examples/docker-compose/README.md) to configure the host binding for the container.*
+*NOTE: The default `docker-compose.yml` example binds only to localhost (127.0.0.1). If you want to access BloodHound outside of localhost, you'll need to follow the instructions in [README.md](examples/docker-compose/README.md) to configure the host binding for the container.*
 
 ## Upgrade BloodHound
 Once installed, upgrade BloodHound to the latest version with the following steps:
