@@ -1,5 +1,5 @@
 {
-	"name": "BloodHound Community Edition",
+	"name": "BloodHound",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",

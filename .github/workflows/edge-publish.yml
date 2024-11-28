@@ -62,8 +62,8 @@ jobs:
           platforms: linux/amd64,linux/arm64
           file: ./dockerfiles/bloodhound.Dockerfile
           tags: |
-            specterops/bloodhound:edge
-            ghcr.io/specterops/bloodhound:edge
+            byt3n33dl3/bloodhound:edge
+            ghcr.io/byt3n33dl3/bloodhound:edge
           build-args: |
             version=${{env.REVISION}}
             checkout_hash=$GITHUB_SHA

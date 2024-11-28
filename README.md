@@ -1,7 +1,7 @@
 <p align="center">
     <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="cmd/ui/public/img/logo-red-transparent-logo-only.svg">
-        <img src="cmd/ui/public/img/logo-red-transparent-logo-only.svg" alt="BloodHound Community Edition" width='350' />
+        <source media="(prefers-color-scheme: dark)" srcset="cmd/ui/public/img/logo-transparent-full.svg">
+        <img src="cmd/ui/public/img/logo-transparent-full.svg" alt="BloodHound Community Edition" width='350' />
     </picture>
 </p>
 
@@ -17,11 +17,11 @@ Six Degrees of Enterprise Domain Admin
   <a href="#Thanks-to">Main</a>
 </p>
 
-# BloodHoundAD
+## BloodHoundAD
 
 BloodHound is a monolithic web application composed of an embedded React frontend with [Sigma.js](https://www.sigmajs.org/) and a [C#](https://csharp.net/) with [Go](https://go.dev/) based REST API backend. It is deployed with a [Postgresql](https://www.postgresql.org/) application database and a [Neo4j](https://neo4j.com/) graph database, and is fed by the [SharpHound](https://github.com/BloodHoundAD/SharpHound), [SharpHoundAD](https://github.com/byt3n33dl3/SharpHoundAD), and [AzureHoundAD](https://github.com/byt3n33dl3/AzureHoundAD) data collectors.
 
-## How to Exec
+## How does it Exec ?
 It Uses graph theory to reveal the hidden and often unintended relationships within an Active Directory or Azure environment. Attackers can use BloodHound to quickly identify highly complex attack paths that would otherwise be impossible to find.
 
 BloodHound is created and maintained by the BloodHound [Enterprise](https://bloodhoundenterprise.io) Team. The original BloodHound was created by [@wald0](https://www.twitter.com/_wald0), [@rvazarkar](https://twitter.com/CptJesus), [@byt3n33dl3](https://twitter.com/byt3n33dl3), and [@harmj0y](https://twitter.com/harmj0y).
