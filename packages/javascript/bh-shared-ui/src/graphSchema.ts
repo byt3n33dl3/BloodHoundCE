@@ -84,6 +84,7 @@ export enum ActiveDirectoryRelationshipKind {
     Contains = 'Contains',
     GPLink = 'GPLink',
     AllowedToDelegate = 'AllowedToDelegate',
+    CoerceToTGT = 'CoerceToTGT',
     GetChanges = 'GetChanges',
     GetChangesAll = 'GetChangesAll',
     GetChangesInFilteredSet = 'GetChangesInFilteredSet',
@@ -105,7 +106,7 @@ export enum ActiveDirectoryRelationshipKind {
     AddKeyCredentialLink = 'AddKeyCredentialLink',
     LocalToComputer = 'LocalToComputer',
     MemberOfLocalGroup = 'MemberOfLocalGroup',
-    RemoteInteractiveLogonPrivilege = 'RemoteInteractiveLogonPrivilege',
+    RemoteInteractiveLogonRight = 'RemoteInteractiveLogonRight',
     SyncLAPSPassword = 'SyncLAPSPassword',
     WriteAccountRestrictions = 'WriteAccountRestrictions',
     WriteGPLink = 'WriteGPLink',
@@ -169,6 +170,8 @@ export function ActiveDirectoryRelationshipKindToDisplay(value: ActiveDirectoryR
             return 'GPLink';
         case ActiveDirectoryRelationshipKind.AllowedToDelegate:
             return 'AllowedToDelegate';
+        case ActiveDirectoryRelationshipKind.CoerceToTGT:
+            return 'CoerceToTGT';
         case ActiveDirectoryRelationshipKind.GetChanges:
             return 'GetChanges';
         case ActiveDirectoryRelationshipKind.GetChangesAll:
@@ -211,8 +214,8 @@ export function ActiveDirectoryRelationshipKindToDisplay(value: ActiveDirectoryR
             return 'LocalToComputer';
         case ActiveDirectoryRelationshipKind.MemberOfLocalGroup:
             return 'MemberOfLocalGroup';
-        case ActiveDirectoryRelationshipKind.RemoteInteractiveLogonPrivilege:
-            return 'RemoteInteractiveLogonPrivilege';
+        case ActiveDirectoryRelationshipKind.RemoteInteractiveLogonRight:
+            return 'RemoteInteractiveLogonRight';
         case ActiveDirectoryRelationshipKind.SyncLAPSPassword:
             return 'SyncLAPSPassword';
         case ActiveDirectoryRelationshipKind.WriteAccountRestrictions:
@@ -363,6 +366,7 @@ export enum ActiveDirectoryKindProperties {
     SchemaVersion = 'schemaversion',
     RequiresManagerApproval = 'requiresmanagerapproval',
     AuthenticationEnabled = 'authenticationenabled',
+    SchannelAuthenticationEnabled = 'schannelauthenticationenabled',
     EnrolleeSuppliesSubject = 'enrolleesuppliessubject',
     CertificateApplicationPolicy = 'certificateapplicationpolicy',
     CertificateNameFlag = 'certificatenameflag',
@@ -529,6 +533,8 @@ export function ActiveDirectoryKindPropertiesToDisplay(value: ActiveDirectoryKin
             return 'Requires Manager Approval';
         case ActiveDirectoryKindProperties.AuthenticationEnabled:
             return 'Authentication Enabled';
+        case ActiveDirectoryKindProperties.SchannelAuthenticationEnabled:
+            return 'Schannel Authentication Enabled';
         case ActiveDirectoryKindProperties.EnrolleeSuppliesSubject:
             return 'Enrollee Supplies Subject';
         case ActiveDirectoryKindProperties.CertificateApplicationPolicy:
@@ -622,6 +628,7 @@ export function ActiveDirectoryPathfindingEdges(): ActiveDirectoryRelationshipKi
         ActiveDirectoryRelationshipKind.Contains,
         ActiveDirectoryRelationshipKind.GPLink,
         ActiveDirectoryRelationshipKind.AllowedToDelegate,
+        ActiveDirectoryRelationshipKind.CoerceToTGT,
         ActiveDirectoryRelationshipKind.TrustedBy,
         ActiveDirectoryRelationshipKind.AllowedToAct,
         ActiveDirectoryRelationshipKind.AdminTo,

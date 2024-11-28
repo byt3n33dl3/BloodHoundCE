@@ -17,6 +17,7 @@
 package ein
 
 import (
+	"strconv"
 	"strings"
 
 	"github.com/specterops/bloodhound/analysis"
@@ -40,10 +41,63 @@ func ConvertObjectToNode(item IngestBase, itemType graph.Kind) IngestibleNode {
 		itemProps = make(map[string]any)
 	}
 
+	if itemType == ad.Domain {
+		convertInvalidDomainProperties(itemProps)
+	}
+
 	return IngestibleNode{
 		ObjectID:    item.ObjectIdentifier,
 		PropertyMap: itemProps,
 		Label:       itemType,
+	}
+}
+
+func convertInvalidDomainProperties(itemProps map[string]any) {
+	convertProperty(itemProps, "machineaccountquota", stringToInt)
+	convertProperty(itemProps, "minpwdlength", stringToInt)
+	convertProperty(itemProps, "pwdproperties", stringToInt)
+	convertProperty(itemProps, "pwdhistorylength", stringToInt)
+	convertProperty(itemProps, "lockoutthreshold", stringToInt)
+	convertProperty(itemProps, "expirepasswordsonsmartcardonlyaccounts", stringToBool)
+}
+
+func convertProperty(itemProps map[string]any, keyName string, conversionFunction func(map[string]any, string)) {
+	conversionFunction(itemProps, keyName)
+}
+
+func stringToBool(itemProps map[string]any, keyName string) {
+	if rawProperty, ok := itemProps[keyName]; ok {
+		switch converted := rawProperty.(type) {
+		case string:
+			if final, err := strconv.ParseBool(converted); err != nil {
+				delete(itemProps, keyName)
+			} else {
+				itemProps[keyName] = final
+			}
+		case bool:
+		//pass
+		default:
+			log.Debugf("Removing %s with type %T", converted)
+			delete(itemProps, keyName)
+		}
+	}
+}
+
+func stringToInt(itemProps map[string]any, keyName string) {
+	if rawProperty, ok := itemProps[keyName]; ok {
+		switch converted := rawProperty.(type) {
+		case string:
+			if final, err := strconv.Atoi(converted); err != nil {
+				delete(itemProps, keyName)
+			} else {
+				itemProps[keyName] = final
+			}
+		case int:
+		//pass
+		default:
+			log.Debugf("Removing %s with type %T", keyName, converted)
+			delete(itemProps, keyName)
+		}
 	}
 }
 
@@ -235,6 +289,31 @@ func ParseUserMiscData(user User) []IngestibleRelationship {
 		))
 	}
 
+	// CoerceToTGT / unconstrained delegation
+	var (
+		userProps        = graph.AsProperties(user.Properties)
+		uncondel, _      = userProps.GetOrDefault(ad.UnconstrainedDelegation.String(), user.UnconstrainedDelegation).Bool() // SH v2.5.7 and earlier have unconstraineddelegation under 'Properties' only
+		domainsid, _     = userProps.GetOrDefault(ad.DomainSID.String(), user.DomainSID).String()                           // SH v2.5.7 and earlier have domainsid under 'Properties' only
+		validCoerceToTGT = uncondel && domainsid != ""
+	)
+
+	if validCoerceToTGT {
+		data = append(data, NewIngestibleRelationship(
+			IngestibleSource{
+				Source:     user.ObjectIdentifier,
+				SourceType: ad.User,
+			},
+			IngestibleTarget{
+				Target:     domainsid,
+				TargetType: ad.Domain,
+			},
+			IngestibleRel{
+				RelProps: map[string]any{"isacl": false},
+				RelType:  ad.CoerceToTGT,
+			},
+		))
+	}
+
 	return data
 }
 
@@ -284,6 +363,22 @@ func ParseGpLinks(links []GPLink, itemIdentifier string, itemType graph.Kind) []
 func ParseDomainTrusts(domain Domain) ParsedDomainTrustData {
 	parsedData := ParsedDomainTrustData{}
 	for _, trust := range domain.Trusts {
+		var finalTrustAttributes int
+		switch converted := trust.TrustAttributes.(type) {
+		case string:
+			if i, err := strconv.Atoi(converted); err != nil {
+				log.Errorf("Error converting trust attributes %s to int", converted)
+				finalTrustAttributes = 0
+			} else {
+				finalTrustAttributes = i
+			}
+		case int:
+			finalTrustAttributes = converted
+		default:
+			log.Errorf("Error converting trust attributes %s to int", converted)
+			finalTrustAttributes = 0
+		}
+
 		parsedData.ExtraNodeProps = append(parsedData.ExtraNodeProps, IngestibleNode{
 			PropertyMap: map[string]any{"name": trust.TargetDomainName},
 			ObjectID:    trust.TargetDomainSid,
@@ -306,7 +401,7 @@ func ParseDomainTrusts(domain Domain) ParsedDomainTrustData {
 						"isacl":                false,
 						"sidfiltering":         trust.SidFilteringEnabled,
 						"tgtdelegationenabled": trust.TGTDelegationEnabled,
-						"trustattributes":      trust.TrustAttributes,
+						"trustattributes":      finalTrustAttributes,
 						"trusttype":            trust.TrustType,
 						"transitive":           trust.IsTransitive},
 					RelType: ad.TrustedBy,
@@ -329,7 +424,7 @@ func ParseDomainTrusts(domain Domain) ParsedDomainTrustData {
 						"isacl":                false,
 						"sidfiltering":         trust.SidFilteringEnabled,
 						"tgtdelegationenabled": trust.TGTDelegationEnabled,
-						"trustattributes":      trust.TrustAttributes,
+						"trustattributes":      finalTrustAttributes,
 						"trusttype":            trust.TrustType,
 						"transitive":           trust.IsTransitive},
 					RelType: ad.TrustedBy,
@@ -341,7 +436,7 @@ func ParseDomainTrusts(domain Domain) ParsedDomainTrustData {
 	return parsedData
 }
 
-// ParseComputerMiscData parses AllowedToDelegate, AllowedToAct, HasSIDHistory,DumpSMSAPassword,DCFor and Sessions
+// ParseComputerMiscData parses AllowedToDelegate, AllowedToAct, HasSIDHistory, DumpSMSAPassword, DCFor, Sessions, and CoerceToTGT
 func ParseComputerMiscData(computer Computer) []IngestibleRelationship {
 	relationships := make([]IngestibleRelationship, 0)
 	for _, target := range computer.AllowedToDelegate {
@@ -484,6 +579,30 @@ func ParseComputerMiscData(computer Computer) []IngestibleRelationship {
 				RelType:  ad.DCFor,
 			},
 		))
+	} else { // We do not want CoerceToTGT edges from DCs
+		var (
+			computerProps    = graph.AsProperties(computer.Properties)
+			uncondel, _      = computerProps.GetOrDefault(ad.UnconstrainedDelegation.String(), computer.UnconstrainedDelegation).Bool() // SH v2.5.7 and earlier have unconstraineddelegation under 'Properties' only
+			domainsid, _     = computerProps.GetOrDefault(ad.DomainSID.String(), computer.DomainSID).String()                           // SH schema version 5 and earlier have domainsid under 'Properties' only
+			validCoerceToTGT = uncondel && domainsid != ""
+		)
+
+		if validCoerceToTGT {
+			relationships = append(relationships, NewIngestibleRelationship(
+				IngestibleSource{
+					Source:     computer.ObjectIdentifier,
+					SourceType: ad.Computer,
+				},
+				IngestibleTarget{
+					Target:     domainsid,
+					TargetType: ad.Domain,
+				},
+				IngestibleRel{
+					RelProps: map[string]any{"isacl": false},
+					RelType:  ad.CoerceToTGT,
+				},
+			))
+		}
 	}
 
 	return relationships

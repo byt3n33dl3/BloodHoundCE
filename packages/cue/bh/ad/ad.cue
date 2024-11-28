@@ -476,6 +476,13 @@ AuthenticationEnabled: types.#StringEnum & {
 	representation: "authenticationenabled"
 }
 
+SchannelAuthenticationEnabled: types.#StringEnum & {
+	symbol: "SchannelAuthenticationEnabled"
+	schema: "ad"
+	name: "Schannel Authentication Enabled"
+	representation: "schannelauthenticationenabled"
+}
+
 EnrolleeSuppliesSubject: types.#StringEnum & {
 	symbol: "EnrolleeSuppliesSubject"
 	schema: "ad"
@@ -792,6 +799,7 @@ Properties: [
 	SchemaVersion,
 	RequiresManagerApproval,
 	AuthenticationEnabled,
+	SchannelAuthenticationEnabled,
 	EnrolleeSuppliesSubject,
 	CertificateApplicationPolicy,
 	CertificateNameFlag,
@@ -1010,6 +1018,11 @@ AllowedToDelegate: types.#Kind & {
 	schema: "active_directory"
 }
 
+CoerceToTGT: types.#Kind & {
+	symbol: "CoerceToTGT"
+	schema: "active_directory"
+}
+
 GetChanges: types.#Kind & {
 	symbol: "GetChanges"
 	schema: "active_directory"
@@ -1100,8 +1113,8 @@ AddKeyCredentialLink: types.#Kind & {
 	schema: "active_directory"
 }
 
-RemoteInteractiveLogonPrivilege: types.#Kind & {
-	symbol: "RemoteInteractiveLogonPrivilege"
+RemoteInteractiveLogonRight: types.#Kind & {
+	symbol: "RemoteInteractiveLogonRight"
 	schema: "active_directory"
 }
 
@@ -1300,6 +1313,7 @@ RelationshipKinds: [
 	Contains,
 	GPLink,
 	AllowedToDelegate,
+	CoerceToTGT,
 	GetChanges,
 	GetChangesAll,
 	GetChangesInFilteredSet,
@@ -1321,7 +1335,7 @@ RelationshipKinds: [
 	AddKeyCredentialLink,
 	LocalToComputer,
 	MemberOfLocalGroup,
-	RemoteInteractiveLogonPrivilege,
+	RemoteInteractiveLogonRight,
 	SyncLAPSPassword,
 	WriteAccountRestrictions,
 	WriteGPLink,
@@ -1403,6 +1417,7 @@ PathfindingRelationships: [
 	Contains,
 	GPLink,
 	AllowedToDelegate,
+	CoerceToTGT,
 	TrustedBy,
 	AllowedToAct,
 	AdminTo,

@@ -54,6 +54,7 @@ const (
 	ErrorResponseDetailsOTPInvalid                  = "one time password is invalid"
 	ErrorResponseDetailsResourceNotFound            = "resource not found"
 	ErrorResponseDetailsToBeforeFrom                = "to time cannot be before from time"
+	ErrorResponseDetailsTimeRangeInvalid            = "time range provided is invalid"
 	ErrorResponseDetailsToMalformed                 = "to parameter should be formatted as RFC3339 i.e 2021-04-21T07:20:50.52Z"
 	ErrorResponseMultipleCollectionScopesProvided   = "may only scope collection by exactly one of OU, Domain, or All Trusted Domains"
 	ErrorResponsePayloadUnmarshalError              = "error unmarshalling JSON payload"
@@ -64,6 +65,7 @@ const (
 	ErrorResponseAGDuplicateName                    = "asset group name must be unique"
 	ErrorResponseAGDuplicateTag                     = "asset group tag must be unique"
 	ErrorResponseDetailsUniqueViolation             = "unique constraint was violated"
+	ErrorResponseDetailsNotImplemented              = "All good things to those who wait. Not implemented."
 
 	FmtErrorResponseDetailsBadQueryParameters = "there are errors in the query parameters: %v"
 )

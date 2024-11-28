@@ -25,13 +25,17 @@ import {
     CreateAuthTokenResponse,
     DatapipeStatusResponse,
     EndFileIngestResponse,
+    GetConfigurationResponse,
     ListAuthTokensResponse,
     ListFileIngestJobsResponse,
     ListFileTypesForIngestResponse,
     PaginatedResponse,
+    PostureFindingTrendsResponse,
+    PostureHistoryResponse,
     PostureResponse,
     SavedQuery,
     StartFileIngestResponse,
+    UpdateConfigurationResponse,
     UploadFileToIngestResponse,
 } from './responses';
 import * as types from './types';
@@ -159,6 +163,7 @@ class BHEAPIClient {
         this.baseClient.get<AssetGroupResponse>('/api/v2/asset-groups', options);
 
     /* analysis */
+
     getComboTreeGraph = (domainId: string, nodeId: string | null = null, options?: types.RequestOptions) =>
         this.baseClient.get(
             `/api/v2/meta-trees/${domainId}`,
@@ -268,6 +273,49 @@ class BHEAPIClient {
             Object.assign(
                 {
                     params: params,
+                },
+                options
+            )
+        );
+    };
+
+    getPostureFindingTrends = (
+        environmentId: string,
+        start?: Date,
+        end?: Date,
+        sort_by?: string,
+        options?: types.RequestOptions
+    ) => {
+        return this.baseClient.get<PostureFindingTrendsResponse>(
+            `/api/v2/domains/${environmentId}/finding-trends`,
+            Object.assign(
+                {
+                    params: {
+                        start: start?.toISOString(),
+                        end: end?.toISOString(),
+                        sort_by,
+                    },
+                },
+                options
+            )
+        );
+    };
+
+    getPostureHistory = (
+        environmentId: string,
+        dataType: string,
+        start?: Date,
+        end?: Date,
+        options?: types.RequestOptions
+    ) => {
+        return this.baseClient.get<PostureHistoryResponse>(
+            `/api/v2/domains/${environmentId}/posture-history/${dataType}`,
+            Object.assign(
+                {
+                    params: {
+                        start: start?.toISOString(),
+                        end: end?.toISOString(),
+                    },
                 },
                 options
             )
@@ -486,12 +534,14 @@ class BHEAPIClient {
         skip: number,
         limit: number,
         filterAccepted?: boolean,
+        sortBy?: string,
         options?: types.RequestOptions
     ) => {
         const params: types.RiskDetailsRequest = {
             finding: finding,
             skip: skip,
             limit: limit,
+            sort_by: sortBy,
         };
 
         if (typeof filterAccepted === 'boolean') params.Accepted = `eq:${filterAccepted}`;
@@ -592,35 +642,26 @@ class BHEAPIClient {
     getSAMLProvider = (samlProviderId: string, options?: types.RequestOptions) =>
         this.baseClient.get(`/api/v2/saml/providers/${samlProviderId}`, options);
 
-    createSAMLProvider = (
-        data: {
-            name: string;
-            displayName: string;
-            signingCertificate: string;
-            issuerUri: string;
-            singleSignOnUri: string;
-            principalAttributeMappings: string[];
-        },
-        options?: types.RequestOptions
-    ) =>
-        this.baseClient.post(
-            `/api/v2/saml`,
-            {
-                name: data.name,
-                display_name: data.displayName,
-                signing_certificate: data.signingCertificate,
-                issuer_uri: data.issuerUri,
-                single_signon_uri: data.singleSignOnUri,
-                principal_attribute_mappings: data.principalAttributeMappings,
-            },
-            options
-        );
-
     createSAMLProviderFromFile = (data: { name: string; metadata: File }, options?: types.RequestOptions) => {
         const formData = new FormData();
         formData.append('name', data.name);
         formData.append('metadata', data.metadata);
         return this.baseClient.post(`/api/v2/saml/providers`, formData, options);
+    };
+
+    updateSAMLProviderFromFile = (
+        ssoProviderId: types.SSOProvider['id'],
+        data: { name?: string; metadata?: File },
+        options?: types.RequestOptions
+    ) => {
+        const formData = new FormData();
+        if (data.name) {
+            formData.append('name', data.name);
+        }
+        if (data.metadata) {
+            formData.append('metadata', data.metadata);
+        }
+        return this.baseClient.patch(`/api/v2/sso-providers/${ssoProviderId}`, formData, options);
     };
 
     validateSAMLProvider = (
@@ -647,8 +688,20 @@ class BHEAPIClient {
             options
         );
 
-    deleteSAMLProvider = (SAMLProviderId: string, options?: types.RequestOptions) =>
-        this.baseClient.delete(`/api/v2/saml/providers/${SAMLProviderId}`, options);
+    getSAMLProviderSigningCertificate = (ssoProviderId: types.SSOProvider['id'], options?: types.RequestOptions) =>
+        this.baseClient.get(`/api/v2/sso-providers/${ssoProviderId}/signing-certificate`, options);
+
+    deleteSSOProvider = (ssoProviderId: types.SSOProvider['id'], options?: types.RequestOptions) =>
+        this.baseClient.delete(`/api/v2/sso-providers/${ssoProviderId}`, options);
+
+    createOIDCProvider = (oidcProvider: types.CreateOIDCProviderRequest) =>
+        this.baseClient.post(`/api/v2/sso-providers/oidc`, oidcProvider);
+
+    updateOIDCProvider = (ssoProviderId: types.SSOProvider['id'], oidcProvider: types.UpdateOIDCProviderRequest) =>
+        this.baseClient.patch(`/api/v2/sso-providers/${ssoProviderId}`, oidcProvider);
+
+    listSSOProviders = (options?: types.RequestOptions) =>
+        this.baseClient.get<types.ListSSOProvidersResponse>(`/api/v2/sso-providers`, options);
 
     permissionList = (options?: types.RequestOptions) => this.baseClient.get('/api/v2/permissions', options);
 
@@ -686,24 +739,13 @@ class BHEAPIClient {
     deleteUserToken = (tokenId: string, options?: types.RequestOptions) =>
         this.baseClient.delete(`/api/v2/tokens/${tokenId}`, options);
 
-    listUsers = (options?: types.RequestOptions) => this.baseClient.get('/api/v2/bloodhound-users', options);
+    listUsers = (options?: types.RequestOptions) =>
+        this.baseClient.get<types.ListUsersResponse>('/api/v2/bloodhound-users', options);
 
     getUser = (userId: string, options?: types.RequestOptions) =>
         this.baseClient.get(`/api/v2/bloodhound-users/${userId}`, options);
 
-    createUser = (
-        user: {
-            firstName: string;
-            lastName: string;
-            emailAddress: string;
-            principal: string;
-            roles: number[];
-            SAMLProviderId?: string;
-            password?: string;
-            needsPasswordReset?: boolean;
-        },
-        options?: types.RequestOptions
-    ) =>
+    createUser = (user: types.CreateUserRequest, options?: types.RequestOptions) =>
         this.baseClient.post(
             '/api/v2/bloodhound-users',
             {
@@ -712,7 +754,7 @@ class BHEAPIClient {
                 email_address: user.emailAddress,
                 principal: user.principal,
                 roles: user.roles,
-                saml_provider_id: user.SAMLProviderId,
+                sso_provider_id: user.SSOProviderId,
                 secret: user.password,
                 needs_password_reset: user.needsPasswordReset,
             },
@@ -728,7 +770,7 @@ class BHEAPIClient {
                 email_address: user.emailAddress,
                 principal: user.principal,
                 roles: user.roles,
-                saml_provider_id: user.SAMLProviderId,
+                sso_provider_id: user.SSOProviderId,
                 is_disabled: user.is_disabled,
             },
             options
@@ -2317,6 +2359,13 @@ class BHEAPIClient {
     /* remote assets */
     getRemoteAsset = (assetPath: string, options?: types.RequestOptions) =>
         this.baseClient.get(`/api/v2/assets/${assetPath}`, options);
+
+    /* configuration */
+    getConfiguration = (options?: types.RequestOptions) =>
+        this.baseClient.get<GetConfigurationResponse>('/api/v2/config', options);
+
+    updateConfiguration = (payload: types.UpdateConfigurationRequest, options?: types.RequestOptions) =>
+        this.baseClient.put<UpdateConfigurationResponse>('/api/v2/config', payload, options);
 }
 
 export default BHEAPIClient;

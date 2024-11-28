@@ -92,6 +92,7 @@ const (
 	Text                     DataType = "text"
 	TextArray                DataType = "text[]"
 	JSONB                    DataType = "jsonb"
+	JSONBArray               DataType = "jsonb[]"
 	Date                     DataType = "date"
 	TimeWithTimeZone         DataType = "time with time zone"
 	TimeWithoutTimeZone      DataType = "time without time zone"
@@ -271,10 +272,10 @@ var CompositeTypes = []DataType{NodeComposite, NodeCompositeArray, EdgeComposite
 func NegotiateValue(value any) (any, error) {
 	switch typedValue := value.(type) {
 	case graph.ID:
-		return typedValue.Uint32(), nil
+		return typedValue.Uint64(), nil
 
 	case []graph.ID:
-		return graph.IDsToUint32Slice(typedValue), nil
+		return graph.IDsToUint64Slice(typedValue), nil
 
 	default:
 		return value, nil
@@ -284,7 +285,7 @@ func NegotiateValue(value any) (any, error) {
 func ValueToDataType(value any) (DataType, error) {
 	switch typedValue := value.(type) {
 	case time.Time:
-		if typedValue.Location() != nil {
+		if typedValue.Location() != nil && typedValue.Location().String() != time.Local.String() {
 			return TimestampWithTimeZone, nil
 		}
 
@@ -293,29 +294,35 @@ func ValueToDataType(value any) (DataType, error) {
 	case time.Duration:
 		return Interval, nil
 
-	case int8, int16:
+	// * uint8 is here since it can't fit in a signed byte and therefore must coerce into a higher sized type
+	case uint8, int8, int16:
 		return Int2, nil
 
-	case []int8, []int16:
+	// * uint8 is here since it can't fit in a signed byte and therefore must coerce into a higher sized type
+	case []uint8, []int8, []int16:
 		return Int2Array, nil
 
-	case int32, graph.ID:
+	// * uint16 is here since it can't fit in a signed 16-bit value and therefore must coerce into a higher sized type
+	case uint16, int32:
 		return Int4, nil
 
-	case []int32, []graph.ID:
+	// * uint16 is here since it can't fit in a signed 16-bit value and therefore must coerce into a higher sized type
+	case []uint16, []int32:
 		return Int4Array, nil
 
-	case int, int64:
+	// * uint32 is here since it can't fit in a signed 16-bit value and therefore must coerce into a higher sized type
+	// * uint is here because it is architecture dependent but expecting it to be an unsigned value between 32-bits and
+	//   64-bits is fine.
+	// * int is here for the same reasons as uint
+	case uint32, uint, uint64, int, int64, graph.ID:
 		return Int8, nil
 
-	case []int, []int64:
+	// * uint32 is here since it can't fit in a signed 16-bit value and therefore must coerce into a higher sized type
+	// * uint is here because it is architecture dependent but expecting it to be an unsigned value between 32-bits and
+	//   64-bits is fine.
+	// * int is here for the same reasons as uint
+	case []uint32, []uint, []uint64, []int, []int64, []graph.ID:
 		return Int8Array, nil
-
-	case uint, uint8, uint16, uint32:
-		return Int8, nil
-
-	case uint64:
-		return UnknownDataType, fmt.Errorf("unsigned 64 bit integer values are not supported as pgsql data types")
 
 	case float32:
 		return Float4, nil

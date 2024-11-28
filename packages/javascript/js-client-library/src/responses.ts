@@ -14,6 +14,8 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
+import { ConfigurationPayload } from './utils/config';
+
 export type BasicResponse<T> = {
     data: T;
 };
@@ -97,6 +99,29 @@ type PostureStat = TimestampFields & {
 };
 
 export type PostureResponse = PaginatedResponse<PostureStat[]>;
+
+type PostureFindingTrend = {
+    environment_id: string;
+    finding: string;
+    finding_count_start: number;
+    finding_count_end: number;
+    composite_risk: number;
+};
+
+export type PostureFindingTrendsResponse = TimeWindowedResponse<{
+    findings: PostureFindingTrend[];
+    total_finding_count_start: number;
+    total_finding_count_end: number;
+}>;
+
+export type PostureHistoryData = {
+    date: string;
+    value: number;
+};
+
+export type PostureHistoryResponse = TimeWindowedResponse<PostureHistoryData[]> & {
+    data_type: string;
+};
 
 type DatapipeStatus = {
     status: 'idle' | 'ingesting' | 'analyzing' | 'purging';
@@ -188,3 +213,14 @@ export type StartFileIngestResponse = BasicResponse<FileIngestJob>;
 export type UploadFileToIngestResponse = null;
 
 export type EndFileIngestResponse = null;
+
+export type ConfigurationWithMetadata<T> = TimestampFields &
+    T & {
+        name: string;
+        description: string;
+        id: number;
+    };
+
+export type GetConfigurationResponse = BasicResponse<ConfigurationWithMetadata<ConfigurationPayload>[]>;
+
+export type UpdateConfigurationResponse = BasicResponse<ConfigurationPayload>;

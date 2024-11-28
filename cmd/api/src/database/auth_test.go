@@ -31,6 +31,7 @@ import (
 	"github.com/specterops/bloodhound/src/test/integration"
 	"github.com/specterops/bloodhound/src/utils/test"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 const (
@@ -299,62 +300,68 @@ func TestDatabase_CreateGetDeleteAuthSecret(t *testing.T) {
 
 func TestDatabase_CreateUpdateDeleteSAMLProvider(t *testing.T) {
 	var (
-		ctx          = context.Background()
-		dbInst, user = initAndCreateUser(t)
-
-		samlProvider = model.SAMLProvider{
-			Name:            "provider",
-			DisplayName:     "provider name",
-			IssuerURI:       "https://idp.example.com/idp.xml",
-			SingleSignOnURI: "https://idp.example.com/sso",
-		}
-
+		ctx             = context.Background()
+		dbInst, user    = initAndCreateUser(t)
+		samlProvider    model.SAMLProvider
 		newSAMLProvider model.SAMLProvider
+		updatedUser     model.User
 		err             error
 	)
+	// Initialize the SAMLProvider without setting SSOProviderID
+	samlProvider = model.SAMLProvider{
+		Name:            "provider",
+		DisplayName:     "provider name",
+		IssuerURI:       "https://idp.example.com/idp.xml",
+		SingleSignOnURI: "https://idp.example.com/sso",
+	}
 
 	if newSAMLProvider, err = dbInst.CreateSAMLIdentityProvider(ctx, samlProvider); err != nil {
 		t.Fatalf("Failed to create SAML provider: %v", err)
 	} else if err = test.VerifyAuditLogs(dbInst, model.AuditLogActionCreateSAMLIdentityProvider, "saml_name", newSAMLProvider.Name); err != nil {
 		t.Fatalf("Failed to validate CreateSAMLIdentityProvider audit logs:\n%v", err)
 	} else {
-		user.SAMLProviderID = null.Int32From(newSAMLProvider.ID)
-
-		if err := dbInst.UpdateUser(ctx, user); err != nil {
+		user.SSOProviderID = newSAMLProvider.SSOProviderID
+		if err = dbInst.UpdateUser(ctx, user); err != nil {
 			t.Fatalf("Failed to update user: %v", err)
-		} else if updatedUser, err := dbInst.GetUser(ctx, user.ID); err != nil {
+		} else if updatedUser, err = dbInst.GetUser(ctx, user.ID); err != nil {
 			t.Fatalf("Failed to fetch updated user: %v", err)
-		} else if updatedUser.SAMLProvider == nil {
+		} else if updatedUser.SSOProvider == nil {
 			t.Fatalf("Updated user does not have a SAMLProvider set when it should")
-		} else if updatedUser.SAMLProvider.ID != newSAMLProvider.ID {
-			t.Fatalf("Updated user has SAMLProvider ID %d when %d was expected", updatedUser.SAMLProvider.ID, newSAMLProvider.ID)
-		} else if updatedUser.SAMLProvider.IssuerURI != newSAMLProvider.IssuerURI {
-			t.Fatalf("Updated user has SAMLProvider URL %s when %s was expected", updatedUser.SAMLProvider.IssuerURI, newSAMLProvider.IssuerURI)
+		} else if updatedUser.SSOProvider.ID != newSAMLProvider.SSOProviderID.Int32 {
+			t.Fatalf("Updated user has SSOProvider ID %d when %v was expected", updatedUser.SSOProvider.ID, newSAMLProvider.SSOProviderID)
+		} else if updatedUser.SSOProvider.SAMLProvider.IssuerURI != newSAMLProvider.IssuerURI {
+			t.Fatalf("Updated user has SAMLProvider URL %s when %s was expected", updatedUser.SSOProvider.SAMLProvider.IssuerURI, newSAMLProvider.IssuerURI)
+		} else {
+			updatedSSOProvider := model.SSOProvider{
+				Name: "updated provider",
+				Type: model.SessionAuthProviderSAML,
+				SAMLProvider: &model.SAMLProvider{
+					Serial: model.Serial{
+						ID: newSAMLProvider.ID,
+					},
+					Name:            "updated provider",
+					DisplayName:     newSAMLProvider.DisplayName,
+					IssuerURI:       newSAMLProvider.IssuerURI,
+					SingleSignOnURI: newSAMLProvider.SingleSignOnURI,
+					SSOProviderID:   newSAMLProvider.SSOProviderID,
+				},
+			}
+
+			if _, err = dbInst.UpdateSAMLIdentityProvider(ctx, updatedSSOProvider); err != nil {
+				t.Fatalf("Failed to update SAML provider: %v", err)
+			} else if err = test.VerifyAuditLogs(dbInst, model.AuditLogActionUpdateSAMLIdentityProvider, "saml_name", "updated provider"); err != nil {
+				t.Fatalf("Failed to validate UpdateSAMLIdentityProvider audit logs:\n%v", err)
+			} else {
+				user.SSOProviderID = null.Int32{}
+				if err = dbInst.UpdateUser(ctx, user); err != nil {
+					t.Fatalf("Failed to update user: %v", err)
+				} else if err = dbInst.DeleteSSOProvider(ctx, int(newSAMLProvider.SSOProviderID.Int32)); err != nil {
+					t.Fatalf("Failed to delete SAML provider: %v", err)
+				} else if err = test.VerifyAuditLogs(dbInst, model.AuditLogActionDeleteSSOIdentityProvider, "name", "provider"); err != nil {
+					t.Fatalf("Failed to validate DeleteSAMLIdentityProvider audit logs:\n%v", err)
+				}
+			}
 		}
-	}
-
-	updatedSAMLProvider := model.SAMLProvider{
-		Serial: model.Serial{
-			ID: newSAMLProvider.ID,
-		},
-		Name:            "updated provider",
-		DisplayName:     newSAMLProvider.DisplayName,
-		IssuerURI:       newSAMLProvider.IssuerURI,
-		SingleSignOnURI: newSAMLProvider.SingleSignOnURI,
-	}
-	if err := dbInst.UpdateSAMLIdentityProvider(ctx, updatedSAMLProvider); err != nil {
-		t.Fatalf("Failed to update SAML provider: %v", err)
-	} else if err = test.VerifyAuditLogs(dbInst, model.AuditLogActionUpdateSAMLIdentityProvider, "saml_name", "updated provider"); err != nil {
-		t.Fatalf("Failed to validate UpdateSAMLIdentityProvider audit logs:\n%v", err)
-	}
-
-	user.SAMLProviderID = null.Int32{}
-	if err := dbInst.UpdateUser(ctx, user); err != nil {
-		t.Fatalf("Failed to update user: %v", err)
-	} else if err := dbInst.DeleteSAMLProvider(ctx, newSAMLProvider); err != nil {
-		t.Fatalf("Failed to delete SAML provider: %v", err)
-	} else if err = test.VerifyAuditLogs(dbInst, model.AuditLogActionDeleteSAMLIdentityProvider, "saml_name", "provider"); err != nil {
-		t.Fatalf("Failed to validate DeleteSAMLIdentityProvider audit logs:\n%v", err)
 	}
 }
 
@@ -409,4 +416,41 @@ func TestDatabase_SetUserSessionFlag(t *testing.T) {
 	dbSess, err := dbInst.GetUserSession(testCtx, newUserSession.ID)
 	assert.Nil(t, err)
 	assert.True(t, dbSess.Flags[string(model.SessionFlagFedEULAAccepted)])
+}
+
+func TestDatabase_GetUserSSOSession(t *testing.T) {
+	var (
+		testCtx      = context.Background()
+		dbInst, user = initAndCreateUser(t)
+		samlProvider = model.SAMLProvider{
+			Name:            "provider",
+			DisplayName:     "provider name",
+			IssuerURI:       "https://idp.example.com/idp.xml",
+			SingleSignOnURI: "https://idp.example.com/sso",
+		}
+	)
+
+	// Initialize the SAMLProvider without setting SSOProviderID
+	newSAMLProvider, err := dbInst.CreateSAMLIdentityProvider(testCtx, samlProvider)
+	require.Nil(t, err)
+
+	user.SSOProviderID = newSAMLProvider.SSOProviderID
+	err = dbInst.UpdateUser(testCtx, user)
+	require.Nil(t, err)
+
+	userSession := model.UserSession{
+		AuthProviderID:   newSAMLProvider.ID,
+		AuthProviderType: model.SessionAuthProviderSAML,
+		User:             user,
+		UserID:           user.ID,
+		ExpiresAt:        time.Now().UTC().Add(time.Hour),
+	}
+
+	newUserSession, err := dbInst.CreateUserSession(testCtx, userSession)
+	require.Nil(t, err)
+
+	dbSess, err := dbInst.GetUserSession(testCtx, newUserSession.ID)
+	require.Nil(t, err)
+	require.NotNil(t, dbSess.User.SSOProvider)
+	require.NotNil(t, dbSess.User.SSOProvider.SAMLProvider)
 }

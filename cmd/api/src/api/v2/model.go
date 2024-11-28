@@ -21,9 +21,11 @@ import (
 	"github.com/specterops/bloodhound/cache"
 	_ "github.com/specterops/bloodhound/dawgs/drivers/neo4j"
 	"github.com/specterops/bloodhound/dawgs/graph"
+	"github.com/specterops/bloodhound/src/api"
 	"github.com/specterops/bloodhound/src/auth"
 	"github.com/specterops/bloodhound/src/config"
 	"github.com/specterops/bloodhound/src/database"
+	"github.com/specterops/bloodhound/src/database/types/null"
 	"github.com/specterops/bloodhound/src/model"
 	"github.com/specterops/bloodhound/src/queries"
 	"github.com/specterops/bloodhound/src/serde"
@@ -59,13 +61,14 @@ type ListSAMLProvidersResponse struct {
 }
 
 type UpdateUserRequest struct {
-	FirstName      string  `json:"first_name"`
-	LastName       string  `json:"last_name"`
-	EmailAddress   string  `json:"email_address"`
-	Principal      string  `json:"principal"`
-	Roles          []int32 `json:"roles"`
-	SAMLProviderID string  `json:"saml_provider_id"`
-	IsDisabled     bool    `json:"is_disabled"`
+	FirstName      string     `json:"first_name"`
+	LastName       string     `json:"last_name"`
+	EmailAddress   string     `json:"email_address"`
+	Principal      string     `json:"principal"`
+	Roles          []int32    `json:"roles"`
+	SAMLProviderID string     `json:"saml_provider_id"`
+	SSOProviderID  null.Int32 `json:"sso_provider_id"`
+	IsDisabled     bool       `json:"is_disabled"`
 }
 
 type CreateUserRequest struct {
@@ -88,47 +91,10 @@ type CreateUserToken struct {
 	UserID    string `json:"user_id"`
 }
 
-type CreateSAMLAuthProviderRequest struct {
-	Name                       string   `json:"name"`
-	DisplayName                string   `json:"display_name"`
-	SigningCertificate         string   `json:"signing_certificate"`
-	IssuerURI                  string   `json:"issuer_uri"`
-	SingleSignOnURI            string   `json:"single_signon_uri"`
-	PrincipalAttributeMappings []string `json:"principal_attribute_mappings"`
-}
-
-type UpdateSAMLAuthProviderRequest struct {
-	Name                       string   `json:"name"`
-	DisplayName                string   `json:"display_name"`
-	SigningCertificate         string   `json:"signing_certificate"`
-	IssuerURI                  string   `json:"issuer_uri"`
-	SingleSignOnURI            string   `json:"single_signon_uri"`
-	PrincipalAttributeMappings []string `json:"principal_attribute_mappings"`
-}
-
-type SecretInitializationRequest struct {
-	AdminEmailAddress string `json:"admin_email_address"`
-	Secret            string `json:"secret"`
-}
-
-type IDPValidationResponse struct {
-	ErrorMessage string `json:"error_message"`
-	Successful   bool   `json:"successful"`
-}
-
-type PagedNodeListEntry struct {
-	Name              string `json:"name"`
-	Type              string `json:"type"`
-	DistinguishedName string `json:"distinguished_name"`
-	ObjectID          string `json:"object_id"`
-}
-
-type SAMLInitializationRequest struct {
-	AdminEmailAddress            string `json:"admin_email_address"`
-	IdentityProviderProviderName string `json:"idp_name"`
-	IdentityProviderURL          string `json:"idp_url"`
-	ServiceProviderCertificate   string `json:"sp_certificate"`
-	ServiceProviderKey           string `json:"sp_private_key"`
+type CreateOIDCProviderRequest struct {
+	Name     string `json:"name"`
+	Issuer   string `json:"issuer"`
+	ClientId string `json:"client_id"`
 }
 
 // Resources holds the database and configuration dependencies to be passed around the API functions
@@ -142,6 +108,7 @@ type Resources struct {
 	Cache                      cache.Cache
 	CollectorManifests         config.CollectorManifests
 	Authorizer                 auth.Authorizer
+	Authenticator              api.Authenticator
 }
 
 func NewResources(
@@ -152,6 +119,7 @@ func NewResources(
 	graphQuery queries.Graph,
 	collectorManifests config.CollectorManifests,
 	authorizer auth.Authorizer,
+	authenticator api.Authenticator,
 ) Resources {
 	return Resources{
 		Decoder:                    schema.NewDecoder(),
@@ -163,5 +131,6 @@ func NewResources(
 		Cache:                      apiCache,
 		CollectorManifests:         collectorManifests,
 		Authorizer:                 authorizer,
+		Authenticator:              authenticator,
 	}
 }
