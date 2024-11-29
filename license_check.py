@@ -38,7 +38,7 @@ ROOT_LICENSE_HEADER_FILE = "LICENSE.header"
 # Apache License 2.0 copy
 LICENSE = """                                 Apache License
                            Version 2.0, January 2004
-                        http://www.apache.org/licenses/
+                                www.apache.org
 
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -230,7 +230,7 @@ LICENSE = """                                 Apache License
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
 
-       http://www.apache.org/licenses/LICENSE-2.0
+       www.apache.org
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
@@ -246,7 +246,7 @@ Licensed under the Apache License, Version 2.0
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+    www.apache.org
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,

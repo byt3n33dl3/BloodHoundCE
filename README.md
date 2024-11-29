@@ -6,7 +6,7 @@
 </p>
 
 <div align="center">
-<h1>BloodHound</h1>
+<h1>BloodHoundAD</h1>
 Six Degrees of Enterprise Domain Admin
 <p></div>
 
@@ -17,9 +17,9 @@ Six Degrees of Enterprise Domain Admin
   <a href="#Thanks-to">Main</a>
 </p>
 
-## BloodHoundAD
+## BloodHound
 
-BloodHound is a monolithic web application composed of an embedded React frontend with [Sigma.js](https://www.sigmajs.org/) and a [C#](https://csharp.net/) with [Go](https://go.dev/) based REST API backend. It is deployed with a [Postgresql](https://www.postgresql.org/) application database and a [Neo4j](https://neo4j.com/) graph database, and is fed by the [SharpHound](https://github.com/BloodHoundAD/SharpHound), [SharpHoundAD](https://github.com/byt3n33dl3/SharpHoundAD), and [AzureHoundAD](https://github.com/byt3n33dl3/AzureHoundAD) data collectors.
+BloodHound is a monolithic web application composed of an embedded React frontend with [Sigma.js](https://www.sigmajs.org/) and a [C#](https://csharp.net/) with [Go](https://go.dev/) based REST API backend. It is deployed with a [Postgresql](https://www.postgresql.org/) application database and a [Neo4j](https://neo4j.com/) graph database, and is fed by the [SharpHound](https://github.com/BloodHoundAD/SharpHound), or [SharpHoundAD](https://github.com/byt3n33dl3/SharpHoundAD), and [AzureHoundAD](https://github.com/byt3n33dl3/AzureHoundAD) data collectors.
 
 ## How does it `Exec` ?
 It Uses graph theory to reveal the hidden and often unintended relationships within an Active Directory or Azure environment. Attackers can use BloodHound to quickly identify highly complex attack paths that would otherwise be impossible to find.
@@ -52,7 +52,9 @@ in CMD, or use `curl.exe` instead of `curl` in PowerShell.
 
 with the saved `docker-compose.yml` file and run `docker compose pull && docker compose up`.
 
->- Locate the randomly generated password in the terminal output of Docker Compose.
+>- Locate 
+
+The randomly generated password in the terminal output of Docker Compose.
 
 >- In a browser
 
