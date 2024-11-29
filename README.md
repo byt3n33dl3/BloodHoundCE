@@ -27,7 +27,7 @@ It Uses graph theory to reveal the hidden and often unintended relationships wit
 BloodHound is created and maintained by the BloodHound [Enterprise](https://bloodhoundenterprise.io) Team. The original BloodHound was created by [@wald0](https://www.twitter.com/_wald0), [@rvazarkar](https://twitter.com/CptJesus), [@byt3n33dl3](https://twitter.com/byt3n33dl3), and [@harmj0y](https://twitter.com/harmj0y).
 
 ## Running BloodHound Community Edition
-Docker Compose is the easiest way to get up and running with BloodHound CE. Instructions below describe how to install and upgrade your deployment.
+Docker Compose is the easiest way to get up and running with BloodHound. Instructions below describe how to install and upgrade your deployment.
 
 ## Deploy BloodHound
 Deploying BloodHound quickly with the following steps:
