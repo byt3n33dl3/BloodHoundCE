@@ -17,13 +17,49 @@
 ########
 # Global build args
 ################
-ARG SHARPHOUND_VERSION=v2.5.8
+ARG SHARPHOUND_VERSION=v2.5.9
 ARG AZUREHOUND_VERSION=v2.2.1
+
+########
+# Golang Image
+################
+FROM --platform=$BUILDPLATFORM docker.io/library/golang:1.23-alpine3.20 AS godeps
+
+########
+# Builder init
+################
+FROM --platform=$BUILDPLATFORM docker.io/library/node:22-alpine3.20 AS deps
+ARG version=v999.999.999
+ARG checkout_hash=""
+ENV SB_LOG_LEVEL=debug
+ENV SB_VERSION=${version}
+ENV CHECKOUT_HASH=${checkout_hash}
+WORKDIR /bloodhound
+
+RUN apk add --update --no-cache git
+
+COPY --from=godeps /usr/local/go/ /usr/local/go/
+ENV PATH="/usr/local/go/bin:${PATH}"
+
+COPY . /bloodhound
+RUN go run github.com/specterops/bloodhound/packages/go/stbernard deps
+
+########
+# Build
+################
+FROM deps AS builder
+ARG TARGETOS
+ARG TARGETARCH
+ENV CGO_ENABLED=0
+ENV SB_VERSION=${version}
+WORKDIR /bloodhound
+
+RUN go run github.com/specterops/bloodhound/packages/go/stbernard build --os ${TARGETOS} --arch ${TARGETARCH}
 
 ########
 # Package other assets
 ################
-FROM docker.io/library/alpine:3.16 as hound-builder
+FROM --platform=$BUILDPLATFORM docker.io/library/alpine:3.20 as hound-builder
 ARG SHARPHOUND_VERSION
 ARG AZUREHOUND_VERSION
 
@@ -61,20 +97,19 @@ WORKDIR /tmp/azurehound/artifacts
 RUN 7z a -tzip -mx9 azurehound-$AZUREHOUND_VERSION.zip azurehound-*
 RUN sha256sum azurehound-$AZUREHOUND_VERSION.zip > azurehound-$AZUREHOUND_VERSION.zip.sha256
 
-FROM docker.io/library/golang:1.23
+########
+# Package Bloodhound
+################
+FROM gcr.io/distroless/static-debian11
 ARG SHARPHOUND_VERSION
 ARG AZUREHOUND_VERSION
-ENV GOFLAGS="-buildvcs=false"
-WORKDIR /bloodhound
-VOLUME [ "/go/pkg/mod" ]
 
-RUN mkdir -p /bhapi/collectors/azurehound /bhapi/collectors/sharphound /bhapi/work
-RUN go install github.com/go-delve/delve/cmd/dlv@v1.23.0
-RUN go install github.com/air-verse/air@v1.52.3
+COPY dockerfiles/configs/bloodhound.config.json /bloodhound.config.json
+COPY --from=builder /bloodhound/dist/bhapi /bloodhound
+COPY --from=hound-builder /opt/bloodhound /etc/bloodhound /var/log /
+COPY --from=hound-builder /tmp/sharphound/sharphound-$SHARPHOUND_VERSION.zip /etc/bloodhound/collectors/sharphound/
+COPY --from=hound-builder /tmp/sharphound/sharphound-$SHARPHOUND_VERSION.zip.sha256 /etc/bloodhound/collectors/sharphound/
+COPY --from=hound-builder /tmp/azurehound/artifacts/azurehound-$AZUREHOUND_VERSION.zip /etc/bloodhound/collectors/azurehound/
+COPY --from=hound-builder /tmp/azurehound/artifacts/azurehound-$AZUREHOUND_VERSION.zip.sha256 /etc/bloodhound/collectors/azurehound/
 
-COPY --from=hound-builder /tmp/sharphound/sharphound-$SHARPHOUND_VERSION.zip /bhapi/collectors/sharphound/
-COPY --from=hound-builder /tmp/sharphound/sharphound-$SHARPHOUND_VERSION.zip.sha256 /bhapi/collectors/sharphound/
-COPY --from=hound-builder /tmp/azurehound/artifacts/azurehound-$AZUREHOUND_VERSION.zip /bhapi/collectors/azurehound/
-COPY --from=hound-builder /tmp/azurehound/artifacts/azurehound-$AZUREHOUND_VERSION.zip.sha256 /bhapi/collectors/azurehound/
-
-ENTRYPOINT ["air"]
+ENTRYPOINT ["/bloodhound", "-configfile", "/bloodhound.config.json"]

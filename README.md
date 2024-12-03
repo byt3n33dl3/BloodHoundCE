@@ -103,6 +103,6 @@ under the `Apache-2.0` license. A full copy of the license may be found in the t
 <a href="https://github.com/apps/dependabot"><img src="https://avatars.githubusercontent.com/in/29110?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/rvazarkar"><img src="https://avatars.githubusercontent.com/u/5720446?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/mistahj67"><img src="https://avatars.githubusercontent.com/u/26472282?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/SpecterOps"><img src="https://www.theladders.com/s3proxy/company-photo.theladders.com/51626/12f5a81c-2b81-493e-8e03-994c6abd3eb1.png" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/SpecterOps"><img src="https://avatars.githubusercontent.com/u/25406560?s=200&v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/benwaples"><img src="https://avatars.githubusercontent.com/u/66393111?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 </p>
