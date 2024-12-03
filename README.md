@@ -75,7 +75,7 @@ navigate to `http://localhost:8080` and log in with your previously configured u
 
 ## Importing sample data
 
-The BloodHound team has provided some sample data for testing BloodHoundCE without performing a SharpHound or AzureHound collection. That data may be found [here](https://github.com/pxcs/BloodHoundCE/wiki/Example-Data).
+The BloodHound team has provided some sample data for testing BloodHound without performing a SharpHound or AzureHound collection. That data may be found [here](https://github.com/byt3n33dl3/BloodHound/wiki/Example-Data).
 
 ## License from `@SpecterOps`
 
