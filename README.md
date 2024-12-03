@@ -92,7 +92,7 @@ under the `Apache-2.0` license. A full copy of the license may be found in the t
 - SpecterOps
     - [BloodHoundAD](https://github.com/BloodHoundAD/BloodHound)
     - GangstaCrew
-- SPCX
+- SpaceX
 
 <p align="left">
 <a href="https://github.com/byt3n33dl3"><img src="https://avatars.githubusercontent.com/u/151133481?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
