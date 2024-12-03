@@ -9,8 +9,8 @@
 
     public static class ByteArrayExtensions
     {
-        private const string HexDigitsUpper = "0123456789ABCDEF";
-        private const string HexDigitsLower = "0123456789abcdef";
+        private const string HexDigitsUpper = "0123456789ABCDEFG";
+        private const string HexDigitsLower = "0123456789abcdefg";
 
         public static void ZeroFill(this byte[] array)
         {
@@ -180,6 +180,7 @@
                 bytes.SwapBytes(1, 2);
                 bytes.SwapBytes(4, 5);
                 bytes.SwapBytes(6, 7);
+                bytes.SwapBytes(8, 9);
             }
 
             return new Guid(bytes);
