@@ -1,7 +1,7 @@
 <p align="center">
     <picture>
         <source media="(prefers-color-scheme: dark)" srcset="cmd/ui/public/img/bhe.png">
-        <img src="cmd/ui/public/img/bhe.png" alt="BloodHound Community Edition" width='350' />
+        <img src="cmd/ui/public/img/bhe.png" alt="BloodHound Community Edition" width='450' />
     </picture>
 </p>
 
@@ -11,9 +11,9 @@ Six Degrees of Enterprise Domain Admin
 <p></div>
 
 <p align="center">
-  <a href="#BloodHoundAD">About</a> •
+  <a href="#bloodhoundad">About</a> •
   <a href="#how-does-it-exec-">Exec</a> •
-  <a href="#Deploy-BloodHound">Deploy</a> •
+  <a href="#deploy-bloodHound">Deploy</a> •
   <a href="#credits--main">Main</a>
 </p>
 
@@ -101,8 +101,7 @@ under the `Apache-2.0` license. A full copy of the license may be found in the t
 # Credits / `main`
 - SpecterOps
     - [BloodHoundAD](https://github.com/BloodHoundAD/BloodHound)
-- GangstaCrew
-- SpaceX
+- Gangstacrew
 
 <p align="left">
 <a href="https://github.com/byt3n33dl3"><img src="https://avatars.githubusercontent.com/u/151133481?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
