@@ -1,20 +1,20 @@
 <p align="center">
     <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="cmd/ui/public/img/logo-red-transparent-logo-only.svg">
-        <img src="cmd/ui/public/img/logo-red-transparent-logo-only.svg" alt="BloodHound Community Edition" width='350' />
+        <source media="(prefers-color-scheme: dark)" srcset="cmd/ui/public/img/bhe.png">
+        <img src="cmd/ui/public/img/bhe.png" alt="BloodHound Community Edition" width='350' />
     </picture>
 </p>
 
 <div align="center">
-<h1>BloodHoundAD</h1>
+<h2>BloodHound Enterprise</h2>
 Six Degrees of Enterprise Domain Admin
 <p></div>
 
 <p align="center">
   <a href="#BloodHoundAD">About</a> •
-  <a href="#How-to-Exec">Exec</a> •
+  <a href="#how-does-it-exec-">Exec</a> •
   <a href="#Deploy-BloodHound">Deploy</a> •
-  <a href="#Thanks-to">Main</a>
+  <a href="#credits--main">Main</a>
 </p>
 
 ## BloodHound
@@ -87,6 +87,16 @@ The BloodHound team has provided some sample data for testing BloodHound without
 
 Unless otherwise annotated by a lower-level LICENSE file or license header, all files in this repository are released
 under the `Apache-2.0` license. A full copy of the license may be found in the top level [LICENSE](LICENSE) file.
+
+## Useful Links
+
+- [BloodHound Slack](https://ghst.ly/BHSlack)
+- [Wiki Page](https://github.com/byt3n33dl3/BloodHound/wiki)
+- [Contributors](./CONTRIBUTORS.md)
+- [Docker Compose](./examples/docker-compose/README.md)
+- [BloodHound Docs](https://support.bloodhoundenterprise.io/)
+- [Developer Guide](https://github.com/byt3n33dl3/BloodHound/wiki/Development)
+- [Contributing Guide](https://github.com/byt3n33dl3/BloodHound/wiki/Contributing)
 
 # Credits / `main`
 - SpecterOps

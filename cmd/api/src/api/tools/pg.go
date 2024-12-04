@@ -23,14 +23,14 @@ import (
 	"sync"
 
 	"github.com/neo4j/neo4j-go-driver/v5/neo4j/dbtype"
-	"github.com/specterops/bloodhound/dawgs"
-	"github.com/specterops/bloodhound/dawgs/drivers/neo4j"
-	"github.com/specterops/bloodhound/dawgs/drivers/pg"
-	"github.com/specterops/bloodhound/dawgs/graph"
-	"github.com/specterops/bloodhound/dawgs/util/size"
-	"github.com/specterops/bloodhound/log"
-	"github.com/specterops/bloodhound/src/api"
-	"github.com/specterops/bloodhound/src/config"
+	"github.com/byt3n33dl3/bloodhound/dawgs"
+	"github.com/byt3n33dl3/bloodhound/dawgs/drivers/neo4j"
+	"github.com/byt3n33dl3/bloodhound/dawgs/drivers/pg"
+	"github.com/byt3n33dl3/bloodhound/dawgs/graph"
+	"github.com/byt3n33dl3/bloodhound/dawgs/util/size"
+	"github.com/byt3n33dl3/bloodhound/log"
+	"github.com/byt3n33dl3/bloodhound/src/api"
+	"github.com/byt3n33dl3/bloodhound/src/config"
 )
 
 type MigratorState string
@@ -236,6 +236,8 @@ func (s *PGMigrator) SwitchPostgreSQL(response http.ResponseWriter, request *htt
 		api.WriteJSONResponse(request.Context(), map[string]any{
 			"error": fmt.Errorf("failed connecting to PostgreSQL: %w", err),
 		}, http.StatusInternalServerError, response)
+	} else if err := pgDB.AssertSchema(request.Context(), s.graphSchema); err != nil {
+		log.Errorf("Unable to assert graph schema in PostgreSQL: %v", err)
 	} else if err := SetGraphDriver(request.Context(), s.cfg, pg.DriverName); err != nil {
 		api.WriteJSONResponse(request.Context(), map[string]any{
 			"error": fmt.Errorf("failed updating graph database driver preferences: %w", err),
