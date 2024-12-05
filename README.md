@@ -17,9 +17,9 @@ Six Degrees of Enterprise Domain Admin
   <a href="#credits--main">Main</a>
 </p>
 
-## BloodHound
+# BloodHound
 
-BloodHound is a monolithic web application composed of an embedded React frontend with [Sigma.js](https://www.sigmajs.org/) and a [C#](https://csharp.net/) with [Go](https://go.dev/) based REST API backend. It is deployed with a [Postgresql](https://www.postgresql.org/) application database and a [Neo4J](https://neo4j.com/) graph database, and is fed by the [SharpHound](https://github.com/BloodHoundAD/SharpHound), or [SharpHoundAD](https://github.com/byt3n33dl3/SharpHoundAD), and [AzureHoundAD](https://github.com/byt3n33dl3/AzureHoundAD) data collectors.
+BloodHound is a monolithic web application composed of an embedded React frontend with [Sigma.js](https://www.sigmajs.org/) and a [C#](https://csharp.net/) with [Go](https://go.dev/) based REST API backend. It is deployed with a [PostgreSQL](https://www.postgresql.org/) application database and a [Neo4J](https://neo4j.com/) graph database, and is fed by the [SharpHound](https://github.com/BloodHoundAD/SharpHound), or [SharpHoundAD](https://github.com/byt3n33dl3/SharpHoundAD), and [AzureHoundAD](https://github.com/byt3n33dl3/AzureHoundAD) or [AzureHound](https://github.com/BloodHoundAD/AzureHound) data collectors.
 
 ## How does it `Exec` ?
 It Uses graph theory to reveal the hidden and often unintended relationships within an Active Directory or Azure environment. Attackers can use BloodHound to quickly identify highly complex attack paths that would otherwise be impossible to find.
@@ -61,6 +61,18 @@ The randomly generated password in the terminal output of Docker Compose.
 Navigate to `http://localhost:8080/ui/login`. Login with a username of `admin` and the randomly generated password from the logs.
 
 *NOTE: The default `docker-compose.yml` example binds only to localhost (127.0.0.1). If you want to access BloodHound outside of localhost, you'll need to follow the instructions in [README.md](examples/docker-compose/README.md) to configure the host binding for the container.*
+
+# Enterprise
+
+BloodHound [Enterprise](https://bloodhoundenterprise.io/) is an Attack Path Management solution that continuously maps and quantifies Active Directory Attack Paths. You can remove millions, even `billions` of Attack Paths within your existing architecture and eliminate the Attacker’s easiest, most reliable, and most Attractive techniques.
+
+*Running the Neo4j database:*
+
+The installation manual will have taken you through an installation of Neo4j, the `Database` hosting the BloodHound datasets. 
+
+```
+sudo neo4j start
+```
 
 ## Upgrade BloodHound
 Once installed, upgrade BloodHound to the latest version with the following steps:

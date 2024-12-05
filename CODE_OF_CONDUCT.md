@@ -6,7 +6,7 @@
 </p>
 
 <div align="center">
-<h1>BloodHound</h1>
+<h2>BloodHound Enterprise</h2>
 Offensive Security Research
 <p></div>
 
