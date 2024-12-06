@@ -62,6 +62,20 @@ Navigate to `http://localhost:8080/ui/login`. Login with a username of `admin` a
 
 *NOTE: The default `docker-compose.yml` example binds only to localhost (127.0.0.1). If you want to access BloodHound outside of localhost, you'll need to follow the instructions in [README.md](examples/docker-compose/README.md) to configure the host binding for the container.*
 
+## Installation Error Handling
+
+- If you encounter a "failed to get console mode for stdin: The handle is invalid." ensure Docker Desktop (and associated Engine is running). Docker Desktop does not automatically register as a startup entry.
+
+- If you encounter an "Error response from daemon: Ports are not available: exposing port *TCP 127.0.0.1:7474 -> 0.0.0.0:0:* listen tcp *127.0.0.1:7474: bind:* Only one usage of each socket address (protocol/network address/port) is normally permitted." this is normally attributed to the "Neo4J Graph Database - Neo4j" service already running on your `local` system. Please stop or delete the service to continue.
+
+```
+# Verify if Docker Engine is Running
+docker info
+
+# Attempt to stop Neo4j Service if running (on Windows)
+Stop-Service "Neo4j" -ErrorAction SilentlyContinue
+```
+
 # Enterprise
 
 BloodHound [Enterprise](https://bloodhoundenterprise.io/) is an Attack Path Management solution that continuously maps and quantifies Active Directory Attack Paths. You can remove millions, even `billions` of Attack Paths within your existing architecture and eliminate the Attacker’s easiest, most reliable, and most Attractive techniques.
