@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace KrbRelayUp
+namespace BloodHound
 {
 
     class KrbSCM

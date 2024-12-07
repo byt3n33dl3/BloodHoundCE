@@ -1,8 +1,8 @@
 ﻿using Asn1;
-using KrbRelayUp.lib.Interop;
+using BloodHound.lib.Interop;
 using System;
 
-namespace KrbRelayUp
+namespace BloodHound
 {
     class S4U
     {
