@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace KrbRelayUp.lib.Interop
+namespace BloodHound.lib.Interop
 {
     [StructLayout(LayoutKind.Sequential)]
     public struct LUID

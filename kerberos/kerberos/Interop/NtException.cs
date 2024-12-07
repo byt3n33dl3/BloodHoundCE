@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 
-namespace KrbRelayUp.lib.Interop
+namespace BloodHound.lib.Interop
 {
     public class NtException : Exception
     {
@@ -17,7 +17,7 @@ namespace KrbRelayUp.lib.Interop
 
         private static string GetErrorMessage(int errorCode)
         {
-            if (KrbRelayUp.Interop.LsaNtStatusToWinError((uint)errorCode) == ERROR_MR_MID_NOT_FOUND)
+            if (BloodHound.Interop.LsaNtStatusToWinError((uint)errorCode) == ERROR_MR_MID_NOT_FOUND)
             {
                 return $"NTSTAUTS error code 0x{errorCode.ToString("X")}";
             }
