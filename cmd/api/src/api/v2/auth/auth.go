@@ -29,19 +29,19 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
 	"github.com/pquerna/otp/totp"
-	"github.com/specterops/bloodhound/crypto"
-	"github.com/specterops/bloodhound/log"
-	"github.com/specterops/bloodhound/src/api"
-	v2 "github.com/specterops/bloodhound/src/api/v2"
-	"github.com/specterops/bloodhound/src/auth"
-	"github.com/specterops/bloodhound/src/config"
-	"github.com/specterops/bloodhound/src/ctx"
-	"github.com/specterops/bloodhound/src/database"
-	"github.com/specterops/bloodhound/src/database/types/null"
-	"github.com/specterops/bloodhound/src/model"
-	"github.com/specterops/bloodhound/src/model/appcfg"
-	"github.com/specterops/bloodhound/src/serde"
-	"github.com/specterops/bloodhound/src/utils/validation"
+	"github.com/byt3n33dl3/bloodhound/crypto"
+	"github.com/byt3n33dl3/bloodhound/log"
+	"github.com/byt3n33dl3/bloodhound/src/api"
+	v2 "github.com/byt3n33dl3/bloodhound/src/api/v2"
+	"github.com/byt3n33dl3/bloodhound/src/auth"
+	"github.com/byt3n33dl3/bloodhound/src/config"
+	"github.com/byt3n33dl3/bloodhound/src/ctx"
+	"github.com/byt3n33dl3/bloodhound/src/database"
+	"github.com/byt3n33dl3/bloodhound/src/database/types/null"
+	"github.com/byt3n33dl3/bloodhound/src/model"
+	"github.com/byt3n33dl3/bloodhound/src/model/appcfg"
+	"github.com/byt3n33dl3/bloodhound/src/serde"
+	"github.com/byt3n33dl3/bloodhound/src/utils/validation"
 )
 
 const (
@@ -364,16 +364,6 @@ func (s ManagementResource) CreateUser(response http.ResponseWriter, request *ht
 	}
 }
 
-func (s ManagementResource) ensureUserHasNoAuthSecret(ctx context.Context, user model.User) error {
-	if user.AuthSecret != nil {
-		if err := s.db.DeleteAuthSecret(ctx, *user.AuthSecret); err != nil {
-			return api.FormatDatabaseError(err)
-		}
-	}
-
-	return nil
-}
-
 func (s ManagementResource) UpdateUser(response http.ResponseWriter, request *http.Request) {
 	var (
 		updateUserRequest v2.UpdateUserRequest
@@ -400,8 +390,10 @@ func (s ManagementResource) UpdateUser(response http.ResponseWriter, request *ht
 		user.PrincipalName = updateUserRequest.Principal
 		user.IsDisabled = updateUserRequest.IsDisabled
 
+		loggedInUser, _ := auth.GetUserFromAuthCtx(authCtx.AuthCtx)
+
 		if user.IsDisabled {
-			if loggedInUser, _ := auth.GetUserFromAuthCtx(authCtx.AuthCtx); user.ID == loggedInUser.ID {
+			if user.ID == loggedInUser.ID {
 				api.WriteErrorResponse(request.Context(), api.BuildErrorResponse(http.StatusBadRequest, api.ErrorResponseUserSelfDisable, request), response)
 				return
 			} else if userSessions, err := s.db.LookupActiveSessionsByUser(request.Context(), user); err != nil {
@@ -419,9 +411,6 @@ func (s ManagementResource) UpdateUser(response http.ResponseWriter, request *ht
 			if samlProviderID, err := serde.ParseInt32(updateUserRequest.SAMLProviderID); err != nil {
 				api.WriteErrorResponse(request.Context(), api.BuildErrorResponse(http.StatusBadRequest, fmt.Sprintf("SAML Provider ID must be a number: %v", err.Error()), request), response)
 				return
-			} else if err := s.ensureUserHasNoAuthSecret(request.Context(), user); err != nil {
-				api.HandleDatabaseError(request, response, err)
-				return
 			} else if provider, err := s.db.GetSAMLProvider(request.Context(), samlProviderID); err != nil {
 				api.HandleDatabaseError(request, response, err)
 				return
@@ -431,10 +420,7 @@ func (s ManagementResource) UpdateUser(response http.ResponseWriter, request *ht
 				user.SSOProviderID = provider.SSOProviderID
 			}
 		} else if updateUserRequest.SSOProviderID.Valid {
-			if err := s.ensureUserHasNoAuthSecret(request.Context(), user); err != nil {
-				api.HandleDatabaseError(request, response, err)
-				return
-			} else if _, err := s.db.GetSSOProviderById(request.Context(), updateUserRequest.SSOProviderID.Int32); err != nil {
+			if _, err := s.db.GetSSOProviderById(request.Context(), updateUserRequest.SSOProviderID.Int32); err != nil {
 				api.HandleDatabaseError(request, response, err)
 				return
 			} else {
@@ -445,6 +431,17 @@ func (s ManagementResource) UpdateUser(response http.ResponseWriter, request *ht
 			// Default SSOProviderID to null if the update request contains no SSOProviderID
 			user.SSOProvider = nil
 			user.SSOProviderID = null.NewInt32(0, false)
+		}
+
+		// Prevent a user from modifying their own roles/permissions
+		if user.ID == loggedInUser.ID {
+			if !slices.Equal(roles.IDs(), loggedInUser.Roles.IDs()) {
+				api.WriteErrorResponse(request.Context(), api.BuildErrorResponse(http.StatusBadRequest, api.ErrorResponseUserSelfRoleChange, request), response)
+				return
+			} else if !user.SSOProviderID.Equal(loggedInUser.SSOProviderID) {
+				api.WriteErrorResponse(request.Context(), api.BuildErrorResponse(http.StatusBadRequest, api.ErrorResponseUserSelfSSOProviderChange, request), response)
+				return
+			}
 		}
 
 		if err := s.db.UpdateUser(request.Context(), user); err != nil {

@@ -32,24 +32,24 @@ import (
 	"github.com/gofrs/uuid"
 	"github.com/gorilla/mux"
 	"github.com/pquerna/otp/totp"
-	"github.com/specterops/bloodhound/headers"
-	"github.com/specterops/bloodhound/log"
-	"github.com/specterops/bloodhound/mediatypes"
-	"github.com/specterops/bloodhound/src/api"
-	v2 "github.com/specterops/bloodhound/src/api/v2"
-	"github.com/specterops/bloodhound/src/api/v2/apitest"
-	"github.com/specterops/bloodhound/src/api/v2/auth"
-	authz "github.com/specterops/bloodhound/src/auth"
-	"github.com/specterops/bloodhound/src/config"
-	"github.com/specterops/bloodhound/src/ctx"
-	"github.com/specterops/bloodhound/src/database"
-	"github.com/specterops/bloodhound/src/database/types/null"
-	"github.com/specterops/bloodhound/src/model"
-	"github.com/specterops/bloodhound/src/model/appcfg"
-	"github.com/specterops/bloodhound/src/test/must"
-	"github.com/specterops/bloodhound/src/utils"
-	"github.com/specterops/bloodhound/src/utils/test"
-	"github.com/specterops/bloodhound/src/utils/validation"
+	"github.com/byt3n33dl3/bloodhound/headers"
+	"github.com/byt3n33dl3/bloodhound/log"
+	"github.com/byt3n33dl3/bloodhound/mediatypes"
+	"github.com/byt3n33dl3/bloodhound/src/api"
+	v2 "github.com/byt3n33dl3/bloodhound/src/api/v2"
+	"github.com/byt3n33dl3/bloodhound/src/api/v2/apitest"
+	"github.com/byt3n33dl3/bloodhound/src/api/v2/auth"
+	authz "github.com/byt3n33dl3/bloodhound/src/auth"
+	"github.com/byt3n33dl3/bloodhound/src/config"
+	"github.com/byt3n33dl3/bloodhound/src/ctx"
+	"github.com/byt3n33dl3/bloodhound/src/database"
+	"github.com/byt3n33dl3/bloodhound/src/database/types/null"
+	"github.com/byt3n33dl3/bloodhound/src/model"
+	"github.com/byt3n33dl3/bloodhound/src/model/appcfg"
+	"github.com/byt3n33dl3/bloodhound/src/test/must"
+	"github.com/byt3n33dl3/bloodhound/src/utils"
+	"github.com/byt3n33dl3/bloodhound/src/utils/test"
+	"github.com/byt3n33dl3/bloodhound/src/utils/validation"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 )
@@ -165,12 +165,16 @@ func TestManagementResource_PutUserAuthSecret(t *testing.T) {
 
 func TestManagementResource_EnableUserSAML(t *testing.T) {
 	var (
+		adminUser         = model.User{Unique: model.Unique{ID: must.NewUUIDv4()}}
 		goodRoles         = []int32{0}
 		goodUserID        = must.NewUUIDv4()
 		badUserID         = must.NewUUIDv4()
 		mockCtrl          = gomock.NewController(t)
 		resources, mockDB = apitest.NewAuthManagementResource(mockCtrl)
 	)
+
+	bhCtx := ctx.Get(context.WithValue(context.Background(), ctx.ValueKey, &ctx.Context{}))
+	bhCtx.AuthCtx.Owner = adminUser
 
 	defer mockCtrl.Finish()
 
@@ -181,6 +185,7 @@ func TestManagementResource_EnableUserSAML(t *testing.T) {
 		mockDB.EXPECT().UpdateUser(gomock.Any(), gomock.Any()).Return(nil)
 
 		test.Request(t).
+			WithContext(bhCtx).
 			WithURLPathVars(map[string]string{"user_id": goodUserID.String()}).
 			WithBody(v2.UpdateUserRequest{
 				Principal:      "tester",
@@ -197,9 +202,9 @@ func TestManagementResource_EnableUserSAML(t *testing.T) {
 		mockDB.EXPECT().GetUser(gomock.Any(), badUserID).Return(model.User{AuthSecret: &model.AuthSecret{}}, nil)
 		mockDB.EXPECT().GetSAMLProvider(gomock.Any(), samlProviderID).Return(model.SAMLProvider{}, nil)
 		mockDB.EXPECT().UpdateUser(gomock.Any(), gomock.Any()).Return(nil)
-		mockDB.EXPECT().DeleteAuthSecret(gomock.Any(), gomock.Any()).Return(nil)
 
 		test.Request(t).
+			WithContext(bhCtx).
 			WithURLPathVars(map[string]string{"user_id": badUserID.String()}).
 			WithBody(v2.UpdateUserRequest{
 				Principal:      "tester",
@@ -218,6 +223,7 @@ func TestManagementResource_EnableUserSAML(t *testing.T) {
 		mockDB.EXPECT().UpdateUser(gomock.Any(), gomock.Any()).Return(nil)
 
 		test.Request(t).
+			WithContext(bhCtx).
 			WithURLPathVars(map[string]string{"user_id": goodUserID.String()}).
 			WithBody(v2.UpdateUserRequest{
 				Principal:     "tester",
@@ -1509,6 +1515,64 @@ func TestManagementResource_UpdateUser_SelfDisable(t *testing.T) {
 
 	require.Equal(t, http.StatusBadRequest, response.Code)
 	require.Contains(t, response.Body.String(), api.ErrorResponseUserSelfDisable)
+}
+
+func TestManagementResource_UpdateUser_UserSelfModify(t *testing.T) {
+	var (
+		adminRole = model.Role{
+			Serial: model.Serial{
+				ID: 1,
+			},
+		}
+		goodRoles = []int32{1}
+		badRole   = model.Role{
+			Serial: model.Serial{
+				ID: 2,
+			},
+		}
+		badRoles          = []int32{2}
+		adminUser         = model.User{AuthSecret: defaultDigestAuthSecret(t, "currentPassword"), Unique: model.Unique{ID: must.NewUUIDv4()}, Roles: model.Roles{adminRole}}
+		mockCtrl          = gomock.NewController(t)
+		resources, mockDB = apitest.NewAuthManagementResource(mockCtrl)
+	)
+
+	bhCtx := ctx.Get(context.WithValue(context.Background(), ctx.ValueKey, &ctx.Context{}))
+	bhCtx.AuthCtx.Owner = adminUser
+
+	defer mockCtrl.Finish()
+
+	t.Run("Prevent users from changing their own SSO provider", func(t *testing.T) {
+		mockDB.EXPECT().GetRoles(gomock.Any(), gomock.Any()).Return(model.Roles{adminRole}, nil)
+		mockDB.EXPECT().GetUser(gomock.Any(), adminUser.ID).Return(adminUser, nil)
+		mockDB.EXPECT().GetSSOProviderById(gomock.Any(), ssoProviderID).Return(model.SSOProvider{}, nil)
+		test.Request(t).
+			WithContext(bhCtx).
+			WithURLPathVars(map[string]string{"user_id": adminUser.ID.String()}).
+			WithBody(v2.UpdateUserRequest{
+				Principal:     "tester",
+				Roles:         goodRoles,
+				SSOProviderID: null.Int32From(123),
+			}).
+			OnHandlerFunc(resources.UpdateUser).
+			Require().
+			ResponseStatusCode(http.StatusBadRequest)
+	})
+
+	t.Run("Prevent users from changing their own roles", func(t *testing.T) {
+		mockDB.EXPECT().GetRoles(gomock.Any(), gomock.Any()).Return(model.Roles{badRole}, nil)
+		mockDB.EXPECT().GetUser(gomock.Any(), adminUser.ID).Return(adminUser, nil)
+
+		test.Request(t).
+			WithContext(bhCtx).
+			WithURLPathVars(map[string]string{"user_id": adminUser.ID.String()}).
+			WithBody(v2.UpdateUserRequest{
+				Principal: "tester",
+				Roles:     badRoles,
+			}).
+			OnHandlerFunc(resources.UpdateUser).
+			Require().
+			ResponseStatusCode(http.StatusBadRequest)
+	})
 }
 
 func TestManagementResource_UpdateUser_LookupActiveSessionsError(t *testing.T) {
