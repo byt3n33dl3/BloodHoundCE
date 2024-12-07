@@ -76,7 +76,7 @@ docker info
 Stop-Service "Neo4j" -ErrorAction SilentlyContinue
 ```
 
-# Enterprise
+# [Enterprise](https://github.com/byt3n33dl3/BloodHound)
 
 BloodHound [Enterprise](https://bloodhoundenterprise.io/) is an Attack Path Management solution that continuously maps and quantifies Active Directory Attack Paths. You can remove millions, even `billions` of Attack Paths within your existing architecture and eliminate the Attacker’s easiest, most reliable, and most Attractive techniques.
 
@@ -140,4 +140,7 @@ under the `Apache-2.0` license. A full copy of the license may be found in the t
 <a href="https://github.com/mistahj67"><img src="https://avatars.githubusercontent.com/u/26472282?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/SpecterOps"><img src="https://avatars.githubusercontent.com/u/25406560?s=200&v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/benwaples"><img src="https://avatars.githubusercontent.com/u/66393111?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/GhostPack"><img src="https://avatars.githubusercontent.com/u/41304335?s=200&v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/github"><img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/HarmJ0y"><img src="https://avatars.githubusercontent.com/u/5504523?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 </p>

@@ -7,7 +7,7 @@
 
 <div align="center">
 <h2>BloodHound Enterprise</h2>
-Offensive Security Research
+Offensive Security Swiss Army Knife
 <p></div>
 
 # Our Standards
