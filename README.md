@@ -143,4 +143,10 @@ under the `Apache-2.0` license. A full copy of the license may be found in the t
 <a href="https://github.com/GhostPack"><img src="https://avatars.githubusercontent.com/u/41304335?s=200&v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/github"><img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/HarmJ0y"><img src="https://avatars.githubusercontent.com/u/5504523?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/Azure"><img src="https://avatars.githubusercontent.com/u/6844498?s=200&v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/elikmiller"><img src="https://avatars.githubusercontent.com/u/1761629?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/sircodemane"><img src="https://avatars.githubusercontent.com/u/6968902?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/codingo"><img src="https://avatars.githubusercontent.com/u/886344?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/mitmedialab"><img src="https://avatars.githubusercontent.com/u/7405700?s=200&v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/prodigysml"><img src="https://avatars.githubusercontent.com/u/16996819?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 </p>
