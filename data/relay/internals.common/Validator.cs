@@ -3,7 +3,7 @@ using System.IO;
 using System.Security;
 using DSInternals.Common.Properties;
 
-namespace DSInternals.Common
+namespace DSInternals.Common.Data
 {
     public static class Validator
     {
