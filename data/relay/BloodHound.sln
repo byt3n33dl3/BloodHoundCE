@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32630.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DavRelayUp", "DavRelayUp\DavRelayUp.csproj", "{9ED956A6-2998-4F6D-898C-E39CF1F9FAAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodHound", "BloodHound\BloodHound.csproj", "{9ED956A6-2998-4F6D-898C-E39CF1F9FAAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
