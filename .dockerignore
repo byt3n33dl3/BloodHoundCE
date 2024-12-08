@@ -19,3 +19,4 @@ node_modules
 # misc. tools
 ./tools
 ./data
+./packages
