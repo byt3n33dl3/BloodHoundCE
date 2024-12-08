@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DavRelayUp.AuthTrigger
+namespace BloodHound.AuthTrigger.Data
 {
     public static class EfsTrigger
     {

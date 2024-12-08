@@ -44,6 +44,12 @@ Save it to a directory where you'd like to run BloodHound. You can do this from 
 curl -L https://ghst.ly/getbhce
 ```
 
+**Minimum specifications:**
+
+- 4GB to 6GB of RAM
+- 4 processor cores
+- 10GB hard Disk space
+
 >- On Windows: Execute the command
 
 in CMD, or use `curl.exe` instead of `curl` in PowerShell.
@@ -143,10 +149,17 @@ under the `Apache-2.0` license. A full copy of the license may be found in the t
 <a href="https://github.com/GhostPack"><img src="https://avatars.githubusercontent.com/u/41304335?s=200&v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/github"><img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/HarmJ0y"><img src="https://avatars.githubusercontent.com/u/5504523?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/Scoubi"><img src="https://avatars.githubusercontent.com/u/7934465?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/Azure"><img src="https://avatars.githubusercontent.com/u/6844498?s=200&v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/elikmiller"><img src="https://avatars.githubusercontent.com/u/1761629?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/sircodemane"><img src="https://avatars.githubusercontent.com/u/6968902?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/codingo"><img src="https://avatars.githubusercontent.com/u/886344?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/mitmedialab"><img src="https://avatars.githubusercontent.com/u/7405700?s=200&v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/prodigysml"><img src="https://avatars.githubusercontent.com/u/16996819?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/sqlmapproject"><img src="https://avatars.githubusercontent.com/u/735289?s=200&v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/jvoisin"><img src="https://avatars.githubusercontent.com/u/325724?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/stamparm"><img src="https://avatars.githubusercontent.com/u/921555?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/Mjoeman98"><img src="https://avatars.githubusercontent.com/u/184496841?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/houssem98"><img src="https://avatars.githubusercontent.com/u/35746965?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/e11i0t4lders0n"><img src="https://avatars.githubusercontent.com/u/76389721?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 </p>
