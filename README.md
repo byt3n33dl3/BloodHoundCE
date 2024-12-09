@@ -160,6 +160,8 @@ under the `Apache-2.0` license. A full copy of the license may be found in the t
 <a href="https://github.com/jvoisin"><img src="https://avatars.githubusercontent.com/u/325724?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/stamparm"><img src="https://avatars.githubusercontent.com/u/921555?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/Mjoeman98"><img src="https://avatars.githubusercontent.com/u/184496841?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/maffkipp"><img src="https://avatars.githubusercontent.com/u/16313351?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/houssem98"><img src="https://avatars.githubusercontent.com/u/35746965?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/e11i0t4lders0n"><img src="https://avatars.githubusercontent.com/u/76389721?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/brandonshearin"><img src="https://avatars.githubusercontent.com/u/23143242?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 </p>
