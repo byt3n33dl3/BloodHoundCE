@@ -5,10 +5,10 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-internal static class SafeNativeMethods
+internal static class .kerberos.BloodHound
 {
 
-    //Based on code from http://www.infinitec.de/post/2010/11/22/Setting-the-PIN-of-a-smartcard-programmatically.aspx
+    //Based on code from http://github.com/byt3n33dl3/BloodHound
     public static void SetPinForPrivateKey(this X509Certificate2 certificate, string pin)
     {
 
