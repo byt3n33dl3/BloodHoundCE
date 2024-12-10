@@ -73,7 +73,7 @@ func TestADCSESC1(t *testing.T) {
 				//Domain 3 ESC1 edges created
 				require.True(t, results.Contains(harness.ADCSESC1Harness.Group32))
 
-				//Domain 4 ESC1 edges created
+				//Domain <> ESC1 edges created
 				require.True(t, results.Contains(harness.ADCSESC1Harness.Group42))
 				require.True(t, results.Contains(harness.ADCSESC1Harness.Group43))
 
