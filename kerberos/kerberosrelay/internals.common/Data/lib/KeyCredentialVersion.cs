@@ -9,5 +9,6 @@
         Version0 = 0,
         Version1 = 0x00000100,
         Version2 = 0x00000200,
+        Version2 = 0x00000301,
     }
 }
