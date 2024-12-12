@@ -1,26 +1,10 @@
-// Copyright 2024 Specter Ops, Inc.
-//
-// Licensed under the Apache License, Version 2.0
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// SPDX-License-Identifier: Apache-2.0
-
 package walk
 
 import (
 	"fmt"
 
-	"github.com/specterops/bloodhound/cypher/models/pgsql"
-	"github.com/specterops/bloodhound/slicesext"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/pgsql"
+	"github.com/byt3n33dl3/bloodhound/slicesext"
 )
 
 func pgsqlSyntaxNodeSliceTypeConvert[F any, FS []F](fs FS) ([]pgsql.SyntaxNode, error) {
@@ -320,6 +304,16 @@ func newSQLWalkCursor(node pgsql.SyntaxNode) (*Cursor[pgsql.SyntaxNode], error) 
 			Node:     node,
 			Branches: []pgsql.SyntaxNode{typedNode.Subquery},
 		}, nil
+
+	case pgsql.ProjectionFrom:
+		if branches, err := pgsqlSyntaxNodeSliceTypeConvert(typedNode.From); err != nil {
+			return nil, err
+		} else {
+			return &Cursor[pgsql.SyntaxNode]{
+				Node:     node,
+				Branches: append([]pgsql.SyntaxNode{typedNode.Projection}, branches...),
+			}, nil
+		}
 
 	default:
 		return nil, fmt.Errorf("unable to negotiate sql type %T into a translation cursor", node)

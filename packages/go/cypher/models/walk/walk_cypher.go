@@ -1,28 +1,12 @@
-// Copyright 2024 Specter Ops, Inc.
-//
-// Licensed under the Apache License, Version 2.0
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// SPDX-License-Identifier: Apache-2.0
-
 package walk
 
 import (
 	"fmt"
 
-	"github.com/specterops/bloodhound/cypher/models/cypher"
-	"github.com/specterops/bloodhound/slicesext"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/cypher"
+	"github.com/byt3n33dl3/bloodhound/slicesext"
 
-	"github.com/specterops/bloodhound/dawgs/graph"
+	"github.com/byt3n33dl3/bloodhound/dawgs/graph"
 )
 
 func cypherSyntaxNodeSliceTypeConvert[F any, FS []F](fs FS) ([]cypher.SyntaxNode, error) {
@@ -36,10 +20,16 @@ func cypherSyntaxNodeSliceTypeConvert[F any, FS []F](fs FS) ([]cypher.SyntaxNode
 func newCypherWalkCursor(node cypher.SyntaxNode) (*Cursor[cypher.SyntaxNode], error) {
 	switch typedNode := node.(type) {
 	// Types with no AST branches
-	case *cypher.RangeQuantifier, *cypher.PropertyLookup, cypher.Operator, *cypher.KindMatcher,
+	case *cypher.RangeQuantifier, cypher.Operator, *cypher.KindMatcher,
 		*cypher.Limit, *cypher.Skip, graph.Kinds, *cypher.Parameter:
 		return &Cursor[cypher.SyntaxNode]{
 			Node: node,
+		}, nil
+
+	case *cypher.PropertyLookup:
+		return &Cursor[cypher.SyntaxNode]{
+			Node:     node,
+			Branches: []cypher.SyntaxNode{typedNode.Atom},
 		}, nil
 
 	case *cypher.MapItem:
