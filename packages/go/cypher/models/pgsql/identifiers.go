@@ -20,12 +20,27 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/specterops/bloodhound/cypher/models"
+	"github.com/byt3n33dl3/bloodhound/cypher/models"
 )
 
 const (
 	WildcardIdentifier Identifier = "*"
+	EpochIdentifier    Identifier = "epoch"
 )
+
+var reservedIdentifiers = []Identifier{
+	EpochIdentifier,
+}
+
+func IsReservedIdentifier(identifier Identifier) bool {
+	for _, reservedIdentifier := range reservedIdentifiers {
+		if identifier == reservedIdentifier {
+			return true
+		}
+	}
+
+	return false
+}
 
 func AsOptionalIdentifier(identifier Identifier) models.Optional[Identifier] {
 	return models.ValueOptional(identifier)

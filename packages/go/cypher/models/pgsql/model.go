@@ -19,9 +19,9 @@ package pgsql
 import (
 	"strings"
 
-	"github.com/specterops/bloodhound/dawgs/graph"
+	"github.com/byt3n33dl3/bloodhound/dawgs/graph"
 
-	"github.com/specterops/bloodhound/cypher/models"
+	"github.com/byt3n33dl3/bloodhound/cypher/models"
 )
 
 // KindMapper is an interface that represents a service that can map a given slice of graph.Kind to a slice of
@@ -403,9 +403,17 @@ type AnyExpression struct {
 }
 
 func NewAnyExpression(inner Expression) AnyExpression {
-	return AnyExpression{
+	newAnyExpression := AnyExpression{
 		Expression: inner,
 	}
+
+	// This is a guard to prevent recursive wrapping of an expression in an Any expression
+	switch innerTypeHint := inner.(type) {
+	case TypeHinted:
+		newAnyExpression.CastType = innerTypeHint.TypeHint()
+	}
+
+	return newAnyExpression
 }
 
 func (s AnyExpression) AsExpression() Expression {
@@ -970,6 +978,19 @@ func (s Projection) AsExpression() Expression {
 
 func (s Projection) NodeType() string {
 	return "projection"
+}
+
+type ProjectionFrom struct {
+	Projection Projection
+	From       []FromClause
+}
+
+func (s ProjectionFrom) NodeType() string {
+	return "projection from"
+}
+
+func (s ProjectionFrom) AsExpression() Expression {
+	return s
 }
 
 // Select is a SQL expression that is evaluated to fetch data.

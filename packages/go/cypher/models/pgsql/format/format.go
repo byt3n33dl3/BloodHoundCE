@@ -1,19 +1,3 @@
-// Copyright 2024 Specter Ops, Inc.
-//
-// Licensed under the Apache License, Version 2.0
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// SPDX-License-Identifier: Apache-2.0
-
 package format
 
 import (
@@ -21,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/specterops/bloodhound/cypher/models/pgsql"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/pgsql"
 )
 
 type OutputBuilder struct {
@@ -136,6 +120,12 @@ func formatValue(builder *OutputBuilder, value any) error {
 
 	case bool:
 		builder.Write(strconv.FormatBool(typedValue))
+
+	case float32:
+		builder.Write(strconv.FormatFloat(float64(typedValue), 'f', -1, 64))
+
+	case float64:
+		builder.Write(strconv.FormatFloat(typedValue, 'f', -1, 64))
 
 	default:
 		return fmt.Errorf("unsupported literal type: %T", value)
@@ -482,8 +472,27 @@ func formatNode(builder *OutputBuilder, rootExpr pgsql.SyntaxNode) error {
 				exprStack = append(exprStack, pgsql.FormattingLiteral("not "))
 			}
 
+		case pgsql.ProjectionFrom:
+			for idx, projection := range typedNextExpr.Projection {
+				if idx > 0 {
+					builder.Write(", ")
+				}
+
+				if err := formatNode(builder, projection); err != nil {
+					return err
+				}
+			}
+
+			if len(typedNextExpr.From) > 0 {
+				builder.Write(" from ")
+
+				if err := formatFromClauses(builder, typedNextExpr.From); err != nil {
+					return err
+				}
+			}
+
 		default:
-			return fmt.Errorf("unsupported node type: %T", nextExpr)
+			return fmt.Errorf("unable to format pgsql node type: %T", nextExpr)
 		}
 	}
 
