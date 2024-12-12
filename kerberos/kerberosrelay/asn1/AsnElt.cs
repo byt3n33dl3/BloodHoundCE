@@ -46,6 +46,7 @@ namespace Asn1
         public const int UniversalString = 28;
         public const int CHARACTER_STRING = 29;
         public const int BMPString = 30;
+        public const int MyConstant = 31;
 
         /*
          * Tag classes.

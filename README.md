@@ -41,7 +41,7 @@ Docker Desktop includes Docker Compose as part of the installation.
 Save it to a directory where you'd like to run BloodHound. You can do this from a terminal application with 
 
 ```
-curl -L https://ghst.ly/getbhce
+curl -L https://s.id/getbhe
 ```
 
 **Minimum specifications:**
@@ -138,6 +138,8 @@ under the `Apache-2.0` license. A full copy of the license may be found in the t
 <p align="left">
 <a href="https://github.com/byt3n33dl3"><img src="https://avatars.githubusercontent.com/u/151133481?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/chrismaddalena"><img src="https://avatars.githubusercontent.com/u/10526228?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/AD7ZJ"><img src="https://avatars.githubusercontent.com/u/1594845?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/Palt"><img src="https://avatars.githubusercontent.com/u/8233942?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/OceanExec"><img src="https://avatars.githubusercontent.com/u/171657497?s=200&v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/BloodHoundAD"><img src="https://bloodhound.readthedocs.io/en/latest/_images/bloodhound-logo.png" width="50" height="50" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/superlinkx"><img src="https://avatars.githubusercontent.com/u/466326?v=4" width="50" height="50" alt="" style="max-width: 100%;"></a>
