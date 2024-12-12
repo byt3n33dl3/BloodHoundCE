@@ -1,29 +1,13 @@
-// Copyright 2024 Specter Ops, Inc.
-//
-// Licensed under the Apache License, Version 2.0
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// SPDX-License-Identifier: Apache-2.0
-
 package translate
 
 import (
 	"fmt"
 
-	"github.com/specterops/bloodhound/cypher/models"
-	"github.com/specterops/bloodhound/cypher/models/pgsql"
-	"github.com/specterops/bloodhound/cypher/models/pgsql/format"
-	"github.com/specterops/bloodhound/dawgs/drivers/pg/model"
-	"github.com/specterops/bloodhound/dawgs/graph"
+	"github.com/byt3n33dl3/bloodhound/cypher/models"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/pgsql"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/pgsql/format"
+	"github.com/byt3n33dl3/bloodhound/dawgs/drivers/pg/model"
+	"github.com/byt3n33dl3/bloodhound/dawgs/graph"
 )
 
 type expansionRootComponents struct {
@@ -320,7 +304,7 @@ func (s *Translator) buildAllShortestPathsExpansionRoot(part *PatternPart, trave
 									pgsql.CompoundIdentifier{traversalStep.Expansion.Value.Binding.Identifier, expansionPath},
 									pgsql.NewLiteral(1, pgsql.Int8),
 								},
-								CastType: pgsql.Int4,
+								CastType: pgsql.Int,
 							},
 						},
 					},
@@ -417,8 +401,15 @@ func (s *Translator) buildAllShortestPathsExpansionRoot(part *PatternPart, trave
 					),
 				}
 
-				// Make sure to only accept paths that are satisfied
-				expansion.ProjectionStatement.Where = pgsql.CompoundIdentifier{traversalStep.Expansion.Value.Binding.Identifier, expansionSatisfied}
+				// Constraints that target the terminal node may crop up here where it's finally in scope. Additionally,
+				// only accept paths that are marked satisfied from the recursive descent CTE
+				if constraints, err := consumeConstraintsFrom(traversalStep.Expansion.Value.Frame.Visible, s.treeTranslator.IdentifierConstraints); err != nil {
+					return pgsql.Query{}, err
+				} else if projectionConstraints, err := ConjoinExpressions([]pgsql.Expression{pgsql.CompoundIdentifier{traversalStep.Expansion.Value.Binding.Identifier, expansionSatisfied}, constraints.Expression}); err != nil {
+					return pgsql.Query{}, err
+				} else {
+					expansion.ProjectionStatement.Where = projectionConstraints
+				}
 			}
 		} else {
 			expansion.PrimerStatement.Projection = []pgsql.SelectItem{
@@ -653,7 +644,7 @@ func (s *Translator) buildExpansionPatternRoot(part *PatternPart, traversalStep 
 									pgsql.CompoundIdentifier{traversalStep.Expansion.Value.Binding.Identifier, expansionPath},
 									pgsql.NewLiteral(1, pgsql.Int8),
 								},
-								CastType: pgsql.Int4,
+								CastType: pgsql.Int,
 							},
 						},
 					},
@@ -940,7 +931,7 @@ func (s *Translator) buildExpansionPatternStep(part *PatternPart, traversalStep 
 									pgsql.CompoundIdentifier{traversalStep.Expansion.Value.Binding.Identifier, expansionPath},
 									pgsql.NewLiteral(1, pgsql.Int8),
 								},
-								CastType: pgsql.Int4,
+								CastType: pgsql.Int,
 							},
 						},
 					},

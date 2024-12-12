@@ -1,28 +1,12 @@
-// Copyright 2024 Specter Ops, Inc.
-//
-// Licensed under the Apache License, Version 2.0
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// SPDX-License-Identifier: Apache-2.0
-
 package translate
 
 import (
 	"fmt"
 	"strings"
 
-	"github.com/specterops/bloodhound/cypher/models"
-	"github.com/specterops/bloodhound/cypher/models/cypher"
-	"github.com/specterops/bloodhound/cypher/models/pgsql"
+	"github.com/byt3n33dl3/bloodhound/cypher/models"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/cypher"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/pgsql"
 )
 
 func translateCypherAssignmentOperator(operator cypher.AssignmentOperator) (pgsql.Operator, error) {
@@ -58,6 +42,76 @@ func (s *Translator) translateRemoveItem(removeItem *cypher.RemoveItem) error {
 	}
 
 	return nil
+}
+
+func (s *Translator) translatePropertyLookup(lookup *cypher.PropertyLookup) {
+	if translatedAtom, err := s.treeTranslator.Pop(); err != nil {
+		s.SetError(err)
+	} else {
+		switch typedTranslatedAtom := translatedAtom.(type) {
+		case pgsql.Identifier:
+			if fieldIdentifierLiteral, err := pgsql.AsLiteral(lookup.Symbols[0]); err != nil {
+				s.SetError(err)
+			} else {
+				s.treeTranslator.Push(pgsql.CompoundIdentifier{typedTranslatedAtom, pgsql.ColumnProperties})
+				s.treeTranslator.Push(fieldIdentifierLiteral)
+
+				if err := s.treeTranslator.PopPushOperator(s.query.Scope, pgsql.OperatorPropertyLookup); err != nil {
+					s.SetError(err)
+				}
+			}
+
+		case pgsql.FunctionCall:
+			if fieldIdentifierLiteral, err := pgsql.AsLiteral(lookup.Symbols[0]); err != nil {
+				s.SetError(err)
+			} else if componentName, typeOK := fieldIdentifierLiteral.Value.(string); !typeOK {
+				s.SetErrorf("expected a string component name in translated literal but received type: %T", fieldIdentifierLiteral.Value)
+			} else {
+				switch typedTranslatedAtom.Function {
+				case pgsql.FunctionCurrentDate, pgsql.FunctionLocalTime, pgsql.FunctionCurrentTime, pgsql.FunctionLocalTimestamp, pgsql.FunctionNow:
+					switch componentName {
+					case cypher.ITTCEpochSeconds:
+						s.treeTranslator.Push(pgsql.FunctionCall{
+							Function: pgsql.FunctionExtract,
+							Parameters: []pgsql.Expression{pgsql.ProjectionFrom{
+								Projection: []pgsql.SelectItem{
+									pgsql.EpochIdentifier,
+								},
+								From: []pgsql.FromClause{{
+									Source: translatedAtom,
+								}},
+							}},
+							CastType: pgsql.Numeric,
+						})
+
+					case cypher.ITTCEpochMilliseconds:
+						s.treeTranslator.Push(pgsql.NewBinaryExpression(
+							pgsql.FunctionCall{
+								Function: pgsql.FunctionExtract,
+								Parameters: []pgsql.Expression{pgsql.ProjectionFrom{
+									Projection: []pgsql.SelectItem{
+										pgsql.EpochIdentifier,
+									},
+									From: []pgsql.FromClause{{
+										Source: translatedAtom,
+									}},
+								}},
+								CastType: pgsql.Numeric,
+							},
+							pgsql.OperatorMultiply,
+							pgsql.NewLiteral(1000, pgsql.Int4),
+						))
+
+					default:
+						s.SetErrorf("unsupported date time instant type component %s from function call %s", componentName, typedTranslatedAtom.Function)
+					}
+
+				default:
+					s.SetErrorf("unsupported instant type component %s from function call %s", componentName, typedTranslatedAtom.Function)
+				}
+			}
+		}
+	}
 }
 
 func (s *Translator) translateSetItem(setItem *cypher.SetItem) error {
