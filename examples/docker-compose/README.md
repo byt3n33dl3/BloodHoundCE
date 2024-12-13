@@ -1,6 +1,6 @@
-# BloodHound Community Edition Docker Compose Example
+# BloodHound Enterprise Docker Compose Example
 
-BloodHound Community Edition is composed of three distinct parts:
+BloodHound Enterprise is composed of three distinct parts:
 
 -   A PostgreSQL database used for application state storage
 -   A Neo4J graph database used for storing all the graph data
@@ -16,11 +16,11 @@ a single command.
 Using this `docker-compose` configuration requires:
 
 -   A Docker compatible container runtime. Either [Docker](https://www.docker.com/) or
-    [Podman (with Docker compatibility enabled)](https://www.redhat.com/sysadmin/podman-docker-compose) will work great
--   [Docker Compose](https://docs.docker.com/compose/install/), which is automatically included with Docker Desktop if you\
+    Podman with Docker compatibility [enabled](https://www.redhat.com/sysadmin/podman-docker-compose) will work great
+-   Docker [Compose](https://docs.docker.com/compose/install/), which is automatically included with Docker Desktop if you\
     choose to go that route
 
-## Running BloodHound Community Edition
+## Running BloodHound Enterprise
 
 If you're just looking to run the application as quickly as possible locally and don't care about configuration, you can
 simply copy the `docker-compose.yml` file from this directory to a location on disk that you want to run it from. Then simply
@@ -32,7 +32,7 @@ The default ports are as follows:
 -   7474 - Neo4J Web Interface. Useful for when you need to run queries directly against the Neo4J database
 -   7687 - Neo4J Database Port. This is provided in case you want to access the Neo4J database from some other application on your machine
 
-## Configuring BloodHound Community Edition
+## Configuring BloodHound Enterprise
 
 There are additional files included in this directory to help you configure the application to your needs (such as modifying
 what ports different services run on and what credentials should be used):
@@ -52,14 +52,14 @@ Changing database credentials isn't necessary when running locally, but it is en
 if you're going to make any of these ports available outside of localhost that you change the credentials to something secure.
 These configuration files are provided to make this process as easy as possible.
 
-## Accessing BloodHound Community Edition
+## Accessing BloodHound Enterprise
 
 Once the `bloodhound` server shows the message "Server started successfully", you'll be able to access the UI at
 `http://localhost:8080/ui/login`. The default port is `8080` but can be configured as mentioned above. In order to login,
 you will need to locate the message `# Initial Password Set To:    <password-here>    #`, which is conveniently located
 in a decorated block. The default login will be `admin:<password-here>`, and by default the password is randomized at creation.
 You will then be asked to choose a new secure password for your admin account. Keep this handy as all future logins will
-require it. Afterward, you'll be greeted with the BloodHound Community Edition interface.
+require it. Afterward, you'll be greeted with the BloodHound Enterprise interface.
 
 ## Choosing a BloodHound Version
 

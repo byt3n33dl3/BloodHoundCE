@@ -1,4 +1,4 @@
-# CUE Lang Driven Code Generation
+# CUE Lang Driven
 
 ## TODO
 

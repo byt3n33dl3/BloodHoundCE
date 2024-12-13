@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2024 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-module github.com/specterops/bloodhound/dawgs
+module github.com/byt3n33dl3/bloodhound/dawgs
 
 go 1.23
 
@@ -25,8 +25,8 @@ require (
 	github.com/jackc/pgtype v1.14.4
 	github.com/jackc/pgx/v5 v5.7.1
 	github.com/neo4j/neo4j-go-driver/v5 v5.9.0
-	github.com/specterops/bloodhound/cypher v0.0.0-00010101000000-000000000000
-	github.com/specterops/bloodhound/log v0.0.0-00010101000000-000000000000
+	github.com/byt3n33dl3/bloodhound/cypher v0.0.0-00010101000000-000000000000
+	github.com/byt3n33dl3/bloodhound/log v0.0.0-00010101000000-000000000000
 	github.com/stretchr/testify v1.9.0
 	go.uber.org/mock v0.2.0
 )
@@ -46,15 +46,15 @@ require (
 	github.com/mschoch/smat v0.2.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/rs/zerolog v1.29.1 // indirect
-	golang.org/x/crypto v0.27.0 // indirect
+	golang.org/x/crypto v0.31.0 // indirect
 	golang.org/x/exp v0.0.0-20230515195305-f3d0a9c9a5cc // indirect
-	golang.org/x/sync v0.8.0 // indirect
-	golang.org/x/sys v0.25.0 // indirect
-	golang.org/x/text v0.18.0 // indirect
+	golang.org/x/sync v0.10.0 // indirect
+	golang.org/x/sys v0.28.0 // indirect
+	golang.org/x/text v0.21.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
 replace (
-	github.com/specterops/bloodhound/cypher => ../cypher
-	github.com/specterops/bloodhound/log => ../log
+	github.com/byt3n33dl3/bloodhound/cypher => ../cypher
+	github.com/byt3n33dl3/bloodhound/log => ../log
 )
