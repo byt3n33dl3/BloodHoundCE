@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2024 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -14,14 +14,14 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-module github.com/specterops/bloodhound/crypto
+module github.com/byt3n33dl3/bloodhound/crypto
 
 go 1.23
 
 require (
 	github.com/shirou/gopsutil/v3 v3.23.5
 	go.uber.org/mock v0.2.0
-	golang.org/x/crypto v0.27.0
+	golang.org/x/crypto v0.31.0
 )
 
 require (
@@ -33,5 +33,5 @@ require (
 	github.com/tklauser/go-sysconf v0.3.11 // indirect
 	github.com/tklauser/numcpus v0.6.1 // indirect
 	github.com/yusufpapurcu/wmi v1.2.3 // indirect
-	golang.org/x/sys v0.25.0 // indirect
+	golang.org/x/sys v0.28.0 // indirect
 )
