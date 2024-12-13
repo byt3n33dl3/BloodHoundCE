@@ -10,7 +10,7 @@
 Offensive Security Swiss Army Knife
 <p></div>
 
-# Our Standards
+# [Our](https://github.com/byt3n33dl3/) Standards
 
 Examples of behavior that contributes to a positive environment for our community include:
 

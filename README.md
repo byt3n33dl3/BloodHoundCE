@@ -35,7 +35,7 @@ Docker Compose is the easiest way to get up and running with BloodHound. Instruc
 > Easy, Reliable, Effective Map, Prioritize, and Remediate Identity Attack Paths Management.
 
 > [!NOTE]
-> See your `Organization` from the Attacker’s view, BloodHound Enterprise is an Attack Path Management solution that continuously maps and quantifies identity Attack Paths in Active Directory and Azure Environments.
+> See your `Organization` from the Attacker’s view, an Attack Path Management solution that continuously maps and quantifies identity Attack Paths in Active Directory and Azure Environments.
 
 ## Deploy BloodHound
 Deploying BloodHound quickly with the following steps:
