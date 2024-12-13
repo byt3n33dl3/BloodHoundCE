@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2024 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -14,15 +14,15 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-module github.com/specterops/bloodhound/packages/go/stbernard
+module github.com/byt3n33dl3/bloodhound/packages/go/stbernard
 
 go 1.23
 
 require (
 	github.com/Masterminds/semver/v3 v3.2.1
 	github.com/gofrs/uuid v4.4.0+incompatible
-	github.com/specterops/bloodhound/log v0.0.0-00010101000000-000000000000
-	github.com/specterops/bloodhound/slicesext v0.0.0-00010101000000-000000000000
+	github.com/byt3n33dl3/bloodhound/log v0.0.0-00010101000000-000000000000
+	github.com/byt3n33dl3/bloodhound/slicesext v0.0.0-00010101000000-000000000000
 	github.com/stretchr/testify v1.9.0
 	golang.org/x/mod v0.17.0
 )
@@ -34,12 +34,12 @@ require (
 	github.com/mattn/go-isatty v0.0.19 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/rs/zerolog v1.29.1 // indirect
-	golang.org/x/sys v0.25.0 // indirect
+	golang.org/x/sys v0.28.0 // indirect
 	golang.org/x/tools v0.21.1-0.20240508182429-e35e4ccd0d2d
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
 replace (
-	github.com/specterops/bloodhound/log => ../log
-	github.com/specterops/bloodhound/slicesext => ../slicesext
+	github.com/byt3n33dl3/bloodhound/log => ../log
+	github.com/byt3n33dl3/bloodhound/slicesext => ../slicesext
 )

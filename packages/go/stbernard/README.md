@@ -1,4 +1,4 @@
-# St Bernard
+# St. Bernard
 
 ## A BloodHound Swiss Army Knife
 
@@ -6,7 +6,7 @@ St Bernard is a multi-purpose tool for working with BloodHound repositories. It 
 dependency syncing, and much more!
 
 ```
-$ go run github.com/specterops/bloodhound/packages/go/stbernard -h
+$ go run github.com/byt3n33dl3/bloodhound/packages/go/stbernard -h
 
 A BloodHound Swiss Army Knife
 
@@ -33,19 +33,19 @@ Commands:
 St Bernard can be run most easily with `go run`:
 
 ```
-$ go run github.com/specterops/bloodhound/packages/go/stbernard
+$ go run github.com/byt3n33dl3/bloodhound/packages/go/stbernard
 ```
 
 You can find current usage help and available commands by passing the `-h` or `-help` flag. If you'd like to know what additional options are supported by a specific subcommand, you can run the subcommand with `-h` or `-help` to get subcommand specific options:
 
 ```
-$ go run github.com/specterops/bloodhound/packages/go/stbernard test -h
+$ go run github.com/byt3n33dl3/bloodhound/packages/go/stbernard test -h
 ```
 
 The options available to stbernard should be used _before_ the subcommand. Subcommand options always come after the subcommand:
 
 ```
-$ go run github.com/specterops/bloodhound/packages/go/stbernard -vv test -g
+$ go run github.com/byt3n33dl3/bloodhound/packages/go/stbernard -vv test -g
 ```
 
 ### Configuration
