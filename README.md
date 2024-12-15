@@ -137,9 +137,9 @@ under the `Apache-2.0` license. A full copy of the license may be found in the t
 - [Wiki Page](https://github.com/byt3n33dl3/BloodHound/wiki)
 - [Contributors](./CONTRIBUTORS.md)
 - [Docker Compose](./examples/docker-compose/README.md)
-- [BloodHound Docs](https://support.bloodhoundenterprise.io/)
+- Enterprise [Docs](https://support.bloodhoundenterprise.io/)
 - [Developer Guide](https://github.com/byt3n33dl3/BloodHound/wiki/Development)
-- [Contributing Guide](https://github.com/byt3n33dl3/BloodHound/wiki/Contributing)
+- Contributing [Guide](https://github.com/byt3n33dl3/BloodHound/wiki/Contributing)
 
 # Credits / `main`
 - SpecterOps
@@ -148,34 +148,34 @@ under the `Apache-2.0` license. A full copy of the license may be found in the t
 - [OceanExec](https://github.com/OceanExec/)
 
 <p align="left">
-<a href="https://github.com/byt3n33dl3"><img src="https://avatars.githubusercontent.com/u/151133481?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/chrismaddalena"><img src="https://avatars.githubusercontent.com/u/10526228?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/AD7ZJ"><img src="https://avatars.githubusercontent.com/u/1594845?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/Palt"><img src="https://avatars.githubusercontent.com/u/8233942?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/OceanExec"><img src="https://avatars.githubusercontent.com/u/171657497?s=200&v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/BloodHoundAD"><img src="https://bloodhound.readthedocs.io/en/latest/_images/bloodhound-logo.png" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/superlinkx"><img src="https://avatars.githubusercontent.com/u/466326?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/apps/dependabot"><img src="https://avatars.githubusercontent.com/in/29110?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/rvazarkar"><img src="https://avatars.githubusercontent.com/u/5720446?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/mistahj67"><img src="https://avatars.githubusercontent.com/u/26472282?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/SpecterOps"><img src="https://avatars.githubusercontent.com/u/25406560?s=200&v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/benwaples"><img src="https://avatars.githubusercontent.com/u/66393111?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/GhostPack"><img src="https://avatars.githubusercontent.com/u/41304335?s=200&v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/github"><img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/HarmJ0y"><img src="https://avatars.githubusercontent.com/u/5504523?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/Scoubi"><img src="https://avatars.githubusercontent.com/u/7934465?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/Azure"><img src="https://avatars.githubusercontent.com/u/6844498?s=200&v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/elikmiller"><img src="https://avatars.githubusercontent.com/u/1761629?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/sircodemane"><img src="https://avatars.githubusercontent.com/u/6968902?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/codingo"><img src="https://avatars.githubusercontent.com/u/886344?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/mitmedialab"><img src="https://avatars.githubusercontent.com/u/7405700?s=200&v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/prodigysml"><img src="https://avatars.githubusercontent.com/u/16996819?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/sqlmapproject"><img src="https://avatars.githubusercontent.com/u/735289?s=200&v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/jvoisin"><img src="https://avatars.githubusercontent.com/u/325724?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/stamparm"><img src="https://avatars.githubusercontent.com/u/921555?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/Mjoeman98"><img src="https://avatars.githubusercontent.com/u/184496841?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/maffkipp"><img src="https://avatars.githubusercontent.com/u/16313351?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/houssem98"><img src="https://avatars.githubusercontent.com/u/35746965?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/e11i0t4lders0n"><img src="https://avatars.githubusercontent.com/u/76389721?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/brandonshearin"><img src="https://avatars.githubusercontent.com/u/23143242?v=4" width="30" height="30" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/byt3n33dl3"><img src="https://avatars.githubusercontent.com/u/151133481?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/chrismaddalena"><img src="https://avatars.githubusercontent.com/u/10526228?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/AD7ZJ"><img src="https://avatars.githubusercontent.com/u/1594845?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/Palt"><img src="https://avatars.githubusercontent.com/u/8233942?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/OceanExec"><img src="https://avatars.githubusercontent.com/u/171657497?s=200&v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/BloodHoundAD"><img src="https://bloodhound.readthedocs.io/en/latest/_images/bloodhound-logo.png" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/superlinkx"><img src="https://avatars.githubusercontent.com/u/466326?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/apps/dependabot"><img src="https://avatars.githubusercontent.com/in/29110?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/rvazarkar"><img src="https://avatars.githubusercontent.com/u/5720446?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/mistahj67"><img src="https://avatars.githubusercontent.com/u/26472282?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/SpecterOps"><img src="https://avatars.githubusercontent.com/u/25406560?s=200&v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/benwaples"><img src="https://avatars.githubusercontent.com/u/66393111?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/GhostPack"><img src="https://avatars.githubusercontent.com/u/41304335?s=200&v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/github"><img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/HarmJ0y"><img src="https://avatars.githubusercontent.com/u/5504523?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/Scoubi"><img src="https://avatars.githubusercontent.com/u/7934465?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/Azure"><img src="https://avatars.githubusercontent.com/u/6844498?s=200&v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/elikmiller"><img src="https://avatars.githubusercontent.com/u/1761629?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/sircodemane"><img src="https://avatars.githubusercontent.com/u/6968902?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/codingo"><img src="https://avatars.githubusercontent.com/u/886344?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/mitmedialab"><img src="https://avatars.githubusercontent.com/u/7405700?s=200&v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/prodigysml"><img src="https://avatars.githubusercontent.com/u/16996819?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/sqlmapproject"><img src="https://avatars.githubusercontent.com/u/735289?s=200&v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/jvoisin"><img src="https://avatars.githubusercontent.com/u/325724?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/stamparm"><img src="https://avatars.githubusercontent.com/u/921555?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/Mjoeman98"><img src="https://avatars.githubusercontent.com/u/184496841?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/maffkipp"><img src="https://avatars.githubusercontent.com/u/16313351?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/houssem98"><img src="https://avatars.githubusercontent.com/u/35746965?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/e11i0t4lders0n"><img src="https://avatars.githubusercontent.com/u/76389721?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/brandonshearin"><img src="https://avatars.githubusercontent.com/u/23143242?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
 </p>
