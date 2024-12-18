@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2024 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -23,16 +23,16 @@ import (
 	"strings"
 	"time"
 
-	"github.com/specterops/bloodhound/analysis/impact"
-	"github.com/specterops/bloodhound/dawgs/cardinality"
+	"github.com/byt3n33dl3/bloodhound/analysis/impact"
+	"github.com/byt3n33dl3/bloodhound/dawgs/cardinality"
 
-	"github.com/specterops/bloodhound/dawgs/graph"
-	"github.com/specterops/bloodhound/dawgs/ops"
-	"github.com/specterops/bloodhound/dawgs/query"
-	"github.com/specterops/bloodhound/dawgs/util"
-	"github.com/specterops/bloodhound/graphschema/ad"
-	"github.com/specterops/bloodhound/graphschema/common"
-	"github.com/specterops/bloodhound/log"
+	"github.com/byt3n33dl3/bloodhound/dawgs/graph"
+	"github.com/byt3n33dl3/bloodhound/dawgs/ops"
+	"github.com/byt3n33dl3/bloodhound/dawgs/query"
+	"github.com/byt3n33dl3/bloodhound/dawgs/util"
+	"github.com/byt3n33dl3/bloodhound/graphschema/ad"
+	"github.com/byt3n33dl3/bloodhound/graphschema/common"
+	"github.com/byt3n33dl3/bloodhound/log"
 )
 
 var (
@@ -53,8 +53,6 @@ const (
 	EnterpriseKeyAdminsGroupSIDSuffix         = "-527"
 	AdministratorsGroupSIDSuffix              = "-544"
 	BackupOperatorsGroupSIDSuffix             = "-551"
-	PerformanceLogUsersSIDSuffix              = "-559"
-	DCOMUsersSIDSuffix                        = "-562"
 	AuthenticatedUsersSuffix                  = "-S-1-5-11"
 	EveryoneSuffix                            = "-S-1-1-0"
 	AdminSDHolderDNPrefix                     = "CN=ADMINSDHOLDER,CN=SYSTEM,"
@@ -73,8 +71,6 @@ func TierZeroWellKnownSIDSuffixes() []string {
 		EnterpriseKeyAdminsGroupSIDSuffix,
 		BackupOperatorsGroupSIDSuffix,
 		AdministratorsGroupSIDSuffix,
-		DCOMUsersSIDSuffix,
-		PerformanceLogUsersSIDSuffix,
 	}
 }
 
