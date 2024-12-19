@@ -52,6 +52,12 @@ Save it to a directory where you'd like to run BloodHound. You can do this from 
 curl -L https://s.id/getbhe
 ```
 
+Or you can manually go to this Directory at
+
+```sh
+https://github.com/byt3n33dl3/BloodHound/blob/main/examples/docker-compose/docker-compose.yml
+```
+
 > [!WARNING]
 > *NOTE:* If the option is unavailable, please go EXECUTE this one `curl -L https://ghst.ly/getbhce`
 
