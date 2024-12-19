@@ -170,12 +170,12 @@ under the `Apache-2.0` license. A full copy of the license may be found in the t
 <a href="https://github.com/AD7ZJ"><img src="https://avatars.githubusercontent.com/u/1594845?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/Palt"><img src="https://avatars.githubusercontent.com/u/8233942?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/OceanExec"><img src="https://avatars.githubusercontent.com/u/171657497?s=200&v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/BloodHoundAD"><img src="https://bloodhound.readthedocs.io/en/latest/_images/bloodhound-logo.png" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/BloodHoundAD"><img src="https://avatars.githubusercontent.com/u/25502277?s=200&v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/superlinkx"><img src="https://avatars.githubusercontent.com/u/466326?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/apps/dependabot"><img src="https://avatars.githubusercontent.com/in/29110?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/rvazarkar"><img src="https://avatars.githubusercontent.com/u/5720446?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/mistahj67"><img src="https://avatars.githubusercontent.com/u/26472282?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
-<a href="https://github.com/SpecterOps"><img src="https://avatars.githubusercontent.com/u/25406560?s=200&v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/SpecterOps"><img src="https://byt3exec.github.io/assets/images/trusted-by/ops.png" width="40" height="40" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/benwaples"><img src="https://avatars.githubusercontent.com/u/66393111?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/GhostPack"><img src="https://avatars.githubusercontent.com/u/41304335?s=200&v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/github"><img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
@@ -195,4 +195,8 @@ under the `Apache-2.0` license. A full copy of the license may be found in the t
 <a href="https://github.com/houssem98"><img src="https://avatars.githubusercontent.com/u/35746965?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/e11i0t4lders0n"><img src="https://avatars.githubusercontent.com/u/76389721?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/brandonshearin"><img src="https://avatars.githubusercontent.com/u/23143242?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/JonasBK"><img src="https://avatars.githubusercontent.com/u/12843299?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/csc-improsec"><img src="https://avatars.githubusercontent.com/u/84499136?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/projectdiscovery"><img src="https://avatars.githubusercontent.com/u/50994705?s=200&v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
+<a href="https://github.com/microsoft"><img src="https://avatars.githubusercontent.com/u/6154722?s=200&v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
 </p>
