@@ -79,7 +79,7 @@ with the saved `docker-compose.yml` file and run `docker compose pull && docker 
 
 The randomly generated password in the terminal output of Docker Compose.
 
->- In a browser
+>- In a Browser
 
 Navigate to `http://localhost:8080/ui/login`. Login with a username of `admin` and the randomly generated password from the logs.
 
