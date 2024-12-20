@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2024 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -534,17 +534,22 @@ class BHEAPIClient {
         skip: number,
         limit: number,
         filterAccepted?: boolean,
-        sortBy?: string,
+        sortBy?: string | string[],
         options?: types.RequestOptions
     ) => {
-        const params: types.RiskDetailsRequest = {
-            finding: finding,
-            skip: skip,
-            limit: limit,
-            sort_by: sortBy,
-        };
+        const params = new URLSearchParams();
+        params.append('finding', finding);
+        params.append('skip', skip.toString());
+        params.append('limit', limit.toString());
+        if (sortBy) {
+            if (typeof sortBy === 'string') {
+                params.append('sort_by', sortBy);
+            } else {
+                sortBy.forEach((sort) => params.append('sort_by', sort));
+            }
+        }
 
-        if (typeof filterAccepted === 'boolean') params.Accepted = `eq:${filterAccepted}`;
+        if (typeof filterAccepted === 'boolean') params.append('Accepted', `eq:${filterAccepted}`);
 
         return this.baseClient.get(
             `/api/v2/domains/${domainId}/details`,
