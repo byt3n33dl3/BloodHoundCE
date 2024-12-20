@@ -31,7 +31,7 @@ Docker Compose is the easiest way to get up and running with BloodHound. Instruc
 
 ## Extra Overview
 
-> [!TIP]
+> [!NOTE]
 > Easy, Reliable, Effective Map, Prioritize, and Remediate Identity Attack Paths Management.
 
 > [!NOTE]
@@ -52,10 +52,10 @@ Save it to a directory where you'd like to run BloodHound. You can do this from 
 curl -L https://s.id/getbhe
 ```
 
-Or you can manually go to this Directory at
+Or you can manually go to this Directory at Docker `compose`
 
 ```sh
-https://github.com/byt3n33dl3/BloodHound/blob/main/examples/docker-compose/docker-compose.yml
+https://raw.githubusercontent.com/byt3n33dl3/BloodHound/main/examples/docker-compose/docker-compose.yml
 ```
 
 > [!WARNING]
