@@ -14,7 +14,7 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-module github.com/byt3n33dl3/bloodhound/dawgs
+module github.com/specterops/bloodhound/dawgs
 
 go 1.23
 
@@ -25,8 +25,8 @@ require (
 	github.com/jackc/pgtype v1.14.4
 	github.com/jackc/pgx/v5 v5.7.1
 	github.com/neo4j/neo4j-go-driver/v5 v5.9.0
-	github.com/byt3n33dl3/bloodhound/cypher v0.0.0-00010101000000-000000000000
-	github.com/byt3n33dl3/bloodhound/log v0.0.0-00010101000000-000000000000
+	github.com/specterops/bloodhound/cypher v0.0.0-00010101000000-000000000000
+	github.com/specterops/bloodhound/log v0.0.0-00010101000000-000000000000
 	github.com/stretchr/testify v1.9.0
 	go.uber.org/mock v0.2.0
 )
@@ -40,11 +40,12 @@ require (
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
 	github.com/jackc/puddle/v2 v2.2.2 // indirect
-	github.com/kr/text v0.2.0 // indirect
+	github.com/kr/pretty v0.3.1 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.19 // indirect
 	github.com/mschoch/smat v0.2.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/rogpeppe/go-internal v1.13.1 // indirect
 	github.com/rs/zerolog v1.29.1 // indirect
 	golang.org/x/crypto v0.31.0 // indirect
 	golang.org/x/exp v0.0.0-20230515195305-f3d0a9c9a5cc // indirect
@@ -55,6 +56,6 @@ require (
 )
 
 replace (
-	github.com/byt3n33dl3/bloodhound/cypher => ../cypher
-	github.com/byt3n33dl3/bloodhound/log => ../log
+	github.com/specterops/bloodhound/cypher => ../cypher
+	github.com/specterops/bloodhound/log => ../log
 )

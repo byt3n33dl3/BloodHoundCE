@@ -1,4 +1,6 @@
-# BloodHound Cypher Library
+# Enterprise 
+
+Cypher Library
 
 This project contains a golang parser implementation that for the [openCypher](https://opencypher.org/) project. The
 primary goal of this implementation is to be lightweight and compatible with cypher dialect used by
