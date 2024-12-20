@@ -1,19 +1,3 @@
-// Copyright 2024 Specter Ops, Inc.
-//
-// Licensed under the Apache License, Version 2.0
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// SPDX-License-Identifier: Apache-2.0
-
 module github.com/byt3n33dl3/bloodhound/packages/go/stbernard
 
 go 1.23
@@ -24,7 +8,7 @@ require (
 	github.com/byt3n33dl3/bloodhound/log v0.0.0-00010101000000-000000000000
 	github.com/byt3n33dl3/bloodhound/slicesext v0.0.0-00010101000000-000000000000
 	github.com/stretchr/testify v1.9.0
-	golang.org/x/mod v0.17.0
+	golang.org/x/mod v0.21.0
 )
 
 require (
@@ -35,7 +19,7 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/rs/zerolog v1.29.1 // indirect
 	golang.org/x/sys v0.28.0 // indirect
-	golang.org/x/tools v0.21.1-0.20240508182429-e35e4ccd0d2d
+	golang.org/x/tools v0.26.0
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
