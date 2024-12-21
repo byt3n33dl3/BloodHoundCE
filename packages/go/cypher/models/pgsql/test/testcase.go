@@ -17,6 +17,7 @@
 package test
 
 import (
+	"context"
 	"embed"
 	"encoding/json"
 	"fmt"
@@ -27,11 +28,11 @@ import (
 	"testing"
 
 	"cuelang.org/go/pkg/regexp"
-	"github.com/specterops/bloodhound/cypher/frontend"
-	"github.com/specterops/bloodhound/cypher/models/cypher"
-	"github.com/specterops/bloodhound/cypher/models/pgsql"
-	"github.com/specterops/bloodhound/cypher/models/pgsql/translate"
-	"github.com/specterops/bloodhound/cypher/models/walk"
+	"github.com/byt3n33dl3/bloodhound/cypher/frontend"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/cypher"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/pgsql"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/pgsql/translate"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/walk"
 	"github.com/stretchr/testify/require"
 )
 
@@ -82,7 +83,7 @@ func (s *TranslationTestCase) Assert(t *testing.T, expectedSQL string, kindMappe
 			}
 		}
 
-		if translation, err := translate.Translate(regularQuery, kindMapper); err != nil {
+		if translation, err := translate.Translate(context.Background(), regularQuery, kindMapper, nil); err != nil {
 			t.Fatalf("Failed to translate cypher query: %s - %v", s.Cypher, err)
 		} else if formattedQuery, err := translate.Translated(translation); err != nil {
 			t.Fatalf("Failed to format SQL translatedQuery: %v", err)
