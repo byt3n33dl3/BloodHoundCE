@@ -18,11 +18,10 @@ package translate
 
 import (
 	"fmt"
-	"strings"
 
-	"github.com/specterops/bloodhound/cypher/models"
-	cypher "github.com/specterops/bloodhound/cypher/models/cypher"
-	"github.com/specterops/bloodhound/cypher/models/pgsql"
+	"github.com/byt3n33dl3/bloodhound/cypher/models"
+	cypher "github.com/byt3n33dl3/bloodhound/cypher/models/cypher"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/pgsql"
 )
 
 func (s *Translator) translateNodePattern(scope *Scope, nodePattern *cypher.NodePattern, part *PatternPart) error {
@@ -48,8 +47,8 @@ func (s *Translator) translateNodePattern(scope *Scope, nodePattern *cypher.Node
 		}
 
 		if len(nodePattern.Kinds) > 0 {
-			if kindIDs, missingKinds := s.kindMapper.MapKinds(nodePattern.Kinds); len(missingKinds) > 0 {
-				s.SetErrorf("unable to map kinds: %s", strings.Join(missingKinds.Strings(), ", "))
+			if kindIDs, err := s.kindMapper.MapKinds(s.ctx, nodePattern.Kinds); err != nil {
+				s.SetError(fmt.Errorf("failed to translate kinds: %w", err))
 			} else if kindIDsLiteral, err := pgsql.AsLiteral(kindIDs); err != nil {
 				s.SetError(err)
 			} else {
