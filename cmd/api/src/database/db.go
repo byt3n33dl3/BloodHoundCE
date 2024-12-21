@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2024 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -23,18 +23,18 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/specterops/bloodhound/src/services/agi"
-	"github.com/specterops/bloodhound/src/services/dataquality"
-	"github.com/specterops/bloodhound/src/services/fileupload"
-	"github.com/specterops/bloodhound/src/services/ingest"
+	"github.com/byt3n33dl3/bloodhound/src/services/agi"
+	"github.com/byt3n33dl3/bloodhound/src/services/dataquality"
+	"github.com/byt3n33dl3/bloodhound/src/services/fileupload"
+	"github.com/byt3n33dl3/bloodhound/src/services/ingest"
 
 	"github.com/gofrs/uuid"
-	"github.com/specterops/bloodhound/errors"
-	"github.com/specterops/bloodhound/log"
-	"github.com/specterops/bloodhound/src/auth"
-	"github.com/specterops/bloodhound/src/database/migration"
-	"github.com/specterops/bloodhound/src/model"
-	"github.com/specterops/bloodhound/src/model/appcfg"
+	"github.com/byt3n33dl3/bloodhound/errors"
+	"github.com/byt3n33dl3/bloodhound/log"
+	"github.com/byt3n33dl3/bloodhound/src/auth"
+	"github.com/byt3n33dl3/bloodhound/src/database/migration"
+	"github.com/byt3n33dl3/bloodhound/src/model"
+	"github.com/byt3n33dl3/bloodhound/src/model/appcfg"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -44,8 +44,10 @@ const (
 )
 
 var (
-	ErrDuplicateAGName = errors.New("duplicate asset group name")
-	ErrDuplicateAGTag  = errors.New("duplicate asset group tag")
+	ErrDuplicateAGName          = errors.New("duplicate asset group name")
+	ErrDuplicateAGTag           = errors.New("duplicate asset group tag")
+	ErrDuplicateSSOProviderName = errors.New("duplicate sso provider name")
+	ErrDuplicateUserPrincipal   = errors.New("duplicate user principal name")
 )
 
 func IsUnexpectedDatabaseError(err error) bool {
@@ -56,7 +58,7 @@ func IsUnexpectedDatabaseError(err error) bool {
 //
 // Deprecated: When writing code in the new structure, do not pass this interface. Instead, create an interface containing
 // the methods you wish to use in your service implementation:
-// https://specterops.atlassian.net/wiki/spaces/BE/pages/194412923/Restructure+API+Endpoints+Guide+RFC?atlOrigin=eyJpIjoiZjhkOGI0ZDFlMjEzNDkwMDlkMzRhM2QxYTRjMzlmODYiLCJwIjoiY29uZmx1ZW5jZS1jaGF0cy1pbnQifQ
+// https://byt3n33dl3.atlassian.net/wiki/spaces/BE/pages/194412923/Restructure+API+Endpoints+Guide+RFC?atlOrigin=eyJpIjoiZjhkOGI0ZDFlMjEzNDkwMDlkMzRhM2QxYTRjMzlmODYiLCJwIjoiY29uZmx1ZW5jZS1jaGF0cy1pbnQifQ
 type Database interface {
 	appcfg.ParameterService
 	appcfg.FeatureFlagService

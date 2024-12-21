@@ -17,6 +17,7 @@
 package auth
 
 import (
+	"errors"
 	"fmt"
 	"net/http"
 	"time"
@@ -28,6 +29,7 @@ import (
 	"github.com/byt3n33dl3/bloodhound/src/api"
 	"github.com/byt3n33dl3/bloodhound/src/config"
 	"github.com/byt3n33dl3/bloodhound/src/ctx"
+	"github.com/byt3n33dl3/bloodhound/src/database"
 	"github.com/byt3n33dl3/bloodhound/src/model"
 	"github.com/byt3n33dl3/bloodhound/src/utils/validation"
 	"golang.org/x/oauth2"
@@ -67,7 +69,11 @@ func (s ManagementResource) UpdateOIDCProviderRequest(response http.ResponseWrit
 		}
 
 		if oidcProvider, err := s.db.UpdateOIDCProvider(request.Context(), ssoProvider); err != nil {
-			api.HandleDatabaseError(request, response, err)
+			if errors.Is(err, database.ErrDuplicateSSOProviderName) {
+				api.WriteErrorResponse(request.Context(), api.BuildErrorResponse(http.StatusConflict, api.ErrorResponseSSOProviderDuplicateName, request), response)
+			} else {
+				api.HandleDatabaseError(request, response, err)
+			}
 		} else {
 			api.WriteBasicResponse(request.Context(), oidcProvider, http.StatusOK, response)
 		}
@@ -84,7 +90,11 @@ func (s ManagementResource) CreateOIDCProvider(response http.ResponseWriter, req
 		api.WriteErrorResponse(request.Context(), api.BuildErrorResponse(http.StatusBadRequest, validated.Error(), request), response)
 	} else {
 		if oidcProvider, err := s.db.CreateOIDCProvider(request.Context(), upsertReq.Name, upsertReq.Issuer, upsertReq.ClientID); err != nil {
-			api.HandleDatabaseError(request, response, err)
+			if errors.Is(err, database.ErrDuplicateSSOProviderName) {
+				api.WriteErrorResponse(request.Context(), api.BuildErrorResponse(http.StatusConflict, api.ErrorResponseSSOProviderDuplicateName, request), response)
+			} else {
+				api.HandleDatabaseError(request, response, err)
+			}
 		} else {
 			api.WriteBasicResponse(request.Context(), oidcProvider, http.StatusCreated, response)
 		}
@@ -117,6 +127,7 @@ func (s ManagementResource) OIDCLoginHandler(response http.ResponseWriter, reque
 			Scopes:      []string{"openid", "profile", "email", "email_verified", "name", "given_name", "family_name"},
 		}
 
+		// use PKCE to protect against CSRF attacks
 		// https://www.ietf.org/archive/id/draft-ietf-oauth-security-topics-22.html#name-countermeasures-6
 		verifier := oauth2.GenerateVerifier()
 
@@ -146,6 +157,7 @@ func (s ManagementResource) OIDCCallbackHandler(response http.ResponseWriter, re
 		redirectToLoginPage(response, request, "Your SSO Connection failed, please contact your Administrator")
 	} else if len(code) == 0 {
 		// Missing authorization code implies a credentials or form issue
+		// Not explicitly covered, treat as technical issue
 		redirectToLoginPage(response, request, "We’re having trouble connecting. Please check your internet and try again.")
 	} else if pkceVerifier, err := request.Cookie(api.AuthPKCECookieName); err != nil {
 		// Missing PKCE verifier - likely a technical or config issue
@@ -192,6 +204,7 @@ func (s ManagementResource) OIDCCallbackHandler(response http.ResponseWriter, re
 			}
 			if err := idToken.Claims(&claims); err != nil {
 				log.Errorf("[OIDC] Failed to parse claims: %v", err)
+				// Technical or credentials issue
 				// Not explicitly covered; treat as a technical issue
 				redirectToLoginPage(response, request, "We’re having trouble connecting. Please check your internet and try again.")
 			} else {

@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2024 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -24,9 +24,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/specterops/bloodhound/log"
-	"github.com/specterops/bloodhound/src/ctx"
-	"github.com/specterops/bloodhound/src/database"
+	"github.com/byt3n33dl3/bloodhound/log"
+	"github.com/byt3n33dl3/bloodhound/src/ctx"
+	"github.com/byt3n33dl3/bloodhound/src/database"
 )
 
 const (
@@ -66,6 +66,8 @@ const (
 	ErrorResponseAGNameTagEmpty                     = "asset group name or tag must not be empty"
 	ErrorResponseAGDuplicateName                    = "asset group name must be unique"
 	ErrorResponseAGDuplicateTag                     = "asset group tag must be unique"
+	ErrorResponseSSOProviderDuplicateName           = "sso provider name must be unique"
+	ErrorResponseUserDuplicatePrincipal             = "principal name must be unique"
 	ErrorResponseDetailsUniqueViolation             = "unique constraint was violated"
 	ErrorResponseDetailsNotImplemented              = "All good things to those who wait. Not implemented."
 
