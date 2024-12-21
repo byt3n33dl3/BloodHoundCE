@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2024 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -17,8 +17,9 @@
 package integration
 
 import (
-	"github.com/specterops/bloodhound/dawgs/graph"
-	"github.com/specterops/bloodhound/src/test"
+	"github.com/byt3n33dl3/bloodhound/dawgs/graph"
+	"github.com/byt3n33dl3/bloodhound/src/test"
+// 	"github.com/byt3n33dl3/BlackMarlinExec/bme".
 )
 
 type GraphContext struct {
@@ -67,7 +68,7 @@ func (s *GraphContext) End(t test.Context) {
 func NewGraphContext(ctx test.Context, schema graph.Schema) *GraphContext {
 	graphContext := &GraphContext{
 		schema:   schema,
-		Database: OpenGraphDB(ctx),
+		Database: OpenGraphDB(ctx, schema),
 	}
 
 	// Initialize the graph context

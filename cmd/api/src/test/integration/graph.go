@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2024 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -21,13 +21,13 @@ import (
 	"strings"
 	"time"
 
-	_ "github.com/specterops/bloodhound/dawgs/drivers/neo4j"
-	"github.com/specterops/bloodhound/dawgs/graph"
-	"github.com/specterops/bloodhound/graphschema/ad"
-	"github.com/specterops/bloodhound/graphschema/azure"
-	"github.com/specterops/bloodhound/graphschema/common"
-	"github.com/specterops/bloodhound/src/test"
-	"github.com/specterops/bloodhound/src/test/must"
+	_ "github.com/byt3n33dl3/bloodhound/dawgs/drivers/neo4j"
+	"github.com/byt3n33dl3/bloodhound/dawgs/graph"
+	"github.com/byt3n33dl3/bloodhound/graphschema/ad"
+	"github.com/byt3n33dl3/bloodhound/graphschema/azure"
+	"github.com/byt3n33dl3/bloodhound/graphschema/common"
+	"github.com/byt3n33dl3/bloodhound/src/test"
+	"github.com/byt3n33dl3/bloodhound/src/test/must"
 )
 
 var DefaultRelProperties = graph.AsProperties(graph.PropertyMap{
@@ -82,10 +82,14 @@ func (s *GraphTestContext) UpdateNode(node *graph.Node) {
 	})
 }
 
-func (s *GraphTestContext) DatabaseTest(dbDelegate func(harness HarnessDetails, db graph.Database)) {
-	s.setupActiveDirectory()
-	s.setupAzure()
+func (s *GraphTestContext) InitializeHarness(harness GraphTestHarness) {
+	s.Graph.WriteTransaction(s.testCtx, func(tx graph.Transaction) error {
+		harness.Setup(s)
+		return nil
+	})
+}
 
+func (s *GraphTestContext) DatabaseTest(dbDelegate func(harness HarnessDetails, db graph.Database)) {
 	dbDelegate(s.Harness, s.Graph.Database)
 }
 
@@ -109,8 +113,7 @@ func (s *GraphTestContext) DatabaseTestWithSetup(setup func(harness *HarnessDeta
 }
 
 func (s *GraphTestContext) BatchTest(batchDelegate func(harness HarnessDetails, batch graph.Batch), assertionDelegate func(details HarnessDetails, tx graph.Transaction)) {
-	s.setupActiveDirectory()
-	s.setupAzure()
+	s.SetupAzureAndActiveDirectory()
 
 	s.Graph.BatchOperation(s.testCtx, func(batch graph.Batch) error {
 		batchDelegate(s.Harness, batch)
@@ -124,8 +127,7 @@ func (s *GraphTestContext) BatchTest(batchDelegate func(harness HarnessDetails, 
 }
 
 func (s *GraphTestContext) TransactionalTest(txDelegate func(harness HarnessDetails, tx graph.Transaction)) {
-	s.setupActiveDirectory()
-	s.setupAzure()
+	s.SetupAzureAndActiveDirectory()
 
 	s.Graph.WriteTransaction(s.testCtx, func(tx graph.Transaction) error {
 		txDelegate(s.Harness, tx)
@@ -319,6 +321,7 @@ func (s *GraphTestContext) NewAzureTenant(tenantID string) *graph.Node {
 	return s.NewNode(graph.AsProperties(graph.PropertyMap{
 		common.Name:     "New Tenant",
 		common.ObjectID: tenantID,
+		azure.TenantID:  tenantID,
 		azure.License:   "license",
 	}), azure.Entity, azure.Tenant)
 }
@@ -345,12 +348,27 @@ func (s *GraphTestContext) NewActiveDirectoryComputer(name, domainSID string) *g
 	}), ad.Entity, ad.Computer)
 }
 
-func (s *GraphTestContext) NewActiveDirectoryUser(name, domainSID string, isTierZero ...bool) *graph.Node {
+func (s *GraphTestContext) NewActiveDirectoryContainer(name, domainSID string) *graph.Node {
 	return s.NewNode(graph.AsProperties(graph.PropertyMap{
+		common.Name:     name,
+		common.ObjectID: must.NewUUIDv4().String(),
+		ad.DomainSID:    domainSID,
+	}), ad.Entity, ad.Container)
+}
+
+func (s *GraphTestContext) NewActiveDirectoryUser(name, domainSID string, isTierZero ...bool) *graph.Node {
+
+	propertyMap := graph.PropertyMap{
 		common.Name:     name,
 		common.ObjectID: strings.ToUpper(must.NewUUIDv4().String()),
 		ad.DomainSID:    domainSID,
-	}), ad.Entity, ad.User)
+	}
+
+	if isTierZero != nil && isTierZero[0] {
+		propertyMap[common.SystemTags] = ad.AdminTierZero
+	}
+
+	return s.NewNode(graph.AsProperties(propertyMap), ad.Entity, ad.User)
 }
 
 func (s *GraphTestContext) NewCustomActiveDirectoryUser(properties *graph.Properties) *graph.Node {
@@ -515,7 +533,12 @@ type CertTemplateData struct {
 	CertificatePolicy             []string
 }
 
-func (s *GraphTestContext) setupAzure() {
+func (s *GraphTestContext) SetupAzureAndActiveDirectory() {
+	s.SetupAzure()
+	s.SetupActiveDirectory()
+}
+
+func (s *GraphTestContext) SetupAzure() {
 	s.Harness.AZBaseHarness.Setup(s)
 	s.Harness.AZGroupMembership.Setup(s)
 	s.Harness.AZEntityPanelHarness.Setup(s)
@@ -530,7 +553,7 @@ func (s *GraphTestContext) setupAzure() {
 	s.Harness.AZManagementGroup.Setup(s)
 }
 
-func (s *GraphTestContext) setupActiveDirectory() {
+func (s *GraphTestContext) SetupActiveDirectory() {
 	// startServer a host of Tier Zero tagged assets
 	s.Harness.RootADHarness.Setup(s)
 
