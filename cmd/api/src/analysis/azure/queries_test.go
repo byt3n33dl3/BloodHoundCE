@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2024 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -23,16 +23,17 @@ import (
 	"context"
 	"testing"
 
-	"github.com/specterops/bloodhound/dawgs/graph"
-	schema "github.com/specterops/bloodhound/graphschema"
-	azure2 "github.com/specterops/bloodhound/src/analysis/azure"
-	"github.com/specterops/bloodhound/src/test/integration"
+	"github.com/byt3n33dl3/bloodhound/dawgs/graph"
+	schema "github.com/byt3n33dl3/bloodhound/graphschema"
+	azure2 "github.com/byt3n33dl3/bloodhound/src/analysis/azure"
+	"github.com/byt3n33dl3/bloodhound/src/test/integration"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
 func TestAnalysisAzure_GraphStats(t *testing.T) {
 	testCtx := integration.NewGraphTestContext(t, schema.DefaultGraphSchema())
+	testCtx.SetupAzure()
 	testCtx.DatabaseTest(func(harness integration.HarnessDetails, db graph.Database) {
 
 		_, agg, err := azure2.GraphStats(context.TODO(), testCtx.Graph.Database)

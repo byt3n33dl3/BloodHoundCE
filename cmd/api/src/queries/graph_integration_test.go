@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2024 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -23,19 +23,19 @@ import (
 	"context"
 	"testing"
 
-	schema "github.com/specterops/bloodhound/graphschema"
-	"github.com/specterops/bloodhound/src/config"
+	schema "github.com/byt3n33dl3/bloodhound/graphschema"
+	"github.com/byt3n33dl3/bloodhound/src/config"
 
-	adAnalysis "github.com/specterops/bloodhound/analysis/ad"
-	"github.com/specterops/bloodhound/cache"
-	"github.com/specterops/bloodhound/dawgs/graph"
-	"github.com/specterops/bloodhound/dawgs/query"
-	"github.com/specterops/bloodhound/graphschema/ad"
-	"github.com/specterops/bloodhound/graphschema/azure"
-	"github.com/specterops/bloodhound/graphschema/common"
-	"github.com/specterops/bloodhound/src/api/bloodhoundgraph"
-	"github.com/specterops/bloodhound/src/queries"
-	"github.com/specterops/bloodhound/src/test/integration"
+	adAnalysis "github.com/byt3n33dl3/bloodhound/analysis/ad"
+	"github.com/byt3n33dl3/bloodhound/cache"
+	"github.com/byt3n33dl3/bloodhound/dawgs/graph"
+	"github.com/byt3n33dl3/bloodhound/dawgs/query"
+	"github.com/byt3n33dl3/bloodhound/graphschema/ad"
+	"github.com/byt3n33dl3/bloodhound/graphschema/azure"
+	"github.com/byt3n33dl3/bloodhound/graphschema/common"
+	"github.com/byt3n33dl3/bloodhound/src/api/bloodhoundgraph"
+	"github.com/byt3n33dl3/bloodhound/src/queries"
+	"github.com/byt3n33dl3/bloodhound/src/test/integration"
 	"github.com/stretchr/testify/require"
 )
 
@@ -165,6 +165,7 @@ func TestGetEntityResults(t *testing.T) {
 	queryCache, err := cache.NewCache(cache.Config{MaxSize: 1})
 	require.Nil(t, err)
 
+	testContext.SetupActiveDirectory()
 	testContext.DatabaseTest(func(harness integration.HarnessDetails, db graph.Database) {
 		objectID, err := harness.InboundControl.ControlledUser.Properties.Get(common.ObjectID.String()).String()
 		require.Nil(t, err)
@@ -197,6 +198,7 @@ func TestGetEntityResults_QueryShorterThanSlowQueryThreshold(t *testing.T) {
 	queryCache, err := cache.NewCache(cache.Config{MaxSize: 1})
 	require.Nil(t, err)
 
+	testContext.SetupActiveDirectory()
 	testContext.DatabaseTest(func(harness integration.HarnessDetails, db graph.Database) {
 		objectID, err := harness.InboundControl.ControlledUser.Properties.Get(common.ObjectID.String()).String()
 		require.Nil(t, err)
@@ -230,6 +232,7 @@ func TestGetEntityResults_Cache(t *testing.T) {
 	queryCache, err := cache.NewCache(cache.Config{MaxSize: 2})
 	require.Nil(t, err)
 
+	testContext.SetupActiveDirectory()
 	testContext.DatabaseTest(func(harness integration.HarnessDetails, db graph.Database) {
 		objectID, err := harness.InboundControl.ControlledUser.Properties.Get(common.ObjectID.String()).String()
 		require.Nil(t, err)
@@ -270,6 +273,7 @@ func TestGetEntityResults_Cache(t *testing.T) {
 
 func TestGetAssetGroupComboNode(t *testing.T) {
 	testContext := integration.NewGraphTestContext(t, schema.DefaultGraphSchema())
+	testContext.SetupActiveDirectory()
 	testContext.DatabaseTest(func(harness integration.HarnessDetails, db graph.Database) {
 		graphQuery := queries.NewGraphQuery(db, cache.Cache{}, config.Configuration{})
 		comboNode, err := graphQuery.GetAssetGroupComboNode(context.Background(), "", ad.AdminTierZero)

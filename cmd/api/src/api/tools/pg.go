@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2024 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -82,10 +82,8 @@ func migrateTypes(ctx context.Context, neoDB, pgDB graph.Database) error {
 		return err
 	}
 
-	return pgDB.WriteTransaction(ctx, func(tx graph.Transaction) error {
-		_, err := pgDB.(*pg.Driver).KindMapper().AssertKinds(tx, append(neoNodeKinds, neoEdgeKinds...))
-		return err
-	})
+	_, err := pgDB.(*pg.Driver).KindMapper().AssertKinds(ctx, append(neoNodeKinds, neoEdgeKinds...))
+	return err
 }
 
 func convertNeo4jProperties(properties *graph.Properties) error {
