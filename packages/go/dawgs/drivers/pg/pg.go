@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2024 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -23,10 +23,10 @@ import (
 
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
-	"github.com/specterops/bloodhound/cypher/models/pgsql"
-	"github.com/specterops/bloodhound/dawgs"
-	"github.com/specterops/bloodhound/dawgs/graph"
-	"github.com/specterops/bloodhound/log"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/pgsql"
+	"github.com/byt3n33dl3/bloodhound/dawgs"
+	"github.com/byt3n33dl3/bloodhound/dawgs/graph"
+	"github.com/byt3n33dl3/bloodhound/log"
 )
 
 const (
@@ -87,12 +87,16 @@ func newDatabase(connectionString string) (*Driver, error) {
 		if pool, err := pgxpool.NewWithConfig(poolCtx, poolCfg); err != nil {
 			return nil, err
 		} else {
-			return &Driver{
+			driverInst := &Driver{
 				pool:                      pool,
-				schemaManager:             NewSchemaManager(),
 				defaultTransactionTimeout: defaultTransactionTimeout,
 				batchWriteSize:            defaultBatchWriteSize,
-			}, nil
+			}
+
+			// Because the schema manager will act on the database on its own it needs a reference to the driver
+			// TODO: This cyclical dependency might want to be unwound
+			driverInst.schemaManager = NewSchemaManager(driverInst)
+			return driverInst, nil
 		}
 	}
 }

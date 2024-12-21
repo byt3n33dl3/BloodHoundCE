@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2024 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -20,65 +20,40 @@ import (
 	"context"
 	"testing"
 
-	"github.com/specterops/bloodhound/dawgs/graph"
-	graph_mocks "github.com/specterops/bloodhound/dawgs/graph/mocks"
-	"github.com/specterops/bloodhound/dawgs/query"
+	"github.com/byt3n33dl3/bloodhound/dawgs/drivers/pg/pgutil"
+
+	"github.com/byt3n33dl3/bloodhound/dawgs/graph"
+	graph_mocks "github.com/byt3n33dl3/bloodhound/dawgs/graph/mocks"
+	"github.com/byt3n33dl3/bloodhound/dawgs/query"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 )
 
-type testKindMapper struct {
-	known map[string]int16
-}
+var (
+	NodeKind1 = graph.StringKind("NodeKind1")
+	NodeKind2 = graph.StringKind("NodeKind2")
+	EdgeKind1 = graph.StringKind("EdgeKind1")
+	EdgeKind2 = graph.StringKind("EdgeKind2")
+)
 
-func (s testKindMapper) MapKindID(kindID int16) (graph.Kind, bool) {
-	panic("implement me")
-}
+func newKindMapper() KindMapper {
+	mapper := pgutil.NewInMemoryKindMapper()
 
-func (s testKindMapper) MapKindIDs(kindIDs ...int16) (graph.Kinds, []int16) {
-	panic("implement me")
-}
+	// This is here to make SQL output a little more predictable for test cases
+	mapper.Put(NodeKind1)
+	mapper.Put(NodeKind2)
+	mapper.Put(EdgeKind1)
+	mapper.Put(EdgeKind2)
 
-func (s testKindMapper) MapKind(kind graph.Kind) (int16, bool) {
-	panic("implement me")
-}
-
-func (s testKindMapper) AssertKinds(tx graph.Transaction, kinds graph.Kinds) ([]int16, error) {
-	panic("implement me")
-}
-
-func (s testKindMapper) MapKinds(kinds graph.Kinds) ([]int16, graph.Kinds) {
-	var (
-		kindIDs      = make([]int16, 0, len(kinds))
-		missingKinds = make([]graph.Kind, 0, len(kinds))
-	)
-
-	for _, kind := range kinds {
-		if kindID, hasKind := s.known[kind.String()]; hasKind {
-			kindIDs = append(kindIDs, kindID)
-		} else {
-			missingKinds = append(missingKinds, kind)
-		}
-	}
-
-	return kindIDs, missingKinds
+	return mapper
 }
 
 func TestNodeQuery(t *testing.T) {
 	var (
-		mockCtrl   = gomock.NewController(t)
-		mockTx     = graph_mocks.NewMockTransaction(mockCtrl)
-		mockResult = graph_mocks.NewMockResult(mockCtrl)
-
-		kindMapper = testKindMapper{
-			known: map[string]int16{
-				"NodeKindA": 1,
-				"NodeKindB": 2,
-				"EdgeKindA": 3,
-				"EdgeKindB": 4,
-			},
-		}
-
+		mockCtrl      = gomock.NewController(t)
+		mockTx        = graph_mocks.NewMockTransaction(mockCtrl)
+		mockResult    = graph_mocks.NewMockResult(mockCtrl)
+		kindMapper    = newKindMapper()
 		nodeQueryInst = &nodeQuery{
 			liveQuery: newLiveQuery(context.Background(), mockTx, kindMapper),
 		}

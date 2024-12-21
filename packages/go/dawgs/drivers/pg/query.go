@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2024 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ package pg
 import (
 	"context"
 
-	"github.com/specterops/bloodhound/cypher/models/pgsql/translate"
-	"github.com/specterops/bloodhound/dawgs/graph"
-	"github.com/specterops/bloodhound/dawgs/query"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/pgsql/translate"
+	"github.com/byt3n33dl3/bloodhound/dawgs/graph"
+	"github.com/byt3n33dl3/bloodhound/dawgs/query"
 )
 
 type liveQuery struct {
@@ -43,7 +43,7 @@ func newLiveQuery(ctx context.Context, tx graph.Transaction, kindMapper KindMapp
 func (s *liveQuery) runRegularQuery(allShortestPaths bool) graph.Result {
 	if regularQuery, err := s.queryBuilder.Build(allShortestPaths); err != nil {
 		return graph.NewErrorResult(err)
-	} else if translation, err := translate.FromCypher(regularQuery, s.kindMapper, false); err != nil {
+	} else if translation, err := translate.FromCypher(s.ctx, regularQuery, s.kindMapper, false); err != nil {
 		return graph.NewErrorResult(err)
 	} else {
 		return s.tx.Raw(translation.Statement, translation.Parameters)

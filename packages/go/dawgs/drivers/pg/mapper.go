@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2024 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -17,12 +17,13 @@
 package pg
 
 import (
+	"context"
 	"fmt"
 
-	"github.com/specterops/bloodhound/dawgs/graph"
+	"github.com/byt3n33dl3/bloodhound/dawgs/graph"
 )
 
-func mapValue(kindMapper KindMapper) func(rawValue, target any) (bool, error) {
+func mapValue(ctx context.Context, kindMapper KindMapper) func(rawValue, target any) (bool, error) {
 	return func(rawValue, target any) (bool, error) {
 		switch typedTarget := target.(type) {
 		case *graph.Relationship:
@@ -32,7 +33,7 @@ func mapValue(kindMapper KindMapper) func(rawValue, target any) (bool, error) {
 				edge := edgeComposite{}
 
 				if edge.TryMap(compositeMap) {
-					if err := edge.ToRelationship(kindMapper, typedTarget); err != nil {
+					if err := edge.ToRelationship(ctx, kindMapper, typedTarget); err != nil {
 						return false, err
 					}
 				} else {
@@ -47,7 +48,7 @@ func mapValue(kindMapper KindMapper) func(rawValue, target any) (bool, error) {
 				node := nodeComposite{}
 
 				if node.TryMap(compositeMap) {
-					if err := node.ToNode(kindMapper, typedTarget); err != nil {
+					if err := node.ToNode(ctx, kindMapper, typedTarget); err != nil {
 						return false, err
 					}
 				} else {
@@ -62,7 +63,7 @@ func mapValue(kindMapper KindMapper) func(rawValue, target any) (bool, error) {
 				path := pathComposite{}
 
 				if path.TryMap(compositeMap) {
-					if err := path.ToPath(kindMapper, typedTarget); err != nil {
+					if err := path.ToPath(ctx, kindMapper, typedTarget); err != nil {
 						return false, err
 					}
 				} else {
@@ -78,6 +79,6 @@ func mapValue(kindMapper KindMapper) func(rawValue, target any) (bool, error) {
 	}
 }
 
-func NewValueMapper(values []any, kindMapper KindMapper) graph.ValueMapper {
-	return graph.NewValueMapper(values, mapValue(kindMapper))
+func NewValueMapper(ctx context.Context, values []any, kindMapper KindMapper) graph.ValueMapper {
+	return graph.NewValueMapper(values, mapValue(ctx, kindMapper))
 }

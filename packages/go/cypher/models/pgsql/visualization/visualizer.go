@@ -21,10 +21,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/specterops/bloodhound/cypher/models/walk"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/walk"
 
-	"github.com/specterops/bloodhound/cypher/models/pgsql"
-	"github.com/specterops/bloodhound/cypher/models/pgsql/format"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/pgsql"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/pgsql/format"
 )
 
 type SQLVisualizer struct {
