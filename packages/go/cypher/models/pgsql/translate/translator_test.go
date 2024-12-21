@@ -20,9 +20,11 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/specterops/bloodhound/cypher/models/pgsql"
-	"github.com/specterops/bloodhound/cypher/models/pgsql/test"
-	"github.com/specterops/bloodhound/dawgs/graph"
+	"github.com/byt3n33dl3/bloodhound/dawgs/drivers/pg/pgutil"
+
+	"github.com/byt3n33dl3/bloodhound/cypher/models/pgsql"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/pgsql/test"
+	"github.com/byt3n33dl3/bloodhound/dawgs/graph"
 )
 
 var (
@@ -33,12 +35,13 @@ var (
 )
 
 func newKindMapper() pgsql.KindMapper {
-	mapper := test.NewInMemoryKindMapper()
+	mapper := pgutil.NewInMemoryKindMapper()
 
-	mapper.Put(NodeKind1, 1)
-	mapper.Put(NodeKind2, 2)
-	mapper.Put(EdgeKind1, 11)
-	mapper.Put(EdgeKind2, 12)
+	// This is here to make SQL output a little more predictable for test cases
+	mapper.Put(NodeKind1)
+	mapper.Put(NodeKind2)
+	mapper.Put(EdgeKind1)
+	mapper.Put(EdgeKind2)
 
 	return mapper
 }

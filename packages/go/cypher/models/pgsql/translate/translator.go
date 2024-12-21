@@ -17,14 +17,16 @@
 package translate
 
 import (
+	"context"
 	"fmt"
 	"strings"
 
-	"github.com/specterops/bloodhound/cypher/models"
-	"github.com/specterops/bloodhound/cypher/models/cypher"
-	"github.com/specterops/bloodhound/cypher/models/pgsql"
-	"github.com/specterops/bloodhound/cypher/models/walk"
-	"github.com/specterops/bloodhound/dawgs/graph"
+	"github.com/byt3n33dl3/bloodhound/cypher/models"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/cypher"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/pgsql"
+	"github.com/byt3n33dl3/bloodhound/cypher/models/walk"
+	"github.com/byt3n33dl3/bloodhound/dawgs/graph"
+	// "github.com/byt3n33dl3/BlackMarlinExec/bme/src/Barracude"
 )
 
 type State int
@@ -68,6 +70,7 @@ func (s State) String() string {
 type Translator struct {
 	walk.HierarchicalVisitor[cypher.SyntaxNode]
 
+	ctx            context.Context
 	kindMapper     pgsql.KindMapper
 	translation    Result
 	state          []State
@@ -80,12 +83,17 @@ type Translator struct {
 	query          *Query
 }
 
-func NewTranslator(kindMapper pgsql.KindMapper) *Translator {
+func NewTranslator(ctx context.Context, kindMapper pgsql.KindMapper, parameters map[string]any) *Translator {
+	if parameters == nil {
+		parameters = map[string]any{}
+	}
+
 	return &Translator{
 		HierarchicalVisitor: walk.NewComposableHierarchicalVisitor[cypher.SyntaxNode](),
 		translation: Result{
-			Parameters: map[string]any{},
+			Parameters: parameters,
 		},
+		ctx:            ctx,
 		kindMapper:     kindMapper,
 		treeTranslator: NewExpressionTreeTranslator(),
 		properties:     map[string]pgsql.Expression{},
@@ -482,7 +490,9 @@ func (s *Translator) Exit(expression cypher.SyntaxNode) {
 
 		switch formattedName {
 		case cypher.IdentityFunction:
-			if referenceArgument, err := PopFromBuilderAs[pgsql.Identifier](s.treeTranslator); err != nil {
+			if typedExpression.NumArguments() != 1 {
+				s.SetError(fmt.Errorf("expected only one argument for cypher function: %s", typedExpression.Name))
+			} else if referenceArgument, err := PopFromBuilderAs[pgsql.Identifier](s.treeTranslator); err != nil {
 				s.SetError(err)
 			} else {
 				s.treeTranslator.Push(pgsql.CompoundIdentifier{referenceArgument, pgsql.ColumnID})
@@ -509,7 +519,7 @@ func (s *Translator) Exit(expression cypher.SyntaxNode) {
 			}
 
 		case cypher.EdgeTypeFunction:
-			if typedExpression.NumArguments() > 1 {
+			if typedExpression.NumArguments() != 1 {
 				s.SetError(fmt.Errorf("expected only one argument for cypher function: %s", typedExpression.Name))
 			} else if argument, err := s.treeTranslator.Pop(); err != nil {
 				s.SetError(err)
@@ -520,7 +530,7 @@ func (s *Translator) Exit(expression cypher.SyntaxNode) {
 			}
 
 		case cypher.NodeLabelsFunction:
-			if typedExpression.NumArguments() > 1 {
+			if typedExpression.NumArguments() != 1 {
 				s.SetError(fmt.Errorf("expected only one argument for cypher function: %s", typedExpression.Name))
 			} else if argument, err := s.treeTranslator.Pop(); err != nil {
 				s.SetError(err)
@@ -531,7 +541,7 @@ func (s *Translator) Exit(expression cypher.SyntaxNode) {
 			}
 
 		case cypher.CountFunction:
-			if typedExpression.NumArguments() > 1 {
+			if typedExpression.NumArguments() != 1 {
 				s.SetError(fmt.Errorf("expected only one argument for cypher function: %s", typedExpression.Name))
 			} else if argument, err := s.treeTranslator.Pop(); err != nil {
 				s.SetError(err)
@@ -572,7 +582,7 @@ func (s *Translator) Exit(expression cypher.SyntaxNode) {
 			}
 
 		case cypher.ToLowerFunction:
-			if typedExpression.NumArguments() > 1 {
+			if typedExpression.NumArguments() != 1 {
 				s.SetError(fmt.Errorf("expected only one argument for cypher function: %s", typedExpression.Name))
 			} else if argument, err := s.treeTranslator.Pop(); err != nil {
 				s.SetError(err)
@@ -590,7 +600,7 @@ func (s *Translator) Exit(expression cypher.SyntaxNode) {
 			}
 
 		case cypher.ListSizeFunction:
-			if typedExpression.NumArguments() > 1 {
+			if typedExpression.NumArguments() != 1 {
 				s.SetError(fmt.Errorf("expected only one argument for cypher function: %s", typedExpression.Name))
 			} else if argument, err := s.treeTranslator.Pop(); err != nil {
 				s.SetError(err)
@@ -615,7 +625,7 @@ func (s *Translator) Exit(expression cypher.SyntaxNode) {
 			}
 
 		case cypher.ToUpperFunction:
-			if typedExpression.NumArguments() > 1 {
+			if typedExpression.NumArguments() != 1 {
 				s.SetError(fmt.Errorf("expected only one argument for cypher function: %s", typedExpression.Name))
 			} else if argument, err := s.treeTranslator.Pop(); err != nil {
 				s.SetError(err)
@@ -633,7 +643,7 @@ func (s *Translator) Exit(expression cypher.SyntaxNode) {
 			}
 
 		case cypher.ToStringFunction:
-			if typedExpression.NumArguments() > 1 {
+			if typedExpression.NumArguments() != 1 {
 				s.SetError(fmt.Errorf("expected only one argument for cypher function: %s", typedExpression.Name))
 			} else if argument, err := s.treeTranslator.Pop(); err != nil {
 				s.SetError(err)
@@ -642,12 +652,17 @@ func (s *Translator) Exit(expression cypher.SyntaxNode) {
 			}
 
 		case cypher.ToIntegerFunction:
-			if typedExpression.NumArguments() > 1 {
+			if typedExpression.NumArguments() != 1 {
 				s.SetError(fmt.Errorf("expected only one argument for cypher function: %s", typedExpression.Name))
 			} else if argument, err := s.treeTranslator.Pop(); err != nil {
 				s.SetError(err)
 			} else {
 				s.treeTranslator.Push(pgsql.NewTypeCast(argument, pgsql.Int8))
+			}
+
+		case cypher.CoalesceFunction:
+			if err := s.translateCoalesceFunction(typedExpression); err != nil {
+				s.SetError(err)
 			}
 
 		default:
@@ -848,8 +863,8 @@ type Result struct {
 	Parameters map[string]any
 }
 
-func Translate(cypherQuery *cypher.RegularQuery, kindMapper pgsql.KindMapper) (Result, error) {
-	translator := NewTranslator(kindMapper)
+func Translate(ctx context.Context, cypherQuery *cypher.RegularQuery, kindMapper pgsql.KindMapper, parameters map[string]any) (Result, error) {
+	translator := NewTranslator(ctx, kindMapper, parameters)
 
 	if err := walk.WalkCypher(cypherQuery, translator); err != nil {
 		return Result{}, err
