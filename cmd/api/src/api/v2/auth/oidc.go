@@ -35,7 +35,7 @@ import (
 	"golang.org/x/oauth2"
 )
 
-// UpsertOIDCProviderRequest represents the body of create & update provider endpoints
+// UpsertOIDCProviderRequest represents the body of create & update provider endpoints (different config for all)
 type UpsertOIDCProviderRequest struct {
 	Name     string `json:"name" validate:"required"`
 	Issuer   string `json:"issuer"  validate:"url"`
