@@ -1,4 +1,4 @@
-// Copyright 2024 Specter Ops, Inc.
+// Copyright 2025 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -33,6 +33,8 @@ const samlProvider: SSOProvider = {
         sp_metadata_uri: 'http://bloodhound.localhost/api/v2/login/saml/test-idp-2/metadata',
         sp_acs_uri: 'http://bloodhound.localhost/api/v2/login/saml/test-idp-2/acs',
     } as SAMLProviderInfo,
+    login_uri: '',
+    callback_uri: '',
     created_at: '2022-02-24T23:38:41.420271Z',
     updated_at: '2022-02-24T23:38:41.420271Z',
 };
@@ -46,6 +48,8 @@ const oidcProvider: SSOProvider = {
         issuer: 'http://bloodhound.localhost/test-idp-2',
         client_id: 'gotham-oidc',
     } as OIDCProviderInfo,
+    login_uri: '',
+    callback_uri: '',
     created_at: '2022-02-24T23:38:41.420271Z',
     updated_at: '2022-02-24T23:38:41.420271Z',
 };

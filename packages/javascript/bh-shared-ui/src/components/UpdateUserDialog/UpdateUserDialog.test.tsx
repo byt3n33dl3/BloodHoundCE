@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2025 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -48,6 +48,8 @@ const testSSOProviders: SSOProvider[] = [
             created_at: '2024-01-01T12:00:00Z',
             updated_at: '2024-01-01T12:00:00Z',
         },
+        login_uri: '',
+        callback_uri: '',
         id: 1,
         created_at: '2024-01-01T12:00:00Z',
         updated_at: '2024-01-01T12:00:00Z',
@@ -71,6 +73,8 @@ const testSSOProviders: SSOProvider[] = [
             created_at: '2024-01-01T12:00:00Z',
             updated_at: '2024-01-01T12:00:00Z',
         },
+        login_uri: '',
+        callback_uri: '',
         id: 2,
         created_at: '2024-01-01T12:00:00Z',
         updated_at: '2024-01-01T12:00:00Z',
@@ -94,6 +98,8 @@ const testSSOProviders: SSOProvider[] = [
             created_at: '2024-01-01T12:00:00Z',
             updated_at: '2024-01-01T12:00:00Z',
         },
+        login_uri: '',
+        callback_uri: '',
         id: 3,
         created_at: '2024-01-01T12:00:00Z',
         updated_at: '2024-01-01T12:00:00Z',
@@ -117,6 +123,8 @@ const testSSOProviders: SSOProvider[] = [
             created_at: '2024-01-01T12:00:00Z',
             updated_at: '2024-01-01T12:00:00Z',
         },
+        login_uri: '',
+        callback_uri: '',
         id: 4,
         created_at: '2024-01-01T12:00:00Z',
         updated_at: '2024-01-01T12:00:00Z',

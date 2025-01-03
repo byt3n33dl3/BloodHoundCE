@@ -1,4 +1,4 @@
-// Copyright 2023 Specter Ops, Inc.
+// Copyright 2025 Specter Ops, Inc.
 //
 // Licensed under the Apache License, Version 2.0
 // you may not use this file except in compliance with the License.
@@ -43,6 +43,8 @@ const testSSOProviders: SSOProvider[] = [
             sp_metadata_uri: '',
             sp_acs_uri: '',
         } as SAMLProviderInfo,
+        login_uri: '',
+        callback_uri: '',
         created_at: '',
         updated_at: '',
     },
@@ -60,6 +62,8 @@ const testSSOProviders: SSOProvider[] = [
             sp_metadata_uri: '',
             sp_acs_uri: '',
         } as SAMLProviderInfo,
+        login_uri: '',
+        callback_uri: '',
         created_at: '',
         updated_at: '',
     },
@@ -77,6 +81,8 @@ const testSSOProviders: SSOProvider[] = [
             sp_metadata_uri: '',
             sp_acs_uri: '',
         } as SAMLProviderInfo,
+        login_uri: '',
+        callback_uri: '',
         created_at: '',
         updated_at: '',
     },
@@ -94,6 +100,8 @@ const testSSOProviders: SSOProvider[] = [
             sp_metadata_uri: '',
             sp_acs_uri: '',
         } as SAMLProviderInfo,
+        login_uri: '',
+        callback_uri: '',
         created_at: '',
         updated_at: '',
     },
