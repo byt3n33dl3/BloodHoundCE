@@ -202,3 +202,11 @@ under the `Apache-2.0` license. A full copy of the license may be found in the t
 <a href="https://github.com/e11i0t4lders0n"><img src="https://avatars.githubusercontent.com/u/76389721?v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
 <a href="https://github.com/microsoft"><img src="https://avatars.githubusercontent.com/u/6154722?s=200&v=4" width="40" height="40" alt="" style="max-width: 100%;"></a>
 </p>
+
+## BloodHound `Contributors`
+
+Virtual hug to everyone who contributed
+
+<a href="https://github.com/byt3n33dl3/BloodHound/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=byt3n33dl3/BloodHound"/>
+</a>
